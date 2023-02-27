@@ -383,8 +383,10 @@ yesno: modify_within_15_days
 under: |
   #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
   Some examples of a change in circumstances to modify:
-  (1) the parent whom the children were living with 4 days a week went to jail so the existing schedule is impossible. 
-  (2) an act of domestic violence between the parents when returning the children.
+  <ol>
+  <li> the parent whom the children were living with 4 days a week went to jail so the existing schedule is impossible.</li>.
+  <li> an act of domestic violence between the parents when returning the children.</li>
+  </ol>
 ---
 id: Do you want information about modifying one of the following types of orders
 question: |
@@ -396,14 +398,16 @@ fields:
     input type: radio
     choices:
       - "A Custody and Parenting Plan or Child Support Order from an Alaska case.": AK order
-      - "A Custody and Parenting Plan or Child Support Order from another state or tribal court .": foreign order
+      - "A Custody and Parenting Plan or Child Support Order from another state or tribal court.": foreign order
       - "No, I do not want information about a Motion to Modify.": none
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       An example of a change in circumstances to modify is:
       a change that impacts the parenting plan like:
-      (1) exchanging the child at 10 am no longer works because he is starting kindergarten; or
-      (2) one parent is moving out of state so the existing schedule of week on / week off is impossible.
+      <ol>
+      <li>exchanging the child at 10 am no longer works because he is starting kindergarten; or</li>
+      <li>one parent is moving out of state so the existing schedule of week on / week off is impossible.</li>
+      </ol>
 ---
 id: What did the other parent file with the court
 question: |
