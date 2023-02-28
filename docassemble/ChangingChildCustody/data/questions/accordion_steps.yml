@@ -45,7 +45,7 @@ code: |
       step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
       
     # Row 6
-    if type_of_response['set_aside'] and respond_to_set_aside == 'agree':
+    if type_of_response['set aside'] and respond_to_set_aside == 'agree':
       step_list.append((respond_set_aside_agree_step, "respond_set_aside_agree_idx"))
       step_list.append((respond_set_aside_step, "respond_set_aside_idx"))
       step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
@@ -54,7 +54,7 @@ code: |
       step_list.append((expect_after_set_aside_response_step, "expect_after_set_aside_response_idx"))
   
     # Rows 7 & 8
-    if type_of_response['set_aside'] and respond_to_set_aside in('some','none'):
+    if type_of_response['set aside'] and respond_to_set_aside in('some','none'):
       step_list.append((respond_set_aside_step, "respond_set_aside_idx"))
       step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
       step_list.append((expect_after_set_aside_response_step, "expect_after_set_aside_response_idx"))
@@ -66,7 +66,7 @@ code: |
       step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
     
     # Rows 10 & 11
-    if type_of_response['set_aside'] and respond_to_set_aside in('some','none'):
+    if type_of_response['set aside'] and respond_to_set_aside in('some','none'):
       step_list.append((appeal_response_step, "appeal_response_idx"))
       step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
   
