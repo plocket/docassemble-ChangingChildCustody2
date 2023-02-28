@@ -144,7 +144,7 @@ fields:
     choices:
       - "I want to change a Custody Parenting Plan.": file
       - "Respond to a motion to change a custody, parenting plan or child support order that the other parent filed.": respond
-      - "This is not what I am looking for. ": unwanted
+      - "This is not what I am looking for. ": none
 ---
 id: Are you in the middle of your case now
 question: |
@@ -413,13 +413,14 @@ id: What did the other parent file with the court
 question: |
   What did the other parent file with the court?
 fields:
-  - "what did other parent file?": respond
+  - no label: type_of_response
     datatype: checkboxes
     choices:
-      - "A Motion to Modify a Custody and Parenting Plan or Child Support Order.": custody
-      - "A Motion for Reconsideration.": reconsider
-      - "A Motion to Set Aside Judgment or Order.": set aside
-      - "An Appeal": appeal
+      - A Motion to Modify a Custody and Parenting Plan or Child Support Order.: custody
+      - A Motion for Reconsideration.: reconsider
+      - A Motion to Set Aside Judgment or Order.: set aside
+      - An Appeal: appeal
+    none of the above: False
 ---
 id: Add response to modify to your Action Plan
 question: |

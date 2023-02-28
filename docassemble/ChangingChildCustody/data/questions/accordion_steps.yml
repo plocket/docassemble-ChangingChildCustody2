@@ -22,6 +22,54 @@ code: |
     step_list.append((wrong_tf, "wrong_tf_idx"))
     step_list.append((wrong_tf2, "wrong_tf2_idx"))
  
+  
+  elif user_need == 'respond':
+  
+    # Row 2
+    if type_of_response['custody'] and respond_to_custody == 'agree':
+      step_list.append((respond_custody_agree_step, "respond_custody_agree_idx"))
+      step_list.append((respond_custody_step, "respond_custody_idx"))
+      step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
+      step_list.append((custody_contact_parent_step, "custody_contact_parent_idx"))    
+      step_list.append((file_agreement_step, "file_agreement_idx"))
+  
+    # Rows 3 & 4
+    if type_of_response['custody'] and respond_to_custody in('some','none'):
+      step_list.append((respond_custody_step, "respond_custody_idx"))
+      step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
+  
+    # Row 5
+    if type_of_response['reconsider'] and respond_to_reconsider:
+      step_list.append((response_to_reconsider_step, "response_to_reconsider_idx"))
+      step_list.append((file_reconsider_response_step, "file_reconsider_response_idx"))
+      step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
+      
+    # Row 6
+    if type_of_response['set_aside'] and respond_to_set_aside == 'agree':
+      step_list.append((respond_set_aside_agree_step, "respond_set_aside_agree_idx"))
+      step_list.append((respond_set_aside_step, "respond_set_aside_idx"))
+      step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
+      step_list.append((set_aside_contact_parent_step, "set_aside_contact_parent_idx"))   
+      step_list.append((file_agreement_step, "file_agreement_idx"))      
+      step_list.append((expect_after_set_aside_response_step, "expect_after_set_aside_response_idx"))
+  
+    # Rows 7 & 8
+    if type_of_response['set_aside'] and respond_to_set_aside in('some','none'):
+      step_list.append((respond_set_aside_step, "respond_set_aside_idx"))
+      step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
+      step_list.append((expect_after_set_aside_response_step, "expect_after_set_aside_response_idx"))
+    
+    # Row 9
+    if type_of_response['appeal'] and respond_to_appeal == 'agree':
+      step_list.append((appeal_response_step, "appeal_response_idx"))
+      step_list.append((appeal_contact_parent_step, "appeal_contact_parent_idx"))
+      step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
+    
+    # Rows 10 & 11
+    if type_of_response['set_aside'] and respond_to_set_aside in('some','none'):
+      step_list.append((appeal_response_step, "appeal_response_idx"))
+      step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
+  
   else:
     #  step_list.append((foreign_order_step, "foreign_order_idx"))
     #  step_list.append((ak_jurisdiction_step, "ak_jurisdiction_idx"))
@@ -32,18 +80,8 @@ code: |
     #  step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
     #  step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
     # step_list.append((file_reply_step, "file_reply_idx"))
-    #  step_list.append((respond_custody_agree_step, "respond_custody_agree_idx"))
-    #  step_list.append((respond_custody_step, "respond_custody_idx"))
-    #  step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
-    #  step_list.append((custody_contact_parent_step, "custody_contact_parent_idx"))    
-    #  step_list.append((file_agreement_step, "file_agreement_idx"))
-    #  step_list.append((response_to_reconsider_step, "response_to_reconsider_idx"))
     #  step_list.append((file_reconsider_response_step, "file_reconsider_response_idx"))
-    #  step_list.append((set_aside_contact_parent_step, "set_aside_contact_parent_idx"))
-    #  step_list.append((expect_after_set_aside_response_step, "expect_after_set_aside_response_idx"))
-    step_list.append((appeal_agree_response_step, "appeal_agree_response_idx"))
-    step_list.append((appeal_contact_parent_step, "appeal_contact_parent_idx"))
-    step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
+    step_list.append((placeholder_step, "placeholder_idx"))
     
     
   step_list.append((get_help, "get_help_idx"))
@@ -594,12 +632,9 @@ subject: |
   Step ${ respond_custody_agree_idx }: Let the other parent and the court know you agree with the proposed changes
 content: |
   <div class="step-subheading">Options</div>
-  % if respond_to_custody == 'agree':
-  If the other parent files a motion to modify the parenting plan and custody order or the child support order, and you agree, you have options. For either option,
-  % elif respond_to_set_aside  == 'agree':
-  A <strong>Motion to Set Aside Judgment or Order</strong> asks the trial court to set aside or &quot;undo&quot; a judgment or final order in a case. If granted, the case will move ahead as if the judgment had not been made. If you agree with what the other parent asked to set aside in the motion, you have options. Whichever option you choose,
-  % endif
-  you must file all documents with the court within 10 days from the day the motion was hand delivered to you or 13 days from the day it was mailed to you (you can see this date on the postmark of the envelope).
+  If the other parent files a motion to modify the parenting plan and custody order or the child support order, and you agree, you have options.
+  
+  For either option, you must file all documents with the court within 10 days from the day the motion was hand delivered to you or 13 days from the day it was mailed to you (you can see this date on the postmark of the envelope).
   <ul>
   <li>You can fill out a response stating you agree, file it with the court, and give the other parent a copy. See Steps ${ respond_custody_idx } and ${file_and_serve_response_idx }.</li>
   <p>Or</p>
@@ -633,6 +668,40 @@ content: |
   <p> <strong>Shared Custody Support Calculation</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/dr-306.pdf">DR-306</a> [Fill-In PDF]</p>
   <p><strong>Divided Custody Support Calculation</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/dr-307.pdf">DR-307</a> [Fill-In PDF]</p>
   <p><strong>Hybrid Custody Child Support Calculation</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/dr-308.pdf">DR-308</a> [Fill-In PDF]</p>
+---
+template: respond_set_aside_agree_step
+subject: |
+  Step ${ respond_set_aside_agree_idx }: Let the other parent and the court know you agree with the Motion to Set Aside Judgment or Order
+content: |
+  <div class = "step-subheading">Options</div>
+  A **Motion to Set Aside Judgment or Order** asks the trial court to set aside or "undo" a judgment or final order in a case.  If granted, the case will move ahead as if the judgment had not been made.  If you agree with what the other parent asked to set aside in the motion, you have options. 
+  
+  Whichever option you choose, you must file all documents with the court within 10 days from the day the motion was hand delivered to you or 13 days from the day it was mailed to you (you can see this date on the postmark of the envelope).
+  <ul>
+  <li>You can fill out a response stating you agree, file it with the court, and give the other parent a copy. See Steps ${ respond_set_aside_idx } and ${file_and_serve_response_idx }.</li>
+  <p>Or</p>
+  <li>You can contact the other parent and put your agreement in writing together to file with the court. See Steps  ${ set_aside_contact_parent_idx } and ${ file_agreement_idx }.</li>
+  </ul>  
+---
+template: respond_set_aside_step
+subject: |
+  Step ${ respond_set_aside_idx }: Respond in writing and tell the court you
+  % if respond_to_set_aside == 'agree':
+  and the other side agree
+  % else:
+  do not agree with the Motion to Set Aside Judgment or Order
+  % endif
+content: |
+  % if respond_to_set_aside == 'agree':
+  If you agree with everything the other parent wrote in the Motion to Set Aside Judgment and Order, you can state that in your response Fill out:
+  % else:
+  A Motion to Set Aside Judgment or Order asks the trial court to set aside or "undo" a judgment or final order in a case. If granted, the case will move ahead as if the judgment had not been made. If you do not agree with what the other parent asked to set aside, you can fill out and file a response. Be sure to state what you do and do not agree with. Remember, you must respond within 10 days from the day it was hand delivered to you or 13 days from the day it was mailed (you can see this date on the postmark of the envelope). Fill out:
+  % endif
+  <ul>
+  <li><a href="https://public.courts.alaska.gov/web/forms/docs/civ-810.pdf">CIV-810</a> Response to Motion</li>
+  <li><a href="https://public.courts.alaska.gov/web/forms/docs/civ-820.pdf">CIV-820</a> Order on Motion</li>
+  </ul>
+
 ---
 template: file_and_serve_response_step
 subject: |
@@ -693,6 +762,21 @@ content: |
   </ul></li>
   </ul>
 ---
+template: set_aside_contact_parent_step
+subject: |
+  Step ${ set_aside_contact_parent_idx }: Contact the other parent and write out your agreement
+content: |
+  
+  If you and the other parent agree, and are able to work together to write out the agreement, you can fill out and file with the court:
+  <ul>
+  <li><strong>Joint Motion</strong> <strong>to Put Settlement on the Record, SHC-1063</strong><br>
+  as a <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1063.doc">Word</a> <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1063.docx">file</a><br>
+  as a <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1063n.pdf">PDF</a></li>
+  <li><strong>Agreement &amp; Order, SHC-1061</strong><br>
+  as a <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1061.doc">Word</a> <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1063.docx">file</a><br>
+  as a <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1061n.pdf">PDF</a></li>
+  </ul>
+---
 template: file_agreement_step
 subject: |
   Step ${ file_agreement_idx }: File your agreement with the court within 10 or 13 days
@@ -702,6 +786,16 @@ content: |
   <ul>
   <li>Make 2 copies of the forms you filled out stating your agreement - 1 for you and 1 for the other parent.</li>
   <li>File the original with the court by the deadline (10 or 13 days). If the deadline is a Friday, weekend, or holiday, your response is due the next day that is not a Friday, weekend or holiday. For example, if the 10th day was Thursday, November 23rd, and it was Thanksgiving, your response would not be due until the following Monday.</li>
+  </ul>
+---
+template: expect_after_set_aside_response_step
+subject: |
+  Step ${ expect_after_set_aside_response_idx }: What to expect after you respond to the Motion to Set Aside Judgment or Order
+content: |
+  <ul>
+  <li>If the <strong>Motion to Set Aside Judgment or Order</strong> <strong>is not granted or is denied</strong>, the parents are supposed to follow the Judgment or Order and the parent who received the original order or judgment can enforce it.</li>
+  <li>If the <strong>Motion to Set Aside Judgment or Order</strong> <strong>is granted</strong>, the court will notify both parents about the next step in the case.</li>
+  <li>Either parent can appeal the decision about the <strong>Motion to Set Aside Judgment or Order </strong>if they believe the judge made a legal mistake.</li>
   </ul>
 ---
 template: response_to_reconsider_step
@@ -735,32 +829,7 @@ content: |
 
   File the original with the court by the deadline (10 or 13 days). If the deadline is a Friday, weekend, or holiday, your response is due the next day that is not a Friday, weekend or holiday. For example, if the 10th day was Thursday, November 23rd, and it was Thanksgiving, your response would not be due until the following Monday.
 ---
-template: set_aside_contact_parent_step
-subject: |
-  Step ${ set_aside_contact_parent_idx }: Contact the other parent and write out your agreement
-content: |
-  
-  If you and the other parent agree, and are able to work together to write out the agreement, you can fill out and file with the court:
-  <ul>
-  <li><strong>Joint Motion</strong> <strong>to Put Settlement on the Record, SHC-1063</strong><br>
-  as a <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1063.doc">Word</a> <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1063.docx">file</a><br>
-  as a <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1063n.pdf">PDF</a></li>
-  <li><strong>Agreement &amp; Order, SHC-1061</strong><br>
-  as a <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1061.doc">Word</a> <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1063.docx">file</a><br>
-  as a <a href="http://www.courts.alaska.gov/shc/family/docs/shc-1061n.pdf">PDF</a></li>
-  </ul>
----
-template: expect_after_set_aside_response_step
-subject: |
-  Step ${ expect_after_set_aside_response_idx }: What to expect after you respond to the Motion to Set Aside Judgment or Order
-content: |
-  <ul>
-  <li>If the <strong>Motion to Set Aside Judgment or Order</strong> <strong>is not granted or is denied</strong>, the parents are supposed to follow the Judgment or Order and the parent who received the original order or judgment can enforce it.</li>
-  <li>If the <strong>Motion to Set Aside Judgment or Order</strong> <strong>is granted</strong>, the court will notify both parents about the next step in the case.</li>
-  <li>Either parent can appeal the decision about the <strong>Motion to Set Aside Judgment or Order </strong>if they believe the judge made a legal mistake.</li>
-  </ul>
----
-template: appeal_agree_response_step
+template: appeal_response_step
 subject: |
   Step ${ appeal_agree_response_idx }:
   % if respond_to_appeal == 'agree':
@@ -836,3 +905,10 @@ content: |
   <li>You can write on the Notice that you agree with the other parent.</li>
   <li>The other person may want to file a motion to dismiss to stop the appeal from continuing. </li>
   </ul>
+---
+---
+template: placeholder_step
+subject: |
+  Step ${ placeholde_idx }: Placeholder
+content: |
+  Just holding place for else if user wants to file something to change custody order or parenting plan.
