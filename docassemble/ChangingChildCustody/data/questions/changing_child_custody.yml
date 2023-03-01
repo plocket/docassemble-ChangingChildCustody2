@@ -168,7 +168,7 @@ fields:
     disable if: interim_order_period
     help: |
       This is the date in the box at the bottom of your order.
-  - "I do not have the exact date.": interim_order_date_period
+  - "I do not have the exact date.": interim_order_period
     datatype: yesno
     enable if: 
       variable: interim_order_date
@@ -241,7 +241,7 @@ subquestion: |
   
   The judge **may** agree to accept your late motion if you have a good reason like you ended up in the hospital and could not file the motion, someone in your family became gravely ill….. "
   % endif
-continue button field: motion_decision
+yesno: motion_decision
 under: |
   #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
   Reasons a court might reconsider a decision it just made are:
@@ -429,8 +429,10 @@ subquestion: |
   If there has been a change in circumstances with the Custody and Parenting Plan or Child Support Order, either parent can file a Motion to Modify. 
   
   When you respond to the motion to modify, you should state if you agree with all, some, or none of the of the other parent’s requested changes.
+  
+  What information do you need?
 fields:
-  - "Respond to custody": respond_to_custody
+  - no label: respond_to_custody
     input type: radio
     choices:
       - "How to respond if I agree with all proposed changes.": agree
