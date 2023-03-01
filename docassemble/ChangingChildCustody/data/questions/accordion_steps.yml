@@ -105,7 +105,7 @@ code: |
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
         step_list.append((standing_order_step, "standing_order_idx")) 
         # step_list.append((motion_forms_step, "(motion_forms_idx"))
-        #  step_list.append((file_and_serve_step, "file_and_serve_idx"))        
+        # step_list.append((file_and_serve_step, "file_and_serve_idx"))        
         step_list.append((file_reply_step, "file_reply_idx"))
     
     # Row 15
@@ -670,9 +670,14 @@ content: |
   </ul>
   % if middle_of_case and interim_order_date_within_10_days and type_of_interim_order == 'standing order' and standing_order:
   <div class="step-subheading">Watch videos about motions</div>
-  <a href="https://www.youtube.com/watch?v=2irmxT0_0EA&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=12">Motions Part 1: How to Ask the Court For Something </a>
-  <a href="https://www.youtube.com/watch?v=egoBeRFB_Uw&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=14">Motions Part 3: Preparing a Reply </a>
-  <a href="https://www.youtube.com/watch?v=YQvG7GEGeoo&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=15">Motions Part 4: Mailings and Deadlines</a>. Note - Because the court system now closes at noon on Fridays, if a deadline falls on a Saturday, Sunday, holiday, OR FRIDAY, the deadline is the next business day. The discussion about deadlines in the video is no longer accurate because it was made before the Friday noon closures.
+  
+  <a href="https://www.youtube.com/watch?v=2irmxT0_0EA&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=12">Motions Part 1: How to Ask the Court For Something</a>
+  
+  <a href="https://www.youtube.com/watch?v=egoBeRFB_Uw&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=14">Motions Part 3: Preparing a Reply</a>
+  
+  <a href="https://www.youtube.com/watch?v=YQvG7GEGeoo&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=15">Motions Part 4: Mailings and Deadlines</a>. 
+  
+  **Note** - Because the court system now closes at noon on Fridays, if a deadline falls on a Saturday, Sunday, holiday, OR FRIDAY, the deadline is the next business day. The discussion about deadlines in the video is no longer accurate because it was made before the Friday noon closures.
   % endif
 ---
 template: respond_custody_agree_step
