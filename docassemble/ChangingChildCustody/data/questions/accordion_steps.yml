@@ -116,6 +116,53 @@ code: |
       and not standing_order:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        
+    
+    # Row 16
+    if middle_of_case == 'yes' \
+      and interim_order_date_within_10_days \
+      and not parents_agree \
+      and type_of_interim_order == 'motion' \
+      and motion_decision:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        step_list.append((reconsideration_step, "reconsideration_idx")) 
+        step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
+        #  step_list.append((file_and_serve_step, "file_and_serve_idx"))
+        step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
+        step_list.append((file_reply_step, "file_reply_idx"))
+    
+    # Row 17
+    if middle_of_case == 'yes' \
+      and interim_order_date_within_10_days \
+      and not parents_agree \
+      and type_of_interim_order == 'motion' \
+      and not motion_decision:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+    
+    
+    # Row 18
+    if middle_of_case == 'yes' \
+      and interim_order_date_within_10_days \
+      and not parents_agree \
+      and type_of_interim_order == 'standing order' \
+      and standing_order:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        step_list.append((standing_order_step, "standing_order_idx")) 
+        step_list.append((motion_forms_step, "motion_forms_idx"))
+        # step_list.append((file_and_serve_step, "file_and_serve_idx"))        
+        step_list.append((file_reply_step, "file_reply_idx"))
+    
+    # Row 19
+    if middle_of_case == 'yes' \
+      and interim_order_date_within_10_days \
+      and not parents_agree \
+      and type_of_interim_order == 'standing order' \
+      and not standing_order:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
   
  
     

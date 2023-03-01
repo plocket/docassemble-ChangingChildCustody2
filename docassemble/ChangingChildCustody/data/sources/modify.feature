@@ -19,7 +19,6 @@ Scenario: New case parent wants modify interim motion within 10 days of decision
   And I should see the phrase "Placeholder"
   And I should see the phrase "Get more information or help"
   
-  Feature: User paths
 Scenario: New case parent wants modify interim motion within 10 days of decision and also parents agreement information #12b
   Given I start the interview at "changing_child_custody.yml"
   And I get to the question id "final screen" with this data:
