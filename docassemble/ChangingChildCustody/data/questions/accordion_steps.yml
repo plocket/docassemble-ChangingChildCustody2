@@ -104,7 +104,7 @@ code: |
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
         step_list.append((standing_order_step, "standing_order_idx")) 
-        # step_list.append((motion_forms_step, "(motion_forms_idx"))
+        step_list.append((motion_forms_step, "motion_forms_idx"))
         # step_list.append((file_and_serve_step, "file_and_serve_idx"))        
         step_list.append((file_reply_step, "file_reply_idx"))
     
