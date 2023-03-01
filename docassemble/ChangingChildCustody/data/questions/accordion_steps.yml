@@ -71,6 +71,54 @@ code: |
       step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
   
   else:
+    # Row 12
+    if middle_of_case == 'yes' \
+      and interim_order_date_within_10_days \
+      and parents_agree \
+      and type_of_interim_order == 'motion' \
+      and motion_decision:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        step_list.append((reconsideration_step, "reconsideration_idx")) 
+        step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
+        #  step_list.append((file_and_serve_step, "file_and_serve_idx"))
+        step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
+        step_list.append((file_reply_step, "file_reply_idx"))
+    
+    # Row 13
+    if middle_of_case == 'yes' \
+      and interim_order_date_within_10_days \
+      and parents_agree \
+      and type_of_interim_order == 'motion' \
+      and not motion_decision:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+    
+    
+    # Row 14
+    if middle_of_case == 'yes' \
+      and interim_order_date_within_10_days \
+      and parents_agree \
+      and type_of_interim_order == 'standing order' \
+      and standing_order:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        step_list.append((standing_order_step, "standing_order_idx")) 
+        # step_list.append((motion_forms_step, "(motion_forms_idx"))
+        #  step_list.append((file_and_serve_step, "file_and_serve_idx"))        
+        step_list.append((file_reply_step, "file_reply_idx"))
+    
+    # Row 15
+    if middle_of_case == 'yes' \
+      and interim_order_date_within_10_days \
+      and parents_agree \
+      and type_of_interim_order == 'standing order' \
+      and not standing_order:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+  
+ 
+    
     #  step_list.append((foreign_order_step, "foreign_order_idx"))
     #  step_list.append((ak_jurisdiction_step, "ak_jurisdiction_idx"))
     #  step_list.append((register_order_step, "register_order_idx"))
@@ -607,20 +655,20 @@ subject: |
   Step ${ file_reply_idx }: You can file a reply if the other parent responds
 content: |
   <ul>
-  % if motion_decision or motion_for_reconsideration:
+  % if (middle_of_case and type_of_interim_order == 'motion' and motion_decision) or (not middle_of_case and motion_for_reconsideration):
   <li> If the court asks the other parent to respond, you can file a Reply to the response.</li>
-  % elif standing_order or appeal or set_aside or modify_within_15 or modify_after_15 in('AK order', 'foreign order'):
+  % elif (type_of_interim_order == 'standing order' and standing_order) or appeal or set_aside or modify_within_15 or modify_after_15 in('AK order', 'foreign order'):
   <li>If the other parent responds in writing, you can file a <strong>Reply</strong>.</li>
   % endif
   <li>You have 5 days to reply if the response was hand delivered and 8 days if it was mailed, not counting holidays or weekends.</li>
   <li>If the 5th day is a weekend, or holiday, your Reply is due the next day that is not a weekend or holiday. For example, if the 5th day was Thursday, November 23rd, and it was Thanksgiving, your Reply would not be due until the following Monday.</li>
   <li>Watch a video about replies: <a href="https://youtu.be/egoBeRFB_Uw">Motions Part 3: Preparing a Reply</a></li>
-  <li>Fill out: <strong>Reply, SHC - 1305</strong> in <a href="http://courts.alaska.gov/shc/family/docs/shc-1305.doc">Word</a> | <a href="http://courts.alaska.gov/shc/family/docs/shc-1305.doc">PDF</a>.</li>
+  <li>Fill out: <strong>Reply, SHC - 1305</strong> in <a href="http://courts.alaska.gov/shc/family/docs/shc-1305.doc">Word</a> | <a href="http://courts.alaska.gov/shc/family/docs/shc-1305n.doc">PDF</a>.</li>
   <li>Make 2 copies of your reply. Keep 1 copy for your own records.</li>
   <li>You must give the other parent (or their lawyer if they have one) 1 copy of everything you file with the court. You can mail or hand deliver it. Do this the day you file your reply. This is called "serving" the other side. You have to write how you serve the other parent on your reply.</li>
   <li>File the original with the court.</li>
   </ul>
-  % if standing_order:
+  % if middle_of_case and interim_order_date_within_10_days and type_of_interim_order == 'standing order' and standing_order:
   <div class="step-subheading">Watch videos about motions</div>
   <a href="https://www.youtube.com/watch?v=2irmxT0_0EA&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=12">Motions Part 1: How to Ask the Court For Something </a>
   <a href="https://www.youtube.com/watch?v=egoBeRFB_Uw&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=14">Motions Part 3: Preparing a Reply </a>
@@ -909,6 +957,6 @@ content: |
 ---
 template: placeholder_step
 subject: |
-  Step ${ placeholde_idx }: Placeholder
+  Step ${ placeholder_idx }: Placeholder
 content: |
   Just holding place for else if user wants to file something to change custody order or parenting plan.

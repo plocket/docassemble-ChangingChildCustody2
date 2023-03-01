@@ -168,7 +168,7 @@ fields:
     disable if: interim_order_period
     help: |
       This is the date in the box at the bottom of your order.
-  - "I do not have the exact date.": interim_order_date_period
+  - "I do not have the exact date.": interim_order_period
     datatype: yesno
     enable if: 
       variable: interim_order_date
@@ -193,6 +193,14 @@ terms:
       You can find the date the court sent you your custody or Parenting Plan order in the box at the bottom of the order.
       
 continue button field: interim_order_date_question  
+---
+code: |
+  interim_order_date_question
+  if ((defined('interim_order_date') and date_difference(starting=interim_order_date, ending=today()).days <= 10 )) or (defined('interim_order_period') and guess_interim_order_date == 'within 10 days'):
+    interim_order_date_within_10_days = True
+    
+  if ((defined('interim_order_date') and date_difference(starting=interim_order_date, ending=today()).days > 10 )) or (defined('interim_order_period') and guess_interim_order_date == 'more than 10 days'):
+    interim_order_date_within_10_days = False
 ---
 id: Can you and the other parent agree
 question: |
@@ -236,12 +244,12 @@ question: |
   Do you want information about filing a Motion for Reconsideration?
 subquestion: |
   For 10 days after the court decides a motion, you can file a Motion to Reconsider and ask the same judge to change part or all of the decision. There are limited reasons a court might change a decision it just made, which are listed below. Be aware that just because you do not like the decision does not mean the judge made a mistake.
-  % if date_difference(starting=interim_order_date, ending=today()).days > 10 or guess_interim_order_date == 'more than 10 days':
+  % if ((defined('interim_order_date') and date_difference(starting=interim_order_date, ending=today()).days > 10 )) or (defined('interim_order_period') and guess_interim_order_date == 'more than 10 days'):
   You may be able to file a **late** motion for reconsideration if you have a good reason for missing the 10 day deadline. The decision to accept your motion for reconsideration is up to the judge entirely. They may refuse to accept it.
   
   The judge **may** agree to accept your late motion if you have a good reason like you ended up in the hospital and could not file the motion, someone in your family became gravely ill….. "
   % endif
-continue button field: motion_decision
+yesno: motion_decision
 under: |
   #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
   Reasons a court might reconsider a decision it just made are:
@@ -253,7 +261,7 @@ under: |
   <li>the law that the court applied changed by a later court decision or statute.</li>
   </ol>
   
-  % if date_difference(starting=interim_order_date, ending=today()).days > 10 or guess_interim_order_date == 'more than 10 days':
+  % if ((defined('interim_order_date') and date_difference(starting=interim_order_date, ending=today()).days > 10 )) or (defined('interim_order_period') and guess_interim_order_date == 'more than 10 days'):
   Reasons a judge might allow you file late are:...
   % endif  
 ---
@@ -429,8 +437,10 @@ subquestion: |
   If there has been a change in circumstances with the Custody and Parenting Plan or Child Support Order, either parent can file a Motion to Modify. 
   
   When you respond to the motion to modify, you should state if you agree with all, some, or none of the of the other parent’s requested changes.
+  
+  What information do you need?
 fields:
-  - "Respond to custody": respond_to_custody
+  - no label: respond_to_custody
     input type: radio
     choices:
       - "How to respond if I agree with all proposed changes.": agree
