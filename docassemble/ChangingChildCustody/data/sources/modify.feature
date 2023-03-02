@@ -24,8 +24,7 @@ Scenario: New case parent wants modify interim motion within 10 days of decision
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
     | user_need | file |  |    
-    | middle_of_case | yes |  |    
-    | interim_order_date | null |  | 
+    | middle_of_case | yes |  |  
     | guess_interim_order_date | within 10 days |  |
     | parents_agree | True |  | 
     | type_of_interim_order | motion |  |
