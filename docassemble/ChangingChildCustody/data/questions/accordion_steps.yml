@@ -152,6 +152,47 @@ code: |
     #    and not parents_agree \
     #    and not standing_order:
   
+    # Row 20
+    if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
+      and not interim_order_date_within_10_days \
+      and parents_agree \
+      and motion_decision:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        step_list.append((reconsideration_step, "reconsideration_idx")) 
+        step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
+        #  step_list.append((file_and_serve_step, "file_and_serve_idx"))
+        step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
+        step_list.append((file_reply_step, "file_reply_idx"))
+        
+    # Row 21
+    if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
+      and not interim_order_date_within_10_days \
+      and parents_agree \
+      and not motion_decision:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        
+   # Row 22
+    if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
+      and not interim_order_date_within_10_days \
+      and not parents_agree \
+      and motion_decision: 
+        step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
+        #  step_list.append((file_and_serve_step, "file_and_serve_idx"))
+        step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
+        step_list.append((file_reply_step, "file_reply_idx"))
+        
+    #  Row 23 only get other parts of custody case = placeholder and get help and info 
+    #  if middle_of_case == 'yes' \
+    #  and type_of_interim_order == 'motion' \
+    #  and not interim_order_date_within_10_days \
+    #  and not parents_agree \
+    #  and not motion_decision:
+  
  
     
     #  step_list.append((foreign_order_step, "foreign_order_idx"))
