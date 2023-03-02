@@ -25,6 +25,7 @@ Scenario: New case parent wants modify interim motion within 10 days of decision
     | var | value | trigger |
     | user_need | file |  |    
     | middle_of_case | yes |  |  
+    | interim_order_period | True | |
     | guess_interim_order_date | within 10 days |  |
     | parents_agree | True |  | 
     | type_of_interim_order | motion |  |
