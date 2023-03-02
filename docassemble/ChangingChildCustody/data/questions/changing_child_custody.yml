@@ -301,13 +301,25 @@ fields:
     enable if: final_order_period 
     datatype: radio
     choices:
-      - "It was in the last 10 days.": within last 10 days
-      - "It was more than 10 days ago, but within the last 15 days.": within last 15 days
+      - "It was in the last 10 days.": within 10 days
+      - "It was more than 10 days ago, but within the last 15 days.": within 15 days
       - "It was more than 15 days ago": more than 15 days
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       Do we want to put anything in here?
 continue button field: final_order_date_question
+---
+code: |
+  final_order_date_question
+
+  if ((defined('final_order_date') and date_difference(starting=final_order_date, ending=today()).days <= 10 )) or (defined('final_order_period') and guess_final_order_date == 'within 10 days'):
+    final_order_date_within_10_days = True
+  if ((defined('final_order_date') and 10 > date_difference(starting=final_order_date, ending=today()).days <= 15 )) or (defined('final_order_period') and guess_final_order_date == 'within 15 days'):
+    final_order_date_within_15_days = True
+  if ((defined('final_order_date') and date_difference(starting=final_order_date, ending=today()).days > 15 )) or (defined('final_order_period') and guess_final_order_date == 'more than 15 days'):
+    final_order_date_within_10_days = False
+    final_order_date_within_15_days = False
+
 ---
 id: Why do you want to change your custody parenting plan order
 question: |

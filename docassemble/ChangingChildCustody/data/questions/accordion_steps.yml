@@ -71,6 +71,10 @@ code: |
       step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
   
   else:
+  
+  
+       ##################### middle of case
+  
     # Row 12
     if middle_of_case == 'yes' \
       and type_of_interim_order == 'motion' \
@@ -192,6 +196,17 @@ code: |
     #  and not interim_order_date_within_10_days \
     #  and not parents_agree \
     #  and not motion_decision:
+    
+    
+    ##################### modifying final order
+    # Row 24
+    if middle_of_case == 'no'
+      and final_order_date_within_15_days \
+      and parents_agree \
+      and why_change.any_true():
+        step_list.append((placeholder_step, "placeholder_idx"))
+ 
+        
   
  
     
@@ -205,7 +220,6 @@ code: |
     #  step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
     # step_list.append((file_reply_step, "file_reply_idx"))
     #  step_list.append((file_reconsider_response_step, "file_reconsider_response_idx"))
-    step_list.append((placeholder_step, "placeholder_idx"))
     
     
   step_list.append((get_help, "get_help_idx"))
