@@ -108,75 +108,74 @@ Scenario: Row #15 Middle of case parent wants wants judge to change standing ord
   And I should see the phrase "Placeholder"
   And I should see the phrase "Get more information or help"
   
-#  
-#  Scenario: Row #16 Middle of case parent wants judge to reconsider interim motion within 10 days of decision but does not want parents agreement information 
-#    Given I start the interview at "changing_child_custody.yml"
-#    And I get to the question id "final screen" with this data:
-#      | var | value | trigger |
-#      | user_need | file |  |    
-#      | middle_of_case | yes |  |    
-#      | type_of_interim_order | motion |  |
-#      | interim_order_date | today - 2 |  | 
-#      | parents_agree | False |  | 
-#      | motion_decision | True |  |
-#    And I take a screenshot
-#    And I should see the phrase "Ask the court to change a decision it made in the last 10 days"
-#    And I should see the phrase "Fill out your Motion for Reconsideration forms"
-#    And I should see the phrase "What to expect after you file your Motion for Reconsideration"  
-#    And I should see the phrase "You can file a reply if the other parent responds"
-#    And I should see the phrase "Placeholder"
-#    And I should see the phrase "Get more information or help"
-#    
-#  Scenario: Row #16b Middle of case parent wants wants judge to reconsider interim motion within 10 days of decision (cannot remember exact date) but does not want parents agreement information 
-#    Given I start the interview at "changing_child_custody.yml"
-#    And I get to the question id "final screen" with this data:
-#      | var | value | trigger |
-#      | user_need | file |  |    
-#      | middle_of_case | yes |  |  
-#      | type_of_interim_order | motion |  |
-#      | interim_order_period | True | |
-#      | guess_interim_order_date | within 10 days |  |
-#      | parents_agree | False |  | 
-#      | motion_decision | True |  |
-#    And I take a screenshot
-#    And I should see the phrase "Find out if you and the other parent agree"  
-#    And I should see the phrase "Tell the court about your agreement"
-#    And I should see the phrase "Ask the court to change a decision it made in the last 10 days"
-#    And I should see the phrase "Fill out your Motion for Reconsideration forms"
-#    And I should see the phrase "What to expect after you file your Motion for Reconsideration"  
-#    And I should see the phrase "You can file a reply if the other parent responds"
-#    And I should see the phrase "Placeholder"
-#    And I should see the phrase "Get more information or help"
-#    
-#    Scenario: Row #17 Middle of case parent wants judge to reconsider interim motion within 10 days of decision but does not want parents agreement information and does not want reconsideration info.
-#    Given I start the interview at "changing_child_custody.yml"
-#    And I get to the question id "final screen" with this data:
-#      | var | value | trigger |
-#      | user_need | file |  |    
-#      | middle_of_case | yes |  |    
-#      | type_of_interim_order | motion |  |
-#      | interim_order_date | today - 2 |  | 
-#      | parents_agree | False |  | 
-#      | motion_decision | False |  |
-#    And I take a screenshot
-#    And I should see the phrase "Placeholder"
-#    And I should see the phrase "Get more information or help"
-#    
-#  Scenario: Row #17b Middle of case parent wants wants judge to reconsider interim motion within 10 days of decision (cannot remember exact date) but does not want parents agreement information and does not want reconsideration info.
-#    Given I start the interview at "changing_child_custody.yml"
-#    And I get to the question id "final screen" with this data:
-#      | var | value | trigger |
-#      | user_need | file |  |    
-#      | middle_of_case | yes |  |  
-#      | type_of_interim_order | motion |  |
-#      | interim_order_period | True | |
-#      | guess_interim_order_date | within 10 days |  |
-#      | parents_agree | False |  | 
-#      | motion_decision | False |  |
-#    And I take a screenshot
-#    And I should see the phrase "Placeholder"
-#    And I should see the phrase "Get more information or help"
-#    
+Scenario: Row #16 Middle of case parent wants judge to reconsider interim motion within 10 days of decision but does not want parents agreement information 
+  Given I start the interview at "changing_child_custody.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | user_need | file |  |    
+    | middle_of_case | yes |  |    
+    | type_of_interim_order | motion |  |
+    | interim_order_date | today - 2 |  | 
+    | parents_agree | False |  | 
+    | motion_decision | True |  |
+  And I take a screenshot
+  And I should see the phrase "Ask the court to change a decision it made in the last 10 days"
+  And I should see the phrase "Fill out your Motion for Reconsideration forms"
+  And I should see the phrase "What to expect after you file your Motion for Reconsideration"  
+  And I should see the phrase "You can file a reply if the other parent responds"
+  And I should see the phrase "Placeholder"
+  And I should see the phrase "Get more information or help"
+  
+Scenario: Row #16b Middle of case parent wants wants judge to reconsider interim motion within 10 days of decision (cannot remember exact date) but does not want parents agreement information 
+  Given I start the interview at "changing_child_custody.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | user_need | file |  |    
+    | middle_of_case | yes |  |  
+    | type_of_interim_order | motion |  |
+    | interim_order_period | True | |
+    | guess_interim_order_date | within 10 days |  |
+    | parents_agree | False |  | 
+    | motion_decision | True |  |
+  And I take a screenshot
+  And I should see the phrase "Find out if you and the other parent agree"  
+  And I should see the phrase "Tell the court about your agreement"
+  And I should see the phrase "Ask the court to change a decision it made in the last 10 days"
+  And I should see the phrase "Fill out your Motion for Reconsideration forms"
+  And I should see the phrase "What to expect after you file your Motion for Reconsideration"  
+  And I should see the phrase "You can file a reply if the other parent responds"
+  And I should see the phrase "Placeholder"
+  And I should see the phrase "Get more information or help"
+  
+  Scenario: Row #17 Middle of case parent wants judge to reconsider interim motion within 10 days of decision but does not want parents agreement information and does not want reconsideration info.
+  Given I start the interview at "changing_child_custody.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | user_need | file |  |    
+    | middle_of_case | yes |  |    
+    | type_of_interim_order | motion |  |
+    | interim_order_date | today - 2 |  | 
+    | parents_agree | False |  | 
+    | motion_decision | False |  |
+  And I take a screenshot
+  And I should see the phrase "Placeholder"
+  And I should see the phrase "Get more information or help"
+  
+Scenario: Row #17b Middle of case parent wants wants judge to reconsider interim motion within 10 days of decision (cannot remember exact date) but does not want parents agreement information and does not want reconsideration info.
+  Given I start the interview at "changing_child_custody.yml"
+  And I get to the question id "final screen" with this data:
+    | var | value | trigger |
+    | user_need | file |  |    
+    | middle_of_case | yes |  |  
+    | type_of_interim_order | motion |  |
+    | interim_order_period | True | |
+    | guess_interim_order_date | within 10 days |  |
+    | parents_agree | False |  | 
+    | motion_decision | False |  |
+  And I take a screenshot
+  And I should see the phrase "Placeholder"
+  And I should see the phrase "Get more information or help"
+  
 #  Scenario: Row #18 Middle of case parent wants judge to change standing order but doesn't want parents agreement
 #    Given I start the interview at "changing_child_custody.yml"
 #    And I get to the question id "final screen" with this data:
