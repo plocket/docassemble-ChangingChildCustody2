@@ -73,9 +73,9 @@ code: |
   else:
     # Row 12
     if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
       and interim_order_date_within_10_days \
       and parents_agree \
-      and type_of_interim_order == 'motion' \
       and motion_decision:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
@@ -87,9 +87,9 @@ code: |
     
     # Row 13
     if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
       and interim_order_date_within_10_days \
       and parents_agree \
-      and type_of_interim_order == 'motion' \
       and not motion_decision:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
@@ -97,9 +97,8 @@ code: |
     
     # Row 14
     if middle_of_case == 'yes' \
-      and interim_order_date_within_10_days \
-      and parents_agree \
       and type_of_interim_order == 'standing order' \
+      and parents_agree \
       and standing_order:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
@@ -110,9 +109,8 @@ code: |
     
     # Row 15
     if middle_of_case == 'yes' \
-      and interim_order_date_within_10_days \
-      and parents_agree \
       and type_of_interim_order == 'standing order' \
+      and parents_agree \
       and not standing_order:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
@@ -120,9 +118,9 @@ code: |
     
     # Row 16
     if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
       and interim_order_date_within_10_days \
       and not parents_agree \
-      and type_of_interim_order == 'motion' \
       and motion_decision:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
@@ -134,9 +132,9 @@ code: |
     
     # Row 17
     if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
       and interim_order_date_within_10_days \
       and not parents_agree \
-      and type_of_interim_order == 'motion' \
       and not motion_decision:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
@@ -144,9 +142,8 @@ code: |
     
     # Row 18
     if middle_of_case == 'yes' \
-      and interim_order_date_within_10_days \
-      and not parents_agree \
       and type_of_interim_order == 'standing order' \
+      and not parents_agree \
       and standing_order:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
@@ -157,9 +154,8 @@ code: |
     
     # Row 19
     if middle_of_case == 'yes' \
-      and interim_order_date_within_10_days \
-      and not parents_agree \
       and type_of_interim_order == 'standing order' \
+      and not parents_agree \
       and not standing_order:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
@@ -715,7 +711,7 @@ content: |
   <li>You must give the other parent (or their lawyer if they have one) 1 copy of everything you file with the court. You can mail or hand deliver it. Do this the day you file your reply. This is called "serving" the other side. You have to write how you serve the other parent on your reply.</li>
   <li>File the original with the court.</li>
   </ul>
-  % if middle_of_case and interim_order_date_within_10_days and type_of_interim_order == 'standing order' and standing_order:
+  % if middle_of_case and type_of_interim_order == 'standing order' and standing_order:
   <div class="step-subheading">Watch videos about motions</div>
   
   <a href="https://www.youtube.com/watch?v=2irmxT0_0EA&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=12">Motions Part 1: How to Ask the Court For Something</a>
