@@ -87,9 +87,8 @@ Scenario: New case parent wants judge to reconsider interim motion within 10 day
   And I take a screenshot
   And I should see the phrase "Find out if you and the other parent agree"  
   And I should see the phrase "Tell the court about your agreement"
-  And I should see the phrase "Ask the court to change a decision it made in the last 10 days"
-  And I should see the phrase "Fill out your Motion for Reconsideration forms"
-  And I should see the phrase "What to expect after you file your Motion for Reconsideration"  
+  And I should see the phrase "Ask the court to change the Standing Order or a similar decision"
+  And I should see the phrase "Fill out your motion forms" 
   And I should see the phrase "You can file a reply if the other parent responds"
   And I should see the phrase "Placeholder"
   And I should see the phrase "Get more information or help"
@@ -108,9 +107,8 @@ Scenario: New case parent wants wants judge to reconsider interim motion within 
   And I take a screenshot
   And I should see the phrase "Find out if you and the other parent agree"  
   And I should see the phrase "Tell the court about your agreement"
-  And I should see the phrase "Ask the court to change a decision it made in the last 10 days"
-  And I should see the phrase "Fill out your Motion for Reconsideration forms"
-  And I should see the phrase "What to expect after you file your Motion for Reconsideration"  
+  And I should see the phrase "Ask the court to change the Standing Order or a similar decision"
+  And I should see the phrase "Fill out your motion forms" 
   And I should see the phrase "You can file a reply if the other parent responds"
   And I should see the phrase "Placeholder"
   And I should see the phrase "Get more information or help"
