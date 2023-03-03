@@ -226,6 +226,7 @@ code: |
     #  step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
     # step_list.append((file_reply_step, "file_reply_idx"))
     #  step_list.append((file_reconsider_response_step, "file_reconsider_response_idx"))
+    step_list.append((placeholder_step, "placeholder_idx"))
     
     
   step_list.append((get_help, "get_help_idx"))
