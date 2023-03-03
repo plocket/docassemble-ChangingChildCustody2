@@ -46,7 +46,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
 setup(name='docassemble.ChangingChildCustody',
       version='23.03.03',
       description=('Changing your custody or Parenting Plan order'),
-      long_description='# docassemble.ChangingChildCustody\r\n\r\nChanging your custody or Parenting Plan order\r\n\r\n## Author\r\n\r\nAlaska Court System\r\n\r\n',
+      long_description='# docassemble.ChangingChildCustody\r\n\r\nChanging your custody or Parenting Plan order\r\n\r\n## Author\r\n\r\nAlaska Court System\r\n\r\nVersion 2023-03-03 unfinished\r\n\r\n',
       long_description_content_type='text/markdown',
       author='Alaska Court System',
       author_email='CRobinson@akcourts.gov',
