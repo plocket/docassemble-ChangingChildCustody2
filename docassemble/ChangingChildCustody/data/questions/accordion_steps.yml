@@ -184,6 +184,7 @@ code: |
       and not interim_order_date_within_10_days \
       and not parents_agree \
       and motion_decision: 
+        step_list.append((reconsideration_step, "reconsideration_idx"))
         step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
         #  step_list.append((file_and_serve_step, "file_and_serve_idx"))
         step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
