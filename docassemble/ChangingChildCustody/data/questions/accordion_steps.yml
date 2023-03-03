@@ -98,7 +98,6 @@ code: |
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
     
-    
     # Row 14
     if middle_of_case == 'yes' \
       and type_of_interim_order == 'standing order' \
@@ -199,12 +198,18 @@ code: |
     
     
     ##################### modifying final order
-    # Row 24
-    if middle_of_case == 'no'
+    #  Row 24 only get other parts of custody case = placeholder and get help and info
+    if middle_of_case == 'no' \
       and final_order_date_within_15_days \
-      and parents_agree \
-      and why_change.any_true():
-        step_list.append((placeholder_step, "placeholder_idx"))
+      and parents_agree:
+        if why_change.any_true('reconsider mistake','reconsider missed info','reconsider misunderstood', 'reconsider law changed'): 
+          step_list.append((reconsideration_step, "reconsideration_idx"))
+        if why_change['appeal legal mistake']:
+          step_list.append((appeal_step, "appeal_idx"))
+        if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ):
+          step_list.append((set_aside_step, "set_aside_idx"))
+        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ):
+          step_list.append((modify_step, "modify_idx"))
  
         
   
