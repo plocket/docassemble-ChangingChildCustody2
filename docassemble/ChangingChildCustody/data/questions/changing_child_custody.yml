@@ -324,89 +324,135 @@ code: |
 ---
 id: Why do you want to change your custody parenting plan order
 question: |
-  Why do you want to change your custody parenting plan order?
+  Why do you want to change your custody or parenting plan order?
 subquestion: |
-  %if date_difference(starting=final_order_date, ending=today()).days <= 15 days:
-  For the first 15 days after the court’s final written custody decision, you have different options to try to change the decision. What you file depends on your situation and how much time has passed. The next questions discuss each option to help you narrow down the most appropriate thing to file.
-  %if date_difference(starting=final_order_date, ending=today()).days <= 10 days:
+  % if final_order_date_within_15_days:
+  For the first 15 days after the court’s final written custody decision, you have different options to try to change the decision. What you file depends on your situation and how much time has passed. 
+  
+  The next questions discuss each option to help you narrow down the most appropriate thing to file.
+  % elif final_order_date_within_10_days:
   For 10 days after the court’s final written decision in your custody case, you can file a Motion to Reconsider and ask the same judge to change part or all of the decision. There are limited reasons a court might reconsider a decision it just made, which are listed below. Be aware that just because you do not like the decision does not mean the judge made a mistake.
   % endif
-  % else:
+  % if not final_order_date_within_10_days and not final_order_date_within_15_days:
   If more than 15 days have passed since the court’s final written decision, you have different options to try to change the decision. What you file depends on your situation. The next questions discuss each option to help you narrow down the most appropriate thing to file.
   % endif
 fields:
-  - "why change your order?": why_change
+  - "What is your situation?": why_change
     datatype: checkboxes
-    choices:
-      - "The judge made a mistake.": reconsider mistake
-      - "The judge did not get all the information.": reconsider missed info
-      - "The judge did not understand all the information.": reconsider misunderstood
-      - "The law changed since the judge made the decision.": reconsider law changed
-      - "The judge made a legal mistake.": appeal legal mistake
-      - "The court made a clerical mistake, like a typing error.": set aside clerical error
-      - "The court made a mistake of fact like the wrong value for property.": set aside mistake of fact
-      - "New evidence has come up.": set aside new evidence
-      - "The other parent has exhibited misconduct.": set aside misconduct
-      - "Circumstances have changed.": modify circumstances changed
-      - "The parent the children live with more than 4 days a week has gone to jail.": modify parent to jail
-      - "We have experienced domestic violence when exchanging our children.": modify domestic violence
-      - "I have another major change that gives the judge good reason to change the custody order": modify other change
+    code: |
+      options
+    none of the above: False
+---
+code: |
+  if final_order_date_within_10_days or final_order_date_within_15_days:
+    options = [
+                    {'reconsider mistake': 'The judge made a mistake.'},
+                    {'reconsider missed info': 'The judge did not get all the information.'},
+                    {'reconsider misunderstood': 'The judge did not understand all the information.'},
+                    {'reconsider mistake': 'The law changed since the judge made the decision.'},
+                    {'appeal legal mistake': 'The judge made a legal mistake.'},
+                    {'set aside clerical error': 'The court made a clerical mistake, like a typing error.'},
+                    {'set aside mistake of fact': 'The court made a mistake of fact like the wrong value for property.'},
+                    {'set aside new evidence': 'New evidence has come up.'},
+                    {'set aside misconduct': 'The other parent has exhibited misconduct.'},
+                    {'modify circumstances changed': 'Circumstances have changed.'},
+                    {'modify parent to jail': 'The parent the children live with more than 4 days a week has gone to jail.'},
+                    {'modify domestic violence': 'We have experienced domestic violence when exchanging our children.'},
+                    {'modify other change': 'I have another major change that gives the judge good reason to change the custody order.'}
+                  ]
+
+  
+  if not final_order_date_within_10_days \
+      and not final_order_date_within_15_days:
+    options = [
+                    {'set aside clerical error': 'The court made a clerical mistake, like a typing error.'},
+                    {'set aside mistake of fact': 'The court made a mistake of fact like the wrong value for property.'},
+                    {'set aside new evidence': 'New evidence has come up.'},
+                    {'set aside misconduct': 'The other parent has exhibited misconduct.'},
+                    {'modify circumstances changed': 'Circumstances have changed.'},
+                    {'modify parent to jail': 'The parent the children live with more than 4 days a week has gone to jail.'},
+                    {'modify domestic violence': 'We have experienced domestic violence when exchanging our children.'},
+                    {'modify other change': 'I have another major change that gives the judge good reason to change the custody order.'}
+                  ]
 ---
 id: Do you want information about filing a Motion to Reconsider
 question: |
   Do you want information about filing a Motion to Reconsider?
 subquestion: |
-  For 10 days after the court’s **final** written decision in your custody case, you can file a **Motion to Reconsider** and ask the same judge to change part or all of the decision. There are limited reasons a court might reconsider a decision it just made, which are listed below. Be aware that just because you do not like the decision does not mean the judge made a mistake.| | If it has been less than 10 days since the court’s final decision.
-fields:
-  - "want info on motion for reconsideration?": motion_for_reconsideration
-    datatype: yesno
-  - note: |
+  For 10 days after the court’s **final** written decision in your custody case, you can file a **Motion to Reconsider** and ask the same judge to change part or all of the decision. 
+  
+  There are limited reasons a court might reconsider a decision it just made, which are listed below. 
+  
+  Be aware that just because you do not like the decision does not mean the judge made a mistake.
+  
+  If it has been less than 10 days since the court’s final decision.
+  
+  Do you want your Action Plan to include information on filing a **Motion for Reconsideration**?
+yesno: motion_for_reconsideration
+under: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
-      The Motion must be based on one of the reasons stated in Civil Rule 77(k): (1) the court overlooked, misapplied or failed to consider the law that applies (a statute, decision or principle directly controlling); (2) the court overlooked or misconceived an important fact that is essential to understand; (3) the court overlooked or misconceived an important question in the case; (4) the law that the court applied changed by a later court decision or statute. Be aware that just because you do not like the decision does not mean the judge made a mistake. 
+      The Motion must be based on one of the reasons stated in Civil Rule 77(k): 
+      <ol>
+      <li>the court overlooked, misapplied or failed to consider the law that applies (a statute, decision or principle directly controlling);</li>
+      <li>the court overlooked or misconceived an important fact that is essential to understand;iple directly controlling);</li>
+      <li>the court overlooked or misconceived an important question in the case;iple directly controlling);</li>
+      <li>the law that the court applied changed by a later court decision or statute. Be aware that just because you do not like the decision does not mean the judge made a mistake.iple directly controlling);</li>
+      </ol> 
 ---
 id: Do you want information about filing an appeal
 question: |
   Do you want information about filing an appeal?
 subquestion: |
-  An appeal is when you ask the Alaska Supreme Court to review the trial court judge’s final decision. You have to convince the Supreme Court that the judge made a legal mistake. You have only 15 days to appeal the final custody and parenting plan decision.
-fields:
-  - "Appeal": appeal
-    datatype: yesno
-  - note: |
+  An appeal is when you ask the Alaska Supreme Court to review the trial court judge’s final decision. 
+  
+  You have to convince the Supreme Court that the judge made a legal mistake. 
+  
+  You have only 15 days to appeal the final custody and parenting plan decision.
+yesno: appeal
+under: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
-      The civil appeals process is complicated, long and expensive. The process can take over two years. You should talk to a lawyer if possible to discuss your case. It is important to read about appeals before filing one.
+      The civil appeals process is complicated, long and expensive. The process can take over two years. 
+      
+      You should talk to a lawyer if possible to discuss your case. 
+      
+      It is important to read about appeals before filing one.
 ---
 id: Do you want information about filing a Motion to Set Aside Judgment or Order
 question: |
   Do you want information about filing a Motion to Set Aside Judgment or Order?
 subquestion: |
-  If you think something was wrong with the court process, you can file a Motion to Set Aside Judgment or Order. If the court sets aside the judgment or order, it is undone, and the court has to make a new decision that fixes the problem. Some reasons a court might set aside a judgment or order are listed below.
+  If you think something was wrong with the court process, you can file a **Motion to Set Aside Judgment or Order**. 
   
-fields:
-  - no label: set_aside
-    datatype: yesno
-  - note: |
+  If the court sets aside the judgment or order, it is undone, and the court has to make a new decision that fixes the problem. 
+  
+  Some reasons a court might set aside a judgment or order are listed below.
+yesno: set_aside
+under: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       
       Some reasons a court might set aside a judgment or order are:
-      (1) A clerical mistake, like a typo that changes the order. 
-      (2) a mistake of fact, like a court remembering the wrong value for marital property.
-      (3) new evidence.
-      (4) misconduct by the other parent like fraud.
+      <ol>
+      <li>A clerical mistake, like a typo that changes the order.</li> 
+      <li>a mistake of fact, like a court remembering the wrong value for marital property.</li> 
+      <li>new evidence.</li> 
+      <li>misconduct by the other parent like fraud.</li> 
+      </ol>
 ---
 id: Do you want information about modifying a custody and parenting plan or child support order from an Alaska case
 question: |
   Do you want information about modifying a custody and parenting plan or child support order from an Alaska case
 subquestion: |
-  If there has been a change in circumstances, you can file a Motion to Modify. It is unusual for a court to grant a motion to modify within 15 days after the decision, unless something unexpected has changed.
+  If there has been a change in circumstances, you can file a Motion to Modify. 
+  
+  It is unusual for a court to grant a motion to modify within 15 days after the decision, unless something unexpected has changed.
 
 yesno: modify_within_15_days
 under: |
   #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
   Some examples of a change in circumstances to modify:
   <ol>
-  <li> the parent whom the children were living with 4 days a week went to jail so the existing schedule is impossible.</li>.
-  <li> an act of domestic violence between the parents when returning the children.</li>
+  <li>the parent whom the children were living with 4 days a week went to jail so the existing schedule is impossible.</li>.
+  <li>an act of domestic violence between the parents when returning the children.</li>
   </ol>
 ---
 id: Do you want information about modifying one of the following types of orders
@@ -687,5 +733,3 @@ attachment:
   variable name: changing_child_custody_attachment[i]
   skip undefined: True
   docx template file: changing_child_custody_action_plan.docx
-
-
