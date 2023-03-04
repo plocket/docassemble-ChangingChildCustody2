@@ -71,11 +71,15 @@ code: |
       step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
   
   else:
+  
+  
+       ##################### middle of case
+  
     # Row 12
     if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
       and interim_order_date_within_10_days \
       and parents_agree \
-      and type_of_interim_order == 'motion' \
       and motion_decision:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
@@ -87,35 +91,129 @@ code: |
     
     # Row 13
     if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
       and interim_order_date_within_10_days \
       and parents_agree \
-      and type_of_interim_order == 'motion' \
       and not motion_decision:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
     
-    
     # Row 14
     if middle_of_case == 'yes' \
-      and interim_order_date_within_10_days \
-      and parents_agree \
       and type_of_interim_order == 'standing order' \
+      and parents_agree \
       and standing_order:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
         step_list.append((standing_order_step, "standing_order_idx")) 
-        # step_list.append((motion_forms_step, "(motion_forms_idx"))
-        #  step_list.append((file_and_serve_step, "file_and_serve_idx"))        
+        step_list.append((motion_forms_step, "motion_forms_idx"))
+        # step_list.append((file_and_serve_step, "file_and_serve_idx"))        
         step_list.append((file_reply_step, "file_reply_idx"))
     
     # Row 15
     if middle_of_case == 'yes' \
-      and interim_order_date_within_10_days \
-      and parents_agree \
       and type_of_interim_order == 'standing order' \
+      and parents_agree \
       and not standing_order:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        
+    
+    # Row 16
+    if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
+      and interim_order_date_within_10_days \
+      and not parents_agree \
+      and motion_decision:
+        step_list.append((reconsideration_step, "reconsideration_idx")) 
+        step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
+        #  step_list.append((file_and_serve_step, "file_and_serve_idx"))
+        step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
+        step_list.append((file_reply_step, "file_reply_idx"))
+    
+    # Row 17 only get other parts of custody case = placeholder and get help and info 
+    #  if middle_of_case == 'yes' \
+    #    and type_of_interim_order == 'motion' \
+    #    and interim_order_date_within_10_days \
+    #    and not parents_agree \
+    #    and not motion_decision:
+    #       
+    
+    # Row 18
+    if middle_of_case == 'yes' \
+      and type_of_interim_order == 'standing order' \
+      and not parents_agree \
+      and standing_order:
+        step_list.append((standing_order_step, "standing_order_idx")) 
+        step_list.append((motion_forms_step, "motion_forms_idx"))
+        # step_list.append((file_and_serve_step, "file_and_serve_idx"))        
+        step_list.append((file_reply_step, "file_reply_idx"))
+    
+    # Row 19 only get other parts of custody case = placeholder and get help and info 
+    #  if middle_of_case == 'yes' \
+    #    and type_of_interim_order == 'standing order' \
+    #    and not parents_agree \
+    #    and not standing_order:
+  
+    # Row 20
+    if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
+      and not interim_order_date_within_10_days \
+      and parents_agree \
+      and motion_decision:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        step_list.append((reconsideration_step, "reconsideration_idx")) 
+        step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
+        #  step_list.append((file_and_serve_step, "file_and_serve_idx"))
+        step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
+        step_list.append((file_reply_step, "file_reply_idx"))
+        
+    # Row 21
+    if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
+      and not interim_order_date_within_10_days \
+      and parents_agree \
+      and not motion_decision:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        
+   # Row 22
+    if middle_of_case == 'yes' \
+      and type_of_interim_order == 'motion' \
+      and not interim_order_date_within_10_days \
+      and not parents_agree \
+      and motion_decision: 
+        step_list.append((reconsideration_step, "reconsideration_idx"))
+        step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
+        #  step_list.append((file_and_serve_step, "file_and_serve_idx"))
+        step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
+        step_list.append((file_reply_step, "file_reply_idx"))
+        
+    #  Row 23 only get other parts of custody case = placeholder and get help and info 
+    #  if middle_of_case == 'yes' \
+    #  and type_of_interim_order == 'motion' \
+    #  and not interim_order_date_within_10_days \
+    #  and not parents_agree \
+    #  and not motion_decision:
+    
+    
+    ##################### modifying final order
+    
+    #  Rows 24  - 36 may change if Jeannie doesn't want to give 10-day deadline missers a chance to file reconsideration
+    if middle_of_case == 'no' \
+      and final_order_date_within_15_days \
+      and parents_agree:
+        if why_change.any_true('reconsider mistake','reconsider missed info','reconsider misunderstood', 'reconsider law changed') and motion_for_reconsideration: 
+          step_list.append((reconsideration_step, "reconsideration_idx"))
+        if why_change['appeal legal mistake'] and appeal:
+          step_list.append((appeal_step, "appeal_idx"))
+        if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
+          step_list.append((set_aside_step, "set_aside_idx"))
+        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
+          step_list.append((modify_step, "modify_idx"))
+ 
+        
   
  
     
@@ -498,20 +596,20 @@ content: |
 template: modify_step
 subject: |
   Step ${ modify_idx }:
-    % if modify_after_15 == 'foreign order':
+    % if not final_order_date_within_15_days and modify_after_15 == 'foreign order':
     File a Motion to Modify
     % else:
     Ask the court to change
-    % if modify_after_15 == 'AK order':
+    % if not final_order_date_within_15_days and modify_after_15 == 'AK order' or modify_within_15_days:
     your Alaska custody and Parenting Plan or Child Support order
     % endif
     % endif
 content: |
   <div class="step-subheading">Background</div>
-  % if modify_within_15_days:
+  % if (final_order_date_within_10_days or final_order_date_within_15_days) and modify_within_15_days:
   A <strong>Motion to Modify</strong> asks the court to change an existing order because of a change in circumstances.
   % endif
-  % if modify_after_15 in('AK order', 'foreign order'):
+  % if (not final_order_date_within_10_days and not final_order_date_within_15_days) and modify_after_15 in('AK order', 'foreign order'):
   If you want to change your custody and parenting plan or child support order, you can ask the other parent if they agree. If you do not agree, you can ask the court to change the order by filing a <strong>Motion to Modify</strong>.
   % endif
   The courts want children to have a regular schedule without a lot of changes. So the courts will generally only change a custody and parenting plan or child support order if there is a change of circumstances. Some examples are: <br>
@@ -528,7 +626,7 @@ content: |
   <li>a 15% change in the amount of child support ordered (this means that when you calculate the new child support amount, it is 15% more or less than what it has been), or</li>
   <li>a change in the parenting plan from primary custody to shared custody or vice versa that affects the child support formula.</li>
   </ul>
-  % if modify_within_15_days:
+  % if (final_order_date_within_10_days or final_order_date_within_15_days) and modify_within_15_days:
   <div class="step-subheading">Timing</div>
   <p>A court will rarely grant a <strong>Motion to Modify </strong>made within 15 days of when the court made its final custody order unless something unexpected happened. Examples of why a court may grant a <strong>Motion to Modify</strong> are listed below.
   % endif
@@ -657,7 +755,7 @@ content: |
   <ul>
   % if (middle_of_case and type_of_interim_order == 'motion' and motion_decision) or (not middle_of_case and motion_for_reconsideration):
   <li> If the court asks the other parent to respond, you can file a Reply to the response.</li>
-  % elif (type_of_interim_order == 'standing order' and standing_order) or appeal or set_aside or modify_within_15 or modify_after_15 in('AK order', 'foreign order'):
+  % elif (middle_of_case and type_of_interim_order == 'standing order' and standing_order) or appeal or set_aside or modify_within_15 or modify_after_15 in('AK order', 'foreign order'):
   <li>If the other parent responds in writing, you can file a <strong>Reply</strong>.</li>
   % endif
   <li>You have 5 days to reply if the response was hand delivered and 8 days if it was mailed, not counting holidays or weekends.</li>
@@ -668,11 +766,16 @@ content: |
   <li>You must give the other parent (or their lawyer if they have one) 1 copy of everything you file with the court. You can mail or hand deliver it. Do this the day you file your reply. This is called "serving" the other side. You have to write how you serve the other parent on your reply.</li>
   <li>File the original with the court.</li>
   </ul>
-  % if middle_of_case and interim_order_date_within_10_days and type_of_interim_order == 'standing order' and standing_order:
+  % if middle_of_case and type_of_interim_order == 'standing order' and standing_order:
   <div class="step-subheading">Watch videos about motions</div>
-  <a href="https://www.youtube.com/watch?v=2irmxT0_0EA&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=12">Motions Part 1: How to Ask the Court For Something </a>
-  <a href="https://www.youtube.com/watch?v=egoBeRFB_Uw&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=14">Motions Part 3: Preparing a Reply </a>
-  <a href="https://www.youtube.com/watch?v=YQvG7GEGeoo&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=15">Motions Part 4: Mailings and Deadlines</a>. Note - Because the court system now closes at noon on Fridays, if a deadline falls on a Saturday, Sunday, holiday, OR FRIDAY, the deadline is the next business day. The discussion about deadlines in the video is no longer accurate because it was made before the Friday noon closures.
+  
+  <a href="https://www.youtube.com/watch?v=2irmxT0_0EA&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=12">Motions Part 1: How to Ask the Court For Something</a>
+  
+  <a href="https://www.youtube.com/watch?v=egoBeRFB_Uw&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=14">Motions Part 3: Preparing a Reply</a>
+  
+  <a href="https://www.youtube.com/watch?v=YQvG7GEGeoo&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=15">Motions Part 4: Mailings and Deadlines</a>. 
+  
+  **Note** - Because the court system now closes at noon on Fridays, if a deadline falls on a Saturday, Sunday, holiday, OR FRIDAY, the deadline is the next business day. The discussion about deadlines in the video is no longer accurate because it was made before the Friday noon closures.
   % endif
 ---
 template: respond_custody_agree_step
