@@ -200,7 +200,7 @@ code: |
     
     ##################### modifying final order
     
-    #  Row 24 
+    #  Rows 24  - 36 may change if Jeannie doesn't want to give 10-day deadline missers a chance to file reconsideration
     if middle_of_case == 'no' \
       and final_order_date_within_15_days \
       and parents_agree:
