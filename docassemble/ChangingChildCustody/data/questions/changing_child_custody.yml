@@ -344,12 +344,16 @@ fields:
     none of the above: False
 ---
 code: |
-  if final_order_date_within_10_days or final_order_date_within_15_days:
+  if final_order_date_within_10_days:
     options = [
                     {'reconsider mistake': 'The judge made a mistake.'},
                     {'reconsider missed info': 'The judge did not get all the information.'},
                     {'reconsider misunderstood': 'The judge did not understand all the information.'},
-                    {'reconsider mistake': 'The law changed since the judge made the decision.'},
+                    {'reconsider mistake': 'The law changed since the judge made the decision.'}
+                  ]
+                  
+  if final_order_date_within_15_days:
+    options = [
                     {'appeal legal mistake': 'The judge made a legal mistake.'},
                     {'set aside clerical error': 'The court made a clerical mistake, like a typing error.'},
                     {'set aside mistake of fact': 'The court made a mistake of fact like the wrong value for property.'},
@@ -360,7 +364,6 @@ code: |
                     {'modify domestic violence': 'We have experienced domestic violence when exchanging our children.'},
                     {'modify other change': 'I have another major change that gives the judge good reason to change the custody order.'}
                   ]
-
   
   if not final_order_date_within_10_days \
       and not final_order_date_within_15_days:

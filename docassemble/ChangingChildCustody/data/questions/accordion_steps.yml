@@ -198,14 +198,49 @@ code: |
     #  and not motion_decision:
     
     
-    ##################### modifying final order
+    ##################### after final order
     
-    #  Rows 24  - 36 may change if Jeannie doesn't want to give 10-day deadline missers a chance to file reconsideration
+    if middle_of_case == 'no' \
+      and (parents_agree \
+      and final_order_date_within_10_days) \
+      or (not final_order_date_within_10_days \
+      and why_change.any_true()):
+        step_list.append((pick_a_step_step, "pick_a_step_idx"))
+        
+    elif middle_of_case == 'no' \
+      and not parents_agree \
+      and not final_order_date_within_10_days \
+      and len(why_change.true_values()) >= 2:
+        step_list.append((pick_a_step_step, "pick_a_step_idx"))
+    
+    #  Rows 24  - 36 
+    if middle_of_case == 'no' \
+      and final_order_date_within_10_days \
+      and parents_agree:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        if motion_for_reconsideration: 
+          step_list.append((reconsideration_step, "reconsideration_idx"))
+          step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
+          step_list.append((file_and_serve_step, "file_and_serve_idx"))
+          step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
+          step_list.append((file_reply_step, "file_reply_idx"))
+        
+          
+    #  Rows 37  - 49 
+    if middle_of_case == 'no' \
+      and final_order_date_within_10_days \
+      and not parents_agree \
+      and motion_for_reconsideration:
+          step_list.append((reconsideration_step, "reconsideration_idx"))
+        
+
+    #  Rows 50  - 58 
     if middle_of_case == 'no' \
       and final_order_date_within_15_days \
       and parents_agree:
-        if why_change.any_true('reconsider mistake','reconsider missed info','reconsider misunderstood', 'reconsider law changed') and motion_for_reconsideration: 
-          step_list.append((reconsideration_step, "reconsideration_idx"))
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
         if why_change['appeal legal mistake'] and appeal:
           step_list.append((appeal_step, "appeal_idx"))
         if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
@@ -213,8 +248,39 @@ code: |
         if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
           step_list.append((modify_step, "modify_idx"))
  
-        
-  
+    #  Rows 59  - 67 
+    if middle_of_case == 'no' \
+      and final_order_date_within_15_days \
+      and not parents_agree:
+        if why_change['appeal legal mistake'] and appeal:
+          step_list.append((appeal_step, "appeal_idx"))
+        if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
+          step_list.append((set_aside_step, "set_aside_idx"))
+        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
+          step_list.append((modify_step, "modify_idx"))       
+
+    #  Rows 68  - 71 
+    if middle_of_case == 'no' \
+      and not final_order_date_within_10_days \
+      and not final_order_date_within_15_days \
+      and parents_agree:
+        step_list.append((parents_agree_step, "parents_agree_idx"))
+        step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
+          step_list.append((set_aside_step, "set_aside_idx"))
+        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
+          step_list.append((modify_step, "modify_idx"))
+
+
+    #  Rows 72  - 75 
+    if middle_of_case == 'no' \
+      and not final_order_date_within_10_days \
+      and not final_order_date_within_15_days \
+      and not parents_agree:
+        if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
+          step_list.append((set_aside_step, "set_aside_idx"))
+        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
+          step_list.append((modify_step, "modify_idx"))
  
     
     #  step_list.append((foreign_order_step, "foreign_order_idx"))
@@ -269,6 +335,15 @@ content: |
   Depending on your income, you may qualify for [Alaska Free Legal Answers](https://legalnav.org/resource/alaska-free-legal-answers).
   
   Depending on your income and circumstances, you may qualify for a free lawyer from [Alaska Legal Services](alsc-law.org/apply-for-services).
+---
+template: pick_a_step_step
+subject: |
+  Step ${ pick_a_step_idx}: Decide the steps you want to take
+content: |
+  You have more than one way to ask the judge to change your custody or parenting plan order. 
+  
+  Read each of the following steps then decide on the steps that make the most sense in your case.
+
 ---
 template: parents_agree_step
 subject: |
@@ -596,11 +671,13 @@ content: |
 template: modify_step
 subject: |
   Step ${ modify_idx }:
-    % if not final_order_date_within_15_days and modify_after_15 == 'foreign order':
+    % if modify_within_15_days:
+    File a Motion to Modify your Alaska custody and Parenting Plan or Child Support order
+    % elif not final_order_date_within_15_days and modify_after_15 == 'foreign order':
     File a Motion to Modify
     % else:
     Ask the court to change
-    % if not final_order_date_within_15_days and modify_after_15 == 'AK order' or modify_within_15_days:
+    % if not final_order_date_within_15_days and modify_after_15 == 'AK order':
     your Alaska custody and Parenting Plan or Child Support order
     % endif
     % endif
@@ -669,19 +746,8 @@ content: |
 ---
 template: file_and_serve_step
 subject: |
-  Step ${ file_and_serve_idx }: 
-    % if modify_within_15_days or modify_after_15 == 'AK order':
-    Pay the $75 fee, file and serve your Motion to Modify
-    % else:
-    File and serve your
-    % if motion or motion_for_reconsideration:
-    Motion for Reconsideration
-    % elif standing_order:
-    Motion
-    % elif modify_after_15 == 'foreign order':
-    Motion to Modify
-    % endif
-    % endif
+  Step ${ file_and_serve_idx }: File and serve your motion
+    
 content: |
   Make 2 copies of your motion. Keep 1 copy for your own records.
 
@@ -693,17 +759,29 @@ content: |
   
   You have to write how you serve the other parent on your motion.
 
-  % if standing_order:
+  % if middle_of_case == 'yes' \
+      and type_of_interim_order in('motion', 'standing_order'):
   File the original with the court.
 
   See <a href="http://courts.alaska.gov/shc/family/serve.htm#9">How do I serve answers motions oppositions and other documents?</a> On the court website.
   % endif
-
-  % if modify_within_15_days or modify_after_15 == 'AK order':
+  
+  % if middle_of_case == 'no' \
+    and not final_order_date_within_10_days \
+    and not final_order_date_within_15_days \
+    and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
+    and modify_after_15 == 'AK order':
   File the original with the court that made the decision you want to change and pay the $75 fee for a <strong>Motion to Modify</strong>.
   % endif
-
-  % if modify_after_15 == 'foreign order':
+  
+  % if middle_of_case == 'no' \
+    and (final_order_date_within_15_days \
+    and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
+    and modify_within_15_days) \
+    or (not final_order_date_within_10_days \
+    and not final_order_date_within_15_days \
+    and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
+    and modify_after_15 == 'foreign order'):
   File the original with the court.
 
   There is no fee to file a motion to modify a registered support or custody order if you file within 30 days of the registration confirmation date. 
@@ -711,7 +789,14 @@ content: |
   After 30 days, there is a $75 filing fee for motions to modify.
   % endif
 
-  % if modify_within_15_days or modify_after_15 in('AK order', 'foreign order'):
+  % if middle_of_case == 'no' \
+    and (final_order_date_within_15_days \
+    and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) \
+    and modify_within_15_days) \
+    or (not final_order_date_within_10_days \
+    and not final_order_date_within_15_days \
+    and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
+    and modify_after_15 in ('AK order', 'foreign order')):
   If you cannot afford the fee, you may be eligible for a fee waiver. 
   
   Fill out: <strong>Exemption From the Payment of Fees,</strong> <a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">TF-920</a> [Fill-In PDF]. If you ask for a fee waiver, wait to give the other parent a copy of your motion until you receive the fee waiver or pay the filing fee.
@@ -753,9 +838,10 @@ subject: |
   Step ${ file_reply_idx }: You can file a reply if the other parent responds
 content: |
   <ul>
-  % if (middle_of_case and type_of_interim_order == 'motion' and motion_decision) or (not middle_of_case and motion_for_reconsideration):
+  % if (middle_of_case == 'yes' and type_of_interim_order == 'motion' and motion_decision) or (middle_of_case == 'no' and motion_for_reconsideration):
   <li> If the court asks the other parent to respond, you can file a Reply to the response.</li>
-  % elif (middle_of_case and type_of_interim_order == 'standing order' and standing_order) or appeal or set_aside or modify_within_15 or modify_after_15 in('AK order', 'foreign order'):
+  % endif
+  % if (middle_of_case == 'yes' and type_of_interim_order == 'standing order' and standing_order) or (middle_of_case == 'no' and final_order_date_within_15_days):
   <li>If the other parent responds in writing, you can file a <strong>Reply</strong>.</li>
   % endif
   <li>You have 5 days to reply if the response was hand delivered and 8 days if it was mailed, not counting holidays or weekends.</li>
@@ -766,7 +852,7 @@ content: |
   <li>You must give the other parent (or their lawyer if they have one) 1 copy of everything you file with the court. You can mail or hand deliver it. Do this the day you file your reply. This is called "serving" the other side. You have to write how you serve the other parent on your reply.</li>
   <li>File the original with the court.</li>
   </ul>
-  % if middle_of_case and type_of_interim_order == 'standing order' and standing_order:
+  % if middle_of_case == 'yes' and type_of_interim_order == 'standing order' and standing_order:
   <div class="step-subheading">Watch videos about motions</div>
   
   <a href="https://www.youtube.com/watch?v=2irmxT0_0EA&list=PLRS0LlEIQsuTsfO0wSTsSTIvVE5RO8sLc&index=12">Motions Part 1: How to Ask the Court For Something</a>
@@ -1062,4 +1148,10 @@ template: placeholder_step
 subject: |
   Step ${ placeholder_idx }: Placeholder
 content: |
-  Just holding place for else if user wants to file something to change custody order or parenting plan.
+  Just holding place for else if user wants to file something to change custody order or parenting plan:
+
+  
+    * [Starting a Custody Case](https://LegalNav.org/guided_assistant/starting-a-custody-case/?location=alaska)
+    * [Responding if Your Spouse Starts a Custody Case](https://LegalNav.org/guided_assistant/responding-if-your-spouse-wants-to-or-starts-a-custody-case/?location=Alaska)
+    * [Enforcing a Custody Order](https://LegalNav.org/guided_assistant/enforcing-a-custody-order/?location=alaska)
+    * [Changing a Custody Order](https://LegalNav.org/guided_assistant/changing-a-custody-order/?location=alaska)
