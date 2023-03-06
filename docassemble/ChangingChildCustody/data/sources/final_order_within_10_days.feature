@@ -8,7 +8,7 @@ Scenario: Row #24 Parent wants judge to reconsider final order within 10 days an
       | middle_of_case | no |  |    
       | final_order_date | today - 5 |  | 
       | parents_agree | True |  |
-      | motion_decision | True |  |
+      | motion_for_reconsideration | True |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
     And I should see the phrase "Find out if you and the other parent agree"  
