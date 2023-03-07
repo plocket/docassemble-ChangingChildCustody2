@@ -201,12 +201,12 @@ code: |
     ##################### after final order
     
     if middle_of_case == 'no' \
-      and parents_agree \
-      and final_order_date_within_10_days \
-      and motion_for_reconsideration \
-      or (not final_order_date_within_10_days \
-      and why_change.any_true()):
-        step_list.append((pick_a_step_step, "pick_a_step_idx"))
+      and parents_agree:
+      if (final_order_date_within_10_days \
+        and motion_for_reconsideration) \
+        or (not final_order_date_within_10_days \
+        and why_change.any_true()):
+          step_list.append((pick_a_step_step, "pick_a_step_idx"))
     
     if middle_of_case == 'no' \
       and parents_agree is False \
