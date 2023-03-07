@@ -201,19 +201,20 @@ code: |
     ##################### after final order
     
     if middle_of_case == 'no' \
-      and (parents_agree \
-      and final_order_date_within_10_days) \
+      and parents_agree \
+      and final_order_date_within_10_days \
+      and motion_for_reconsideration \
       or (not final_order_date_within_10_days \
       and why_change.any_true()):
         step_list.append((pick_a_step_step, "pick_a_step_idx"))
-        
-    elif middle_of_case == 'no' \
-      and not parents_agree \
-      and not final_order_date_within_10_days \
+    
+    if middle_of_case == 'no' \
+      and parents_agree is False \
+      and final_order_date_within_10_days is False \
       and len(why_change.true_values()) >= 2:
         step_list.append((pick_a_step_step, "pick_a_step_idx"))
     
-    #  Rows 24  - 36 
+    #  Rows 24 and 25
     if middle_of_case == 'no' \
       and final_order_date_within_10_days \
       and parents_agree:
@@ -225,14 +226,21 @@ code: |
           step_list.append((file_and_serve_step, "file_and_serve_idx"))
           step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
           step_list.append((file_reply_step, "file_reply_idx"))
-        
-          
-    #  Rows 37  - 49 
+
+    
+    #  Row 26 & 27
     if middle_of_case == 'no' \
       and final_order_date_within_10_days \
-      and not parents_agree \
-      and motion_for_reconsideration:
+      and not parents_agree:
+        if motion_for_reconsideration: 
           step_list.append((reconsideration_step, "reconsideration_idx"))
+          step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
+          step_list.append((file_and_serve_step, "file_and_serve_idx"))
+          step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
+          step_list.append((file_reply_step, "file_reply_idx"))
+
+          
+    
         
 
     #  Rows 50  - 58 
