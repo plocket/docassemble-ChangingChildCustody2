@@ -771,7 +771,7 @@ content: |
       and type_of_interim_order in('motion', 'standing_order'):
   File the original with the court.
 
-  See <a href="http://courts.alaska.gov/shc/family/serve.htm#9">How do I serve answers motions oppositions and other documents?</a> On the court website.
+  See <a href="http://courts.alaska.gov/shc/family/serve.htm#9">How do I serve answers, motions, oppositions, and other documents?</a> on the court website.
   % endif
   
   % if middle_of_case == 'no' \
