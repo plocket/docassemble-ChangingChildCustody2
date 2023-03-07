@@ -202,17 +202,32 @@ code: |
     
     if middle_of_case == 'no' \
       and parents_agree:
-      if (final_order_date_within_10_days \
-        and motion_for_reconsideration) \
-        or (not final_order_date_within_10_days \
-        and why_change.any_true()):
-          step_list.append((pick_a_step_step, "pick_a_step_idx"))
+        if final_order_date_within_10_days \
+          and motion_for_reconsideration:
+            step_list.append((pick_a_step_step, "pick_a_step_idx"))
+     
+    if middle_of_case == 'no' \
+      and parents_agree:
+        if not final_order_date_within_10_days \
+          and why_change.any_true() \
+          and ((defined('appeal') and appeal) \
+            or (defined('set_aside') and set_aside) \
+            or (defined('modify') and modify)):
+              step_list.append((pick_a_step_step, "pick_a_step_idx"))
+          
     
     if middle_of_case == 'no' \
       and parents_agree is False \
-      and final_order_date_within_10_days is False \
-      and len(why_change.true_values()) >= 2:
-        step_list.append((pick_a_step_step, "pick_a_step_idx"))
+      and final_order_date_within_10_days is False:
+        if defined('appeal') and appeal:
+          if defined('set_aside') and set_aside \
+            or defined('modify') and modify:
+              step_list.append((pick_a_step_step, "pick_a_step_idx"))
+        elif defined('set_aside') and set_aside \
+          and defined('modify') and modify:
+              step_list.append((pick_a_step_step, "pick_a_step_idx"))
+      #  and len(why_change.true_values()) >= 2:
+      #  step_list.append((pick_a_step_step, "pick_a_step_idx"))
     
     #  Rows 24 and 25
     if middle_of_case == 'no' \
@@ -276,7 +291,7 @@ code: |
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
         if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
           step_list.append((set_aside_step, "set_aside_idx"))
-        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
+        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_after_15:
           step_list.append((modify_step, "modify_idx"))
 
 
@@ -287,7 +302,7 @@ code: |
       and not parents_agree:
         if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
           step_list.append((set_aside_step, "set_aside_idx"))
-        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
+        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_after_15s:
           step_list.append((modify_step, "modify_idx"))
  
     
