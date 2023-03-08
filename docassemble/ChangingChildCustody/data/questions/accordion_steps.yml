@@ -855,15 +855,10 @@ content: |
     and not final_order_date_within_15_days \
     and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
     and modify_after_15 in ('AK order', 'foreign order')):
-   % if (defined('set_aside') and set_aside) or (defined('motion_for_reconsideration') and motion_for_reconsideration):
-   If you cannot afford the fee, you may be eligible for a fee waiver. 
-  
-  Fill out: <strong>Exemption From the Payment of Fees,</strong> <a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">TF-920</a> [Fill-In PDF]. If you ask for a fee waiver, wait to give the other parent a copy of your motion until you receive the fee waiver or pay the filing fee.
-  % else:    
+    
   If you cannot afford the fee, you may be eligible for a fee waiver. 
   
   Fill out: <strong>Exemption From the Payment of Fees,</strong> <a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">TF-920</a> [Fill-In PDF]. If you ask for a fee waiver, wait to give the other parent a copy of your motion until you receive the fee waiver or pay the filing fee.
-  % endif
   % endif
 ---
 template: expect_after_reconsideration_step
