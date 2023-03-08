@@ -258,7 +258,7 @@ code: |
     
         
 
-    #  Rows 50  - 58 
+    #  Rows 32  - 58 
     if middle_of_case == 'no' \
       and final_order_date_within_15_days \
       and parents_agree:
@@ -268,42 +268,51 @@ code: |
           step_list.append((appeal_step, "appeal_idx"))
         if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
           step_list.append((set_aside_step, "set_aside_idx"))
+          step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
+          step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
         if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
           step_list.append((modify_step, "modify_idx"))
+          step_list.append((modify_forms_step, "modify_forms_idx"))
+        if (defined('set_aside') and set_aside) or (defined('modify') and modify):
+          step_list.append((file_and_serve_step, "file_and_serve_idx"))
+          if (defined('set_aside') and set_aside):
+            step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
+        if (defined('set_aside') and set_aside) or (defined('modify') and modify):
+          step_list.append((file_reply_step, "file_reply_idx"))
  
     #  Rows 59  - 67 
-    if middle_of_case == 'no' \
-      and final_order_date_within_15_days \
-      and not parents_agree:
-        if why_change['appeal legal mistake'] and appeal:
-          step_list.append((appeal_step, "appeal_idx"))
-        if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
-          step_list.append((set_aside_step, "set_aside_idx"))
-        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
-          step_list.append((modify_step, "modify_idx"))       
+    #  if middle_of_case == 'no' \
+    #    and final_order_date_within_15_days \
+    #    and not parents_agree:
+    #      if why_change['appeal legal mistake'] and appeal:
+    #        step_list.append((appeal_step, "appeal_idx"))
+    #      if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
+    #        step_list.append((set_aside_step, "set_aside_idx"))
+    #      if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
+    #        step_list.append((modify_step, "modify_idx"))       
 
     #  Rows 68  - 71 
-    if middle_of_case == 'no' \
-      and not final_order_date_within_10_days \
-      and not final_order_date_within_15_days \
-      and parents_agree:
-        step_list.append((parents_agree_step, "parents_agree_idx"))
-        step_list.append((tell_the_court_step, "tell_the_court_idx"))
-        if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
-          step_list.append((set_aside_step, "set_aside_idx"))
-        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_after_15:
-          step_list.append((modify_step, "modify_idx"))
+    #  if middle_of_case == 'no' \
+    #    and not final_order_date_within_10_days \
+    #    and not final_order_date_within_15_days \
+    #    and parents_agree:
+    #      step_list.append((parents_agree_step, "parents_agree_idx"))
+    #      step_list.append((tell_the_court_step, "tell_the_court_idx"))
+    #      if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
+    #        step_list.append((set_aside_step, "set_aside_idx"))
+    #      if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_after_15:
+    #        step_list.append((modify_step, "modify_idx"))
 
 
     #  Rows 72  - 75 
-    if middle_of_case == 'no' \
-      and not final_order_date_within_10_days \
-      and not final_order_date_within_15_days \
-      and not parents_agree:
-        if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
-          step_list.append((set_aside_step, "set_aside_idx"))
-        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_after_15s:
-          step_list.append((modify_step, "modify_idx"))
+    #if middle_of_case == 'no' \
+    #  and not final_order_date_within_10_days \
+    #  and not final_order_date_within_15_days \
+    #  and not parents_agree:
+    #    if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
+    #      step_list.append((set_aside_step, "set_aside_idx"))
+    #    if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_after_15s:
+    #      step_list.append((modify_step, "modify_idx"))
  
     
     #  step_list.append((foreign_order_step, "foreign_order_idx"))
@@ -769,7 +778,17 @@ content: |
 ---
 template: file_and_serve_step
 subject: |
-  Step ${ file_and_serve_idx }: File and serve your motion
+  Step ${ file_and_serve_idx }: 
+  % if middle_of_case == 'no':
+  % if (final_order_date_within_15_days and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') and modify_within_15_days) or (not final_order_within_10_days and not final_order_date_within_15_days and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') and modify_after_15_days == 'AK order'):
+  Pay the $75 fee and file and serve your Motion
+  % endif
+  % elif (middle_of_case == 'no' and final_order_within_10_days and motion_for_reconsideration) or (middle_of_case == 'yes' and interim_order_date_within_10_days and motion_decision):
+  File and serve your Motion for Reconsideration
+  % else:
+  File and serve your motion
+  % endif
+ 
     
 content: |
   Make 2 copies of your motion. Keep 1 copy for your own records.
@@ -846,22 +865,12 @@ content: |
   <li>Either parent can appeal the decision about the <strong>Motion to Set Aside Judgment or Order</strong> if they believe the judge made a legal mistake.</li>
   </ul>
 ---
-template: expect_after_set_aside_step
-subject: |
-  Step ${ expect_after_set_aside_idx }: What to expect after you file your Motion to Set Aside Judgment or Order
-content: |
-  <ul>
-  <li>If the <strong>Motion to Set Aside Judgment or Order</strong> <strong>is not granted or is denied</strong>, the parents are supposed to follow the Judgment or Order and the parent who received the original order or judgment can enforce it.</li>
-  <li>If the <strong>Motion to Set Aside Judgment or Order</strong> <strong>is granted</strong>, the court will notify both parents about the next step in the case.</li>
-  <li>Either parent can appeal the decision about the <strong>Motion to Set Aside Judgment or Order</strong> if they believe the judge made a legal mistake.</li>
-  </ul>
----
 template: file_reply_step
 subject: |
   Step ${ file_reply_idx }: You can file a reply if the other parent responds
 content: |
   <ul>
-  % if (middle_of_case == 'yes' and type_of_interim_order == 'motion' and motion_decision) or (middle_of_case == 'no' and motion_for_reconsideration):
+  % if (middle_of_case == 'yes' and type_of_interim_order == 'motion' and motion_decision) or (middle_of_case == 'no' and final_order_date_within_10_days and motion_for_reconsideration):
   <li> If the court asks the other parent to respond, you can file a Reply to the response.</li>
   % endif
   % if (middle_of_case == 'yes' and type_of_interim_order == 'standing order' and standing_order) or (middle_of_case == 'no' and final_order_date_within_15_days):
