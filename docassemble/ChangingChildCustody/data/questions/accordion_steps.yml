@@ -780,10 +780,14 @@ template: file_and_serve_step
 subject: |
   Step ${ file_and_serve_idx }: 
   % if middle_of_case == 'no':
-  % if (final_order_date_within_15_days and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') and modify_within_15_days) or (not final_order_within_10_days and not final_order_date_within_15_days and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') and modify_after_15_days == 'AK order'):
+  % if (defined('set_aside') and not set_aside) and ((final_order_date_within_15_days and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') and modify_within_15_days) or (not final_order_date_within_10_days and not final_order_date_within_15_days and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') and modify_after_15_days == 'AK order')):
   Pay the $75 fee and file and serve your Motion
+  % elif final_order_date_within_10_days and motion_for_reconsideration:
+  File and serve your Motion for Reconsideration
+  % else:
+  File and serve your motion
   % endif
-  % elif (middle_of_case == 'no' and final_order_within_10_days and motion_for_reconsideration) or (middle_of_case == 'yes' and interim_order_date_within_10_days and motion_decision):
+  % elif middle_of_case == 'yes' and interim_order_date_within_10_days and motion_decision:
   File and serve your Motion for Reconsideration
   % else:
   File and serve your motion
@@ -813,7 +817,11 @@ content: |
     and not final_order_date_within_15_days \
     and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
     and modify_after_15 == 'AK order':
+  % if (defined('set_aside') and set_aside) or (defined('motion_for_reconsideration') and motion_for_reconsideration):
+  If you decide to file a <strong>Motion to Modify</strong>, file the original with the court that made the decision you want to change and pay the $75 fee.
+  % else:
   File the original with the court that made the decision you want to change and pay the $75 fee for a <strong>Motion to Modify</strong>.
+  % endif
   % endif
   
   % if middle_of_case == 'no' \
@@ -825,10 +833,15 @@ content: |
     and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
     and modify_after_15 == 'foreign order'):
   File the original with the court.
-
+  % if (defined('set_aside') and set_aside) or (defined('motion_for_reconsideration') and motion_for_reconsideration):
+  If you decide to file a <strong>Motion to Modify</strong>, there is no fee to file a motion to modify a registered support or custody order if you file within 30 days of the registration confirmation date. 
+  
+  After 30 days, there is a $75 filing fee for motions to modify.
+  % else: 
   There is no fee to file a motion to modify a registered support or custody order if you file within 30 days of the registration confirmation date. 
   
   After 30 days, there is a $75 filing fee for motions to modify.
+  % endif
   % endif
 
   % if middle_of_case == 'no' \
@@ -839,9 +852,15 @@ content: |
     and not final_order_date_within_15_days \
     and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
     and modify_after_15 in ('AK order', 'foreign order')):
+   % if (defined('set_aside') and set_aside) or (defined('motion_for_reconsideration') and motion_for_reconsideration):
+   If you decide to file a <strong>Motion to Modify</strong> and you cannot afford the fee, you may be eligible for a fee waiver. 
+  
+  Fill out: <strong>Exemption From the Payment of Fees,</strong> <a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">TF-920</a> [Fill-In PDF]. If you ask for a fee waiver, wait to give the other parent a copy of your motion until you receive the fee waiver or pay the filing fee.
+  % else:    
   If you cannot afford the fee, you may be eligible for a fee waiver. 
   
   Fill out: <strong>Exemption From the Payment of Fees,</strong> <a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">TF-920</a> [Fill-In PDF]. If you ask for a fee waiver, wait to give the other parent a copy of your motion until you receive the fee waiver or pay the filing fee.
+  % endif
   % endif
 ---
 template: expect_after_reconsideration_step
