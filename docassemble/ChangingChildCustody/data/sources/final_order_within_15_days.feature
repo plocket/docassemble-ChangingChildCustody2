@@ -8,7 +8,7 @@ Scenario: Row #32 Parent wants to appeal a final order within 15 days and get pa
       | middle_of_case | no |  |    
       | final_order_date | today - 12 |  | 
       | parents_agree | True |  |
-      | why_change | appeal legal mistake |  |
+      | why_change['appeal legal mistake' | True |  |
       | appeal | True |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -26,9 +26,9 @@ Scenario: Rows #32 & 36 Parent wants to appeal a final order and ask judge to se
       | middle_of_case | no |  |    
       | final_order_date | today - 12 |  | 
       | parents_agree | True |  |
-      | why_change | appeal legal mistake |  |
+      | why_change['appeal legal mistake'] | True |  |
       | appeal | True |  |
-      | why_change | set aside mistake of fact |  |
+      | why_change['set aside mistake of fact'] | True |  |
       | set_aside | True |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -51,9 +51,9 @@ Scenario: Rows #32 & 44 Parent wants to appeal a final order and ask judge to ch
       | middle_of_case | no |  |    
       | final_order_date | today - 12 |  | 
       | parents_agree | True |  |
-      | why_change | appeal legal mistake |  |
+      | why_change['appeal legal mistake'] | True |  |
       | appeal | True |  |
-      | why_change | modify parent to jail |  |
+      | why_change['modify parent to jail'] | True |  |
       | modify_within_15_days | True |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -75,7 +75,7 @@ Scenario: Row #34 Parent wants judge to set aside a final order within 15 days a
       | middle_of_case | no |  |    
       | final_order_date | today - 12 |  | 
       | parents_agree | True |  |
-      | why_change | set aside clerical error |  |
+      | why_change['set aside clerical error'] | True |  |
       | set_aside | True |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -97,9 +97,9 @@ Scenario: Rows #38 & 46  and Parent wants judge to set aside a final order modif
       | middle_of_case | no |  |    
       | final_order_date | today - 12 |  | 
       | parents_agree | True |  |
-      | why_change | set aside new evidence |  |
+      | why_change['set aside new evidence'] | True |  |
       | set_aside | True |  |
-      | why_change | modify domestic violence  |  |
+      | why_change['modify domestic violence'] | True  |  |
       | modify_within_15_days | True |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -124,7 +124,7 @@ Scenario: Row #42 Parent wants judge to change a final order within 15 days and 
       | middle_of_case | no |  |    
       | final_order_date | today - 12 |  | 
       | parents_agree | True |  |
-      | why_change | modify circumstances changed  |  |
+      | why_change['modify circumstances changed'] | True  |  |
       | modify_within_15_days | True |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
