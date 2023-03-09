@@ -1,4 +1,4 @@
-Pid: final screen
+id: final screen
 decoration: pen-to-square
 event: confirmation_and_download
 question: |
@@ -280,31 +280,36 @@ code: |
         if (defined('set_aside') and set_aside) or (defined('modify_within_15_days') and modify_within_15_days):
           step_list.append((file_reply_step, "file_reply_idx"))
  
-    #  Rows 59  - 67 
-    #  if middle_of_case == 'no' \
-    #    and final_order_date_within_15_days \
-    #    and not parents_agree:
-    #      if why_change['appeal legal mistake'] and appeal:
-    #        step_list.append((appeal_step, "appeal_idx"))
-    #      if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
-    #        step_list.append((set_aside_step, "set_aside_idx"))
-    #      if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
-    #        step_list.append((modify_step, "modify_idx"))       
+          
 
-    #  Rows 68  - 71 
-    #  if middle_of_case == 'no' \
-    #    and not final_order_date_within_10_days \
-    #    and not final_order_date_within_15_days \
-    #    and parents_agree:
-    #      step_list.append((parents_agree_step, "parents_agree_idx"))
-    #      step_list.append((tell_the_court_step, "tell_the_court_idx"))
-    #      if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
-    #        step_list.append((set_aside_step, "set_aside_idx"))
-    #      if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_after_15:
-    #        step_list.append((modify_step, "modify_idx"))
+    # Rows 71 - 91
+    if middle_of_case == 'no' \
+      and not final_order_date_within_10_days \
+      and not final_order_date_within_15_days:
+        if parents_agree:
+          step_list.append((parents_agree_step, "parents_agree_idx"))
+          step_list.append((tell_the_court_step, "tell_the_court_idx"))
 
+        if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
+          step_list.append((set_aside_step, "set_aside_idx"))          
+          step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
 
-    #  Rows 72  - 75 
+        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change'):
+          if modify_after_15 == 'foreign order':
+            step_list.append((foreign_order_step, "foreign_order_idx"))
+            step_list.append((ak_jurisdiction_step, "ak_jurisdiction_idx"))
+            step_list.append((register_order_step, "register_order_idx"))
+          if modify_after_15 in('AK order','foreign order'):          
+            step_list.append((modify_step, "modify_idx"))
+            step_list.append((modify_forms_step, "modify_forms_idx"))
+
+        if (defined('set_aside') and set_aside) or (defined('modify_after_15') and modify_after_15 in('AK order','foreign order')):
+          step_list.append((file_and_serve_step, "file_and_serve_idx"))
+          if (defined('set_aside') and set_aside):
+            step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
+        if (defined('set_aside') and set_aside) or (defined('modify_after_15') and modify_after_15 in('AK order','foreign order')):
+          step_list.append((file_reply_step, "file_reply_idx"))
+   #  Rows 72  - 75 
     #if middle_of_case == 'no' \
     #  and not final_order_date_within_10_days \
     #  and not final_order_date_within_15_days \
@@ -703,15 +708,11 @@ content: |
 template: modify_step
 subject: |
   Step ${ modify_idx }:
-    % if modify_within_15_days:
-    File a Motion to Modify your Alaska custody and Parenting Plan or Child Support order
-    % elif not final_order_date_within_15_days and modify_after_15 == 'foreign order':
-    File a Motion to Modify
+    % if (final_order_date_within_15_days and modify_within_15_days) \
+      or (not final_order_date_within_15_days and modify_after_15 == 'AK order'):
+    Ask the court to change your Alaska custody and Parenting Plan or Child Support order
     % else:
-    Ask the court to change
-    % if not final_order_date_within_15_days and modify_after_15 == 'AK order':
-    your Alaska custody and Parenting Plan or Child Support order
-    % endif
+    File a Motion to Modify
     % endif
 content: |
   <div class="step-subheading">Background</div>
