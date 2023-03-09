@@ -270,7 +270,6 @@ code: |
         if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct') and set_aside:
           step_list.append((set_aside_step, "set_aside_idx"))
           step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
-          step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
         if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
           step_list.append((modify_step, "modify_idx"))
           step_list.append((modify_forms_step, "modify_forms_idx"))
