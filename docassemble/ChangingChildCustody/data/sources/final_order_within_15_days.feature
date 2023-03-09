@@ -8,7 +8,7 @@ Scenario: Row #32 Parent wants to appeal a final order within 15 days and get pa
       | middle_of_case | no |  |    
       | final_order_date | today - 12 |  | 
       | parents_agree | True |  |
-      | why_change['appeal legal mistake' | True |  |
+      | why_change['appeal legal mistake'] | True |  |
       | appeal | True |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
