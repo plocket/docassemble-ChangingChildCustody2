@@ -780,7 +780,14 @@ template: file_and_serve_step
 subject: |
   Step ${ file_and_serve_idx }: 
   % if middle_of_case == 'no':
-  % if not final_order_date_within_10_days and ((why_change.all_false('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct') or (defined('set_aside') and not set_aside)) and ((final_order_date_within_15_days and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') and modify_within_15_days) or (not final_order_date_within_10_days and not final_order_date_within_15_days and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') and modify_after_15_days == 'AK order'))):
+  % if (final_order_date_within_15_days \
+    and defined('appeal') \
+    and (defined('set_aside') and not set_aside) \
+    and (defined('modify_within_15_days') and modify_within_15_days)) \
+    or (not final_order_date_within_10_days and not final_order_date_within_15_days  \
+    and defined('appeal') \
+    and (defined('set_aside') and not set_aside) \
+    and (defined('modify_after_15') and modify_after_15 == 'AK order')):
   Pay the $75 fee, file and serve your Motion
   % elif final_order_date_within_10_days and motion_for_reconsideration:
   File and serve your Motion for Reconsideration
