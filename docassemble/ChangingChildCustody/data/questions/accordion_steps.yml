@@ -259,7 +259,7 @@ code: |
     
         
 
-    #  Rows 32  - 58 
+    #  Rows 32  - 70 
     if middle_of_case == 'no' \
       and final_order_date_within_15_days \
       and parents_agree:
