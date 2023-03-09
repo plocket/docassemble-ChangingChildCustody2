@@ -193,6 +193,7 @@ Scenario: Rows #38 & 46  and Parent wants judge to set aside a final order modif
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     
+@row42
 Scenario: Row #42 Parent wants judge to change a final order within 15 days and get parent agreement information
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
