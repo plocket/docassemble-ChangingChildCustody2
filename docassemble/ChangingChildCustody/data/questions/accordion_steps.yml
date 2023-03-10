@@ -780,15 +780,15 @@ content: |
 template: file_and_serve_step
 subject: |
   Step ${ file_and_serve_idx }: 
+  
+  Step ${ file_and_serve_idx }: 
   % if middle_of_case == 'no':
-  % if (final_order_date_within_15_days \
-    and defined('appeal') \
-    and (defined('set_aside') and not set_aside) \
-    and (defined('modify_within_15_days') and modify_within_15_days)) \
+  % if (final_order_date_within_15_days\
+      and (defined('modify_within_15_days') and modify_within_15_days)) \
     or (not final_order_date_within_10_days and not final_order_date_within_15_days  \
-    and defined('appeal') \
-    and (defined('set_aside') and not set_aside) \
-    and (defined('modify_after_15') and modify_after_15 == 'AK order')):
+      and (defined('modify_after_15') and modify_after_15 == 'AK order') \
+      and defined('appeal') \
+        or (defined('set_aside') and not set_aside)):
   Pay the $75 fee, file and serve your Motion
   % elif final_order_date_within_10_days and motion_for_reconsideration:
   File and serve your Motion for Reconsideration
@@ -799,9 +799,7 @@ subject: |
   File and serve your Motion for Reconsideration
   % else:
   File and serve your motion
-  % endif
- 
-    
+  % endif    
 content: |
   Make 2 copies of your motion. Keep 1 copy for your own records.
 
@@ -821,52 +819,39 @@ content: |
   % endif
   
   % if middle_of_case == 'no' \
-    and (final_order_date_within_15_days \
-    and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
-    and modify_within_15_days) \
-    or (not final_order_date_within_10_days \
-    and not final_order_date_within_15_days \
-    and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
-    and modify_after_15 == 'AK order'):
-  % if (defined('set_aside') and set_aside) or (defined('motion_for_reconsideration') and motion_for_reconsideration):
-  
+    and ((defined('modify_within_15_days') and modify_within_15_days) \
+      or (defined('modify_after_15') and modify_after_15 == 'AK order')):
+    % if ((defined('set_aside') and set_aside) \
+      or (defined('motion_for_reconsideration') and motion_for_reconsideration)):  
   If you decide to file a <strong>Motion to Modify</strong>, file the original with the court that made the decision you want to change and pay the $75 fee.
-  % else:
+    % else:
   File the original with the court that made the decision you want to change and pay the $75 fee for a <strong>Motion to Modify</strong>.
-  % endif
+    % endif
   % endif
   
+      
   % if middle_of_case == 'no' \
     and not final_order_date_within_10_days \
     and not final_order_date_within_15_days \
-    and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
-    and modify_after_15 == 'foreign order':
+    and (defined('modify_after_15') and modify_after_15 == 'foreign order'):
   File the original with the court.
   
-  % if (defined('set_aside') and set_aside) or (defined('motion_for_reconsideration') and motion_for_reconsideration):
+     % if (defined('set_aside') and set_aside) or (defined('motion_for_reconsideration') and motion_for_reconsideration):
   If you decide to file a <strong>Motion to Modify</strong>, there is no fee to file a motion to modify a registered support or custody order if you file within 30 days of the registration confirmation date. 
-  
-  After 30 days, there is a $75 filing fee for motions to modify.
-  % else: 
+    % else: 
   There is no fee to file a motion to modify a registered support or custody order if you file within 30 days of the registration confirmation date. 
-  
+    % endif
+    
   After 30 days, there is a $75 filing fee for motions to modify.
   % endif
-  % endif
-
-  % if middle_of_case == 'no' \
-    and (final_order_date_within_15_days \
-    and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) \
-    and modify_within_15_days) \
-    or (not final_order_date_within_10_days \
-    and not final_order_date_within_15_days \
-    and why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change') \
-    and modify_after_15 in ('AK order', 'foreign order')):
+  
+  % if (defined('modify_within_15_days') and modify_within_15_days) \
+    or (defined('modify_after_15') and modify_after_15 in('AK order', 'foreign order')):
     
   If you cannot afford the fee, you may be eligible for a fee waiver. 
   
   Fill out: <strong>Exemption From the Payment of Fees,</strong> <a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">TF-920</a> [Fill-In PDF]. If you ask for a fee waiver, wait to give the other parent a copy of your motion until you receive the fee waiver or pay the filing fee.
-  % endif
+  % endif    
 ---
 template: expect_after_reconsideration_step
 subject: |
