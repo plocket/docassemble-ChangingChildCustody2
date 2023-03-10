@@ -787,7 +787,8 @@ subject: |
     or (not final_order_date_within_10_days \
          and not final_order_date_within_15_days  \
         and (defined('modify_after_15') and modify_after_15 == 'AK order'))) \
-    and (defined('set_aside') and not set_aside):
+    and (defined('appeal') \
+        or (defined('set_aside') and not set_aside)):
   Pay the $75 fee, file and serve your Motion to Modify
   % elif final_order_date_within_10_days and motion_for_reconsideration:
   File and serve your Motion for Reconsideration
