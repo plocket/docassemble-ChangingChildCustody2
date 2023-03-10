@@ -350,6 +350,7 @@ Scenario: Rows #57, 59 & 70 and Parent doesn't want set aside a final order with
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"   
     
+@rows63and66
 Scenario: Rows #63 & 66  and Parent doesn't info about asking judge to set aside a final order  it within 15 days but does want modify info and no parent agreement information
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
@@ -367,8 +368,6 @@ Scenario: Rows #63 & 66  and Parent doesn't info about asking judge to set aside
     And I should see the phrase "Ask the court to change your Alaska custody and Parenting Plan or Child Support order"
     And I should see the phrase "Fill out your Motion to Modify forms"
     And I should see the phrase "Pay the $75 fee, file and serve your Motion to Modify"
-    And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"    
