@@ -65,7 +65,7 @@ Scenario: Rows #32 & 44 Parent wants to appeal a final order and ask judge to ch
     And I should see the phrase "Appeal the Trial Court’s decision with the Alaska Supreme Court"
     And I should see the phrase "Ask the court to change your Alaska custody and Parenting Plan or Child Support order"
     And I should see the phrase "Fill out your Motion to Modify forms"
-    And I should see the phrase "Pay the $75 fee and file and serve your Motion"
+    And I should see the phrase "Pay the $75 fee, file and serve your Motion to Modify"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"

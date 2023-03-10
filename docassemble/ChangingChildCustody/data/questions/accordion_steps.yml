@@ -225,7 +225,8 @@ code: |
             or defined('modify') and modify:
               step_list.append((pick_a_step_step, "pick_a_step_idx"))
         elif defined('set_aside') and set_aside \
-          and defined('modify') and modify:
+          and ((defined('modify_within_15_days') and modify_within_15_days) \
+              or (defined('modify_after_15') and modify_after_15)):
               step_list.append((pick_a_step_step, "pick_a_step_idx"))
       #  and len(why_change.true_values()) >= 2:
       #  step_list.append((pick_a_step_step, "pick_a_step_idx"))
@@ -780,16 +781,14 @@ content: |
 template: file_and_serve_step
 subject: |
   Step ${ file_and_serve_idx }: 
-  
-  Step ${ file_and_serve_idx }: 
   % if middle_of_case == 'no':
-  % if (final_order_date_within_15_days\
-      and (defined('modify_within_15_days') and modify_within_15_days)) \
-    or (not final_order_date_within_10_days and not final_order_date_within_15_days  \
-      and (defined('modify_after_15') and modify_after_15 == 'AK order') \
-      and defined('appeal') \
-        or (defined('set_aside') and not set_aside)):
-  Pay the $75 fee, file and serve your Motion
+  % if ((final_order_date_within_15_days\
+         and (defined('modify_within_15_days') and modify_within_15_days)) \
+    or (not final_order_date_within_10_days \
+         and not final_order_date_within_15_days  \
+        and (defined('modify_after_15') and modify_after_15 == 'AK order'))) \
+    and (defined('set_aside') and not set_aside):
+  Pay the $75 fee, file and serve your Motion to Modify
   % elif final_order_date_within_10_days and motion_for_reconsideration:
   File and serve your Motion for Reconsideration
   % else:
