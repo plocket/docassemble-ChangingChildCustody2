@@ -782,19 +782,18 @@ template: file_and_serve_step
 subject: |
   Step ${ file_and_serve_idx }: 
   % if middle_of_case == 'no':
-  % if ((final_order_date_within_15_days\
-         and (defined('modify_within_15_days') and modify_within_15_days)) \
-    or (not final_order_date_within_10_days \
-         and not final_order_date_within_15_days  \
-        and (defined('modify_after_15') and modify_after_15 == 'AK order'))) \
-    and (defined('appeal') \
-        or (defined('set_aside') and not set_aside)):
-  Pay the $75 fee, file and serve your Motion to Modify
-  % elif final_order_date_within_10_days and motion_for_reconsideration:
-  File and serve your Motion for Reconsideration
-  % else:
-  File and serve your motion
-  % endif
+    % if (defined('modify_within_15_days') and modify_within_15_days) \
+      or (defined('modify_after_15') and modify_after_15 == 'AK order'):
+        % if defined('set_aside') and set_aside:
+          File and serve your motion
+        % else:
+          Pay the $75 fee, file and serve your Motion to Modify
+        % endif
+    % elif final_order_date_within_10_days and motion_for_reconsideration:
+        File and serve your Motion for Reconsideration
+    % else:
+      File and serve your motion
+    % endif
   % elif middle_of_case == 'yes' and interim_order_date_within_10_days and motion_decision:
   File and serve your Motion for Reconsideration
   % else:
