@@ -153,7 +153,7 @@ Scenario: Rows #37 & 43  and Parent wants judge to set aside a final order modif
       | parents_agree | True |  |
       | why_change['set aside mistake of fact'] | True |  |
       | set_aside | True |  |
-      | why_change['modify circumstances changed '] | True  |  |
+      | why_change['modify circumstances changed'] | True  |  |
       | modify_within_15_days | True |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
