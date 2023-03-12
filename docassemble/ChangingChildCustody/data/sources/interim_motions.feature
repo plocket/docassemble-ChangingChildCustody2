@@ -1,3 +1,4 @@
+@InterimMotions
 Feature: User paths
   
 Scenario: Row #12 Middle of case parent wants judge to reconsider interim motion within 10 days of decision and also parents agreement information 

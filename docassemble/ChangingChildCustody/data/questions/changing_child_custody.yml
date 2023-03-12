@@ -1,4 +1,3 @@
----
 include:
   - docassemble.AssemblyLine:assembly_line.yml
   - docassemble.AKA2JBranding:custom_organization.yml
@@ -361,7 +360,7 @@ code: |
                     {'set aside misconduct': 'The other parent has exhibited misconduct.'},
                     {'modify circumstances changed': 'Circumstances have changed.'},
                     {'modify parent to jail': 'The parent the children live with more than 4 days a week has gone to jail.'},
-                    {'modify domestic violence': 'We have experienced domestic violence when exchanging our children.'},
+                    {'modify domestic violence': 'We experienced domestic violence when we dropped off or picked up our children.'},
                     {'modify other change': 'I have another major change that gives the judge good reason to change the custody order.'}
                   ]
   
