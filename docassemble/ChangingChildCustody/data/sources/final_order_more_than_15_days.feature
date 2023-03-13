@@ -180,7 +180,7 @@ Scenario: Rows #79 & 90 Parent wants no info on set aside and but modify an out 
       | user_need | file |  |    
       | middle_of_case | no |  |   
       | final_order_period | True | | 
-      | guess_final_order_date | more than 15 |  | 
+      | guess_final_order_date | more than 15 days|  | 
       | parents_agree | True |  |
       | why_change['set aside misconduct'] | True |  |
       | why_change['modify other change'] | True |  |
