@@ -102,7 +102,7 @@ Scenario: Rows #76 & 86  and Parent wants judge to set aside a final order modif
       | why_change['set aside new evidence'] | True |  |
       | set_aside | True |  |
       | why_change['modify domestic violence'] | True  |  |
-      | modify_after_15| True |  |
+      | modify_after_15| AK order |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
     And I should see the phrase "Find out if you and the other parent agree"  
@@ -278,7 +278,7 @@ Scenario: Rows #98 Parent wants info about modifyine a final order after 15 days
       | parents_agree | False |  |
       | why_change['modify parent to jail'] | True  |  |
       | why_change['modify domestic violence'] | True  |  |
-      | modify_after_15 | True |  |
+      | modify_after_15 | AK order |  |
     And I take a screenshot
     And I should see the phrase "Ask the court to change your Alaska custody and Parenting Plan or Child Support order"
     And I should see the phrase "Fill out your Motion to Modify forms"
