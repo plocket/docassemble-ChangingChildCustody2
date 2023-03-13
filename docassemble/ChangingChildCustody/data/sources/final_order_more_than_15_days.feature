@@ -207,7 +207,7 @@ Scenario: Row #82 Parent wants no info on modify or set aside of final order aft
       | var | value | trigger |
       | user_need | file |  |    
       | middle_of_case | no |  |    
-      | final_order_date | today - 15 |  | 
+      | final_order_date | today - 16 |  | 
       | parents_agree | True |  |
       | why_change['set aside misconduct'] | True |  |
       | why_change['modify other change'] | True |  |
