@@ -1,6 +1,7 @@
 @InterimMotions
 Feature: User paths
-  
+
+@row12
 Scenario: Row #12 Middle of case parent wants judge to reconsider interim motion within 10 days of decision and also parents agreement information 
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
@@ -20,6 +21,7 @@ Scenario: Row #12 Middle of case parent wants judge to reconsider interim motion
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Row #12b Middle of case parent wants wants judge to reconsider interim motion within 10 days of decision (cannot remember exact date) and also parents agreement information
     Given I start the interview at "changing_child_custody.yml"
