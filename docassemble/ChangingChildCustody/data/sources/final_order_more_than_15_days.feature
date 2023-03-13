@@ -284,8 +284,6 @@ Scenario: Rows #98 Parent wants info about modifyine a final order after 15 days
     And I should see the phrase "Fill out your Motion to Modify forms"
     And I should see the phrase "Pay the $75 fee, file and serve your Motion to Modify"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
-    And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"    
     
