@@ -69,7 +69,7 @@ Scenario: Rows #74 & 89 and Parent wants judge to set aside a final order modify
       | var | value | trigger |
       | user_need | file |  |    
       | middle_of_case | no |  |    
-      | final_order_date | today - 12 |  | 
+      | final_order_date | today - 22 |  | 
       | parents_agree | True |  |
       | why_change['set aside mistake of fact'] | True |  |
       | set_aside | True |  |
@@ -89,13 +89,15 @@ Scenario: Rows #74 & 89 and Parent wants judge to set aside a final order modify
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"    
     
+@76and86
 Scenario: Rows #76 & 86  and Parent wants judge to set aside a final order modify it after 15 days and get parent agreement information
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
       | user_need | file |  |    
-      | middle_of_case | no |  |    
-      | final_order_date | today - 12 |  | 
+      | middle_of_case | no |  |
+      | final_order_period | True | |
+      | guess_final_order_date | more than 15 days |  | 
       | parents_agree | True |  |
       | why_change['set aside new evidence'] | True |  |
       | set_aside | True |  |
@@ -140,13 +142,15 @@ Scenario: Row #81 Parent wants judge to change a final order after 15 days and g
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
 
+@rows78and84
 Scenario: Rows #78 & 84 Parent wants to set aside and modify an out of state final order after 15 days with parent agreement information
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
       | user_need | file |  |    
-      | middle_of_case | no |  |    
-      | final_order_date | more than 15 |  | 
+      | middle_of_case | no |  | 
+      | final_order_period | True | |   
+      | guess_final_order_date | more than 15 |  | 
       | parents_agree | True |  |
       | why_change['set aside misconduct'] | True |  |
       | why_change['modify parent to jail'] | True |  |
@@ -174,8 +178,9 @@ Scenario: Rows #79 & 90 Parent wants no info on set aside and but modify an out 
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
       | user_need | file |  |    
-      | middle_of_case | no |  |    
-      | final_order_date | more than 15 |  | 
+      | middle_of_case | no |  |   
+      | final_order_period | True | | 
+      | guess_final_order_date | more than 15 |  | 
       | parents_agree | True |  |
       | why_change['set aside misconduct'] | True |  |
       | why_change['modify other change'] | True |  |
@@ -195,6 +200,7 @@ Scenario: Rows #79 & 90 Parent wants no info on set aside and but modify an out 
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"  
     
+@row82    
 Scenario: Row #82 Parent wants no info on modify or set aside of final order after 15 days with parent agreement information
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
