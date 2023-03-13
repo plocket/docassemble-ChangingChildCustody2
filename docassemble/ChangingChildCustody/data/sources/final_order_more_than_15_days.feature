@@ -73,7 +73,7 @@ Scenario: Rows #74 & 89 and Parent wants judge to set aside a final order modify
       | parents_agree | True |  |
       | why_change['set aside mistake of fact'] | True |  |
       | set_aside | True |  |
-      | why_change['modify circumstances changed '] | True  |  |
+      | why_change['modify circumstances changed'] | True  |  |
       | modify_after_15 | AK order |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -300,7 +300,7 @@ Scenario: Rows #101 & 98  and Parent wants judge to set aside a final order or  
       | why_change['set aside new evidence'] | True |  |
       | set_aside | True |  |
       | why_change['modify domestic violence'] | True  |  |
-      | modify_within_15_days | True |  |
+      | modify_after_15 | AK order |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
     And I should see the phrase "Ask the court to Set Aside a Final Order and make a different decision"
