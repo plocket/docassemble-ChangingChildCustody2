@@ -150,7 +150,7 @@ Scenario: Rows #78 & 84 Parent wants to set aside and modify an out of state fin
       | user_need | file |  |    
       | middle_of_case | no |  | 
       | final_order_period | True | |   
-      | guess_final_order_date | more than 15 |  | 
+      | guess_final_order_date | more than 15 days |  | 
       | parents_agree | True |  |
       | why_change['set aside misconduct'] | True |  |
       | why_change['modify parent to jail'] | True |  |
