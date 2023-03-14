@@ -794,7 +794,7 @@ subject: |
     % else:
       File and serve your motion
     % endif
-  % elif middle_of_case == 'yes' and type_of_interim_order == 'motion' and interim_order_date_within_10_days and motion_decision:
+  % elif middle_of_case == 'yes' and type_of_interim_order == 'motion'and motion_decision:
   File and serve your Motion for Reconsideration
   % else:
   File and serve your motion

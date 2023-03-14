@@ -257,6 +257,7 @@ Scenario: Row #20b Middle of case parent wants judge to reconsider interim motio
     And I should see the phrase "Tell the court about your agreement"
     And I should see the phrase "Ask the court to change a decision it made in the last 10 days"
     And I should see the phrase "Fill out your Motion for Reconsideration forms"
+    And I should see the phrase "File and serve your Motion for Reconsideration"
     And I should see the phrase "What to expect after you file your Motion for Reconsideration"  
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
