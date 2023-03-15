@@ -21,7 +21,8 @@ Scenario: Row #72 Parent wants judge to set aside a final order after 15 days an
     And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"
+    And I should see the phrase "Get more information or help"    
+    And I download "changing_child_custody.pdf"
     
 Scenario: Row #73 Parent does not want info for judge to set aside a final order after 15 days and  but does want parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -38,6 +39,7 @@ Scenario: Row #73 Parent does not want info for judge to set aside a final order
     And I should see the phrase "Tell the court about your agreement"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Rows #75 & 89 and Parent doesn't want set aside a final order after 15 days but wants modify AK order info and parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -61,7 +63,8 @@ Scenario: Rows #75 & 89 and Parent doesn't want set aside a final order after 15
     And I should see the phrase "Pay the $75 fee, file and serve your Motion to Modify"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"   
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"   
     
 Scenario: Rows #74 & 89 and Parent wants judge to set aside a final order modify it after 15 days and get parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -87,7 +90,8 @@ Scenario: Rows #74 & 89 and Parent wants judge to set aside a final order modify
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"    
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"    
     
 @76and86
 Scenario: Rows #76 & 86  and Parent wants judge to set aside a final order modify it after 15 days and get parent agreement information
@@ -116,6 +120,7 @@ Scenario: Rows #76 & 86  and Parent wants judge to set aside a final order modif
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 @row81
 Scenario: Row #81 Parent wants judge to change a final order after 15 days and get parent agreement information
@@ -141,6 +146,7 @@ Scenario: Row #81 Parent wants judge to change a final order after 15 days and g
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
 
 @rows78and84
 Scenario: Rows #78 & 84 Parent wants to set aside and modify an out of state final order after 15 days with parent agreement information
@@ -172,6 +178,7 @@ Scenario: Rows #78 & 84 Parent wants to set aside and modify an out of state fin
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Rows #79 & 90 Parent wants no info on set aside and but modify an out of state final order after 15 days with parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -198,7 +205,8 @@ Scenario: Rows #79 & 90 Parent wants no info on set aside and but modify an out 
     And I should see the phrase "File and serve your motion"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"  
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"  
     
 @row82    
 Scenario: Row #82 Parent wants no info on modify or set aside of final order after 15 days with parent agreement information
@@ -217,7 +225,8 @@ Scenario: Row #82 Parent wants no info on modify or set aside of final order aft
     And I should see the phrase "Find out if you and the other parent agree"  
     And I should see the phrase "Tell the court about your agreement"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"  
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"  
     
 
     
@@ -242,6 +251,7 @@ Scenario: Row #101 Parent only wants info to ask judge to set aside a final orde
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Rows #99 and 102 Parent doesn't want set aside a final order after 15 days or parent info but does wants modify info 
     Given I start the interview at "changing_child_custody.yml"
@@ -266,7 +276,8 @@ Scenario: Rows #99 and 102 Parent doesn't want set aside a final order after 15 
     And I should see the phrase "File and serve your motion"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"   
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"   
     
 Scenario: Rows #98 Parent wants info about modifyine a final order after 15 days but no parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -285,7 +296,8 @@ Scenario: Rows #98 Parent wants info about modifyine a final order after 15 days
     And I should see the phrase "Pay the $75 fee, file and serve your Motion to Modify"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"    
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"    
     
 Scenario: Rows #101 & 98  and Parent wants judge to set aside a final order or  modify it after 15 days and no parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -310,8 +322,7 @@ Scenario: Rows #101 & 98  and Parent wants judge to set aside a final order or  
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
-    
-
+    And I download "changing_child_custody.pdf"
     
 Scenario: Row #100 Parent does not want info about modifying or order after 15 days or parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -326,7 +337,8 @@ Scenario: Row #100 Parent does not want info about modifying or order after 15 d
       | modify_after_15 | none |  |
     And I take a screenshot
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"    
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"    
     
     
     
