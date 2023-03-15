@@ -22,6 +22,7 @@ Scenario: Row #24 Parent wants judge to reconsider final order within 10 days an
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Row #24b Parent wants judge to reconsider final order within 10 days and get parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -44,6 +45,7 @@ Scenario: Row #24b Parent wants judge to reconsider final order within 10 days a
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Row #25 Parent wants judge to reconsider final order within 10 days and get parent agreement information but not get reconsider info
     Given I start the interview at "changing_child_custody.yml"
@@ -59,6 +61,7 @@ Scenario: Row #25 Parent wants judge to reconsider final order within 10 days an
     And I should see the phrase "Tell the court about your agreement"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Row #25b Parent wants judge to reconsider final order within 10 days and get parent agreement information but not get reconsider info
     Given I start the interview at "changing_child_custody.yml"
@@ -75,6 +78,7 @@ Scenario: Row #25b Parent wants judge to reconsider final order within 10 days a
     And I should see the phrase "Tell the court about your agreement"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Row #26 Parent wants judge to reconsider final order within 10 days and but not get parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -93,6 +97,7 @@ Scenario: Row #26 Parent wants judge to reconsider final order within 10 days an
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Row #26b Parent wants judge to reconsider final order within 10 days and but get parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -112,6 +117,7 @@ Scenario: Row #26b Parent wants judge to reconsider final order within 10 days a
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
  
  Scenario: Row #25 Parent wants judge to reconsider final order within 10 days, not get parent agreement information and not get reconsider info
     Given I start the interview at "changing_child_custody.yml"
@@ -125,6 +131,7 @@ Scenario: Row #26b Parent wants judge to reconsider final order within 10 days a
     And I take a screenshot
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Row #27b Parent wants judge to reconsider final order within 10 days, not get parent agreement information and not get reconsider info
     Given I start the interview at "changing_child_custody.yml"
@@ -139,6 +146,7 @@ Scenario: Row #27b Parent wants judge to reconsider final order within 10 days, 
     And I take a screenshot
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
 
 
     

@@ -18,6 +18,7 @@ Scenario: Row #32 Parent wants to appeal a final order within 15 days and get pa
     And I should see the phrase "Appeal the Trial Court’s decision with the Alaska Supreme Court"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
 
 Scenario: Rows #32 & 36 Parent wants to appeal a final order and ask judge to set it aside within 15 days and get parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -44,6 +45,7 @@ Scenario: Rows #32 & 36 Parent wants to appeal a final order and ask judge to se
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 
 Scenario: Rows #32 & 44 Parent wants to appeal a final order and ask judge to change it within 15 days and get parent agreement information
@@ -69,6 +71,7 @@ Scenario: Rows #32 & 44 Parent wants to appeal a final order and ask judge to ch
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Rows #33 & 37 Parent could appeal a final order but doesn't want to, but asks judge to set it aside within 15 days and get parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -93,7 +96,8 @@ Scenario: Rows #33 & 37 Parent could appeal a final order but doesn't want to, b
     And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"    
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"    
 
 
 Scenario: Row #34 Parent wants judge to set aside a final order within 15 days and get parent agreement information
@@ -117,6 +121,7 @@ Scenario: Row #34 Parent wants judge to set aside a final order within 15 days a
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Rows #35 & 48 and Parent doesn't want set aside a final order within 15 days but wants modify info and parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -140,7 +145,8 @@ Scenario: Rows #35 & 48 and Parent doesn't want set aside a final order within 1
     And I should see the phrase "Pay the $75 fee, file and serve your Motion to Modify"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"   
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"  
     
 @rows37and43
 Scenario: Rows #37 & 43  and Parent wants judge to set aside a final order modify it within 15 days and get parent agreement information
@@ -167,7 +173,8 @@ Scenario: Rows #37 & 43  and Parent wants judge to set aside a final order modif
     And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"    
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"    
     
 Scenario: Rows #38 & 46  and Parent wants judge to set aside a final order modify it within 15 days and get parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -194,6 +201,7 @@ Scenario: Rows #38 & 46  and Parent wants judge to set aside a final order modif
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 @row42
 Scenario: Row #42 Parent wants judge to change a final order within 15 days and get parent agreement information
@@ -216,6 +224,7 @@ Scenario: Row #42 Parent wants judge to change a final order within 15 days and 
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 ######   Doesn't want info on parent agreement
 
@@ -233,6 +242,7 @@ Scenario: Row #54 Parent wants to appeal a final order within 15 days and doesn'
     And I should see the phrase "Appeal the Trial Court’s decision with the Alaska Supreme Court"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
 
 Scenario: Row #55 Parent doesn't want appeal a final order within 15 days info or parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -247,6 +257,7 @@ Scenario: Row #55 Parent doesn't want appeal a final order within 15 days info o
     And I take a screenshot
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
 
 
 Scenario: Rows #54 & 61 Parent wants to appeal a final order and ask judge to set it aside within 15 days and no parent agreement information
@@ -266,6 +277,7 @@ Scenario: Rows #54 & 61 Parent wants to appeal a final order and ask judge to se
     And I should see the phrase "Appeal the Trial Court’s decision with the Alaska Supreme Court"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 
 Scenario: Rows #54 & 65 Parent wants to appeal a final order and ask judge to change it within 15 days and get parent agreement information
@@ -284,6 +296,7 @@ Scenario: Rows #54 & 65 Parent wants to appeal a final order and ask judge to ch
     And I should see the phrase "Appeal the Trial Court’s decision with the Alaska Supreme Court"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Rows #54, 56 & 58 Parent could appeal a final order but doesn't want to, but asks judge to set it aside within 15 days and get parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -306,7 +319,8 @@ Scenario: Rows #54, 56 & 58 Parent could appeal a final order but doesn't want t
     And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"    
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"    
 
 
 Scenario: Row #60 Parent only wants info to ask judge to set aside a final order within 15 days no parent agreement information
@@ -327,6 +341,7 @@ Scenario: Row #60 Parent only wants info to ask judge to set aside a final order
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Rows #57, 59 & 70 and Parent doesn't want set aside a final order within 15 days but wants modify info and parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -348,7 +363,8 @@ Scenario: Rows #57, 59 & 70 and Parent doesn't want set aside a final order with
     And I should see the phrase "Pay the $75 fee, file and serve your Motion to Modify"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"   
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"   
     
 @rows63and66
 Scenario: Rows #63 & 66  and Parent doesn't info about asking judge to set aside a final order  it within 15 days but does want modify info and no parent agreement information
@@ -370,7 +386,8 @@ Scenario: Rows #63 & 66  and Parent doesn't info about asking judge to set aside
     And I should see the phrase "Pay the $75 fee, file and serve your Motion to Modify"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"    
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"    
     
 Scenario: Rows #60 & 68  and Parent wants judge to set aside a final order or  modify it within 15 days and no parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -395,6 +412,7 @@ Scenario: Rows #60 & 68  and Parent wants judge to set aside a final order or  m
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"
     
 Scenario: Row #64 Parent wants judge to change a final order within 15 days and get no parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -412,7 +430,8 @@ Scenario: Row #64 Parent wants judge to change a final order within 15 days and 
     And I should see the phrase "Pay the $75 fee, file and serve your Motion to Modify"
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"    
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"    
     
 Scenario: Row #71 Parent wants judge to change a final order within 15 days and get no parent agreement information
     Given I start the interview at "changing_child_custody.yml"
@@ -426,7 +445,8 @@ Scenario: Row #71 Parent wants judge to change a final order within 15 days and 
       | modify_within_15_days | True |  |
     And I take a screenshot
     And I should see the phrase "Placeholder"
-    And I should see the phrase "Get more information or help"    
+    And I should see the phrase "Get more information or help"
+    And I download "changing_child_custody.pdf"    
     
     
     
