@@ -9,7 +9,6 @@ Scenario: Row #72 Parent wants judge to set aside a final order after 15 days an
       | middle_of_case | no |  | 
       | final_order_date | today - 16 |  | 
       | parents_agree | True |  |
-      | why_change['set aside clerical error'] | True |  |
       | set_aside | True |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -32,7 +31,6 @@ Scenario: Row #73 Parent does not want info for judge to set aside a final order
       | middle_of_case | no |  | 
       | final_order_date | today - 16 |  | 
       | parents_agree | True |  |
-      | why_change['set aside clerical error'] | True |  |
       | set_aside | False |  |
     And I take a screenshot
     And I should see the phrase "Find out if you and the other parent agree"  
@@ -50,9 +48,7 @@ Scenario: Rows #75 & 89 and Parent doesn't want set aside a final order after 15
       | final_order_period | True | |
       | guess_final_order_date | more than 15 days |  | 
       | parents_agree | True |  |
-      | why_change['set aside clerical error'] | True |  |
       | set_aside | False |  |
-      | why_change['modify other change'] | True  |  |
       | modify_after_15 | AK order |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -74,9 +70,7 @@ Scenario: Rows #74 & 89 and Parent wants judge to set aside a final order modify
       | middle_of_case | no |  |    
       | final_order_date | today - 22 |  | 
       | parents_agree | True |  |
-      | why_change['set aside mistake of fact'] | True |  |
       | set_aside | True |  |
-      | why_change['modify circumstances changed'] | True  |  |
       | modify_after_15 | AK order |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -103,9 +97,7 @@ Scenario: Rows #76 & 86  and Parent wants judge to set aside a final order modif
       | final_order_period | True | |
       | guess_final_order_date | more than 15 days |  | 
       | parents_agree | True |  |
-      | why_change['set aside new evidence'] | True |  |
       | set_aside | True |  |
-      | why_change['modify domestic violence'] | True  |  |
       | modify_after_15| AK order |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -131,7 +123,6 @@ Scenario: Row #81 Parent wants judge to change a final order after 15 days and g
       | middle_of_case | no |  |
       | final_order_date | today - 22 |  |
       | parents_agree | True |  |
-      | why_change['modify circumstances changed'] | True  |  |
       | modify_after_15 | foreign order |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -158,8 +149,6 @@ Scenario: Rows #78 & 84 Parent wants to set aside and modify an out of state fin
       | final_order_period | True | |   
       | guess_final_order_date | more than 15 days |  | 
       | parents_agree | True |  |
-      | why_change['set aside misconduct'] | True |  |
-      | why_change['modify parent to jail'] | True |  |
       | set_aside | True |  |      
       | modify_after_15 | foreign order |  |
     And I take a screenshot
@@ -189,8 +178,6 @@ Scenario: Rows #79 & 90 Parent wants no info on set aside and but modify an out 
       | final_order_period | True | | 
       | guess_final_order_date | more than 15 days|  | 
       | parents_agree | True |  |
-      | why_change['set aside misconduct'] | True |  |
-      | why_change['modify other change'] | True |  |
       | set_aside | False |  |      
       | modify_after_15 | foreign order |  |
     And I take a screenshot
@@ -217,8 +204,6 @@ Scenario: Row #82 Parent wants no info on modify or set aside of final order aft
       | middle_of_case | no |  |    
       | final_order_date | today - 16 |  | 
       | parents_agree | True |  |
-      | why_change['set aside misconduct'] | True |  |
-      | why_change['modify other change'] | True |  |
       | set_aside | False |  |      
       | modify_after_15 | none |  |
     And I take a screenshot
@@ -241,7 +226,6 @@ Scenario: Row #101 Parent only wants info to ask judge to set aside a final orde
       | middle_of_case | no |  | 
       | final_order_date | today - 16 |  | 
       | parents_agree | False |  |
-      | why_change['set aside misconduct'] | True |  |
       | set_aside | True |  |
     And I take a screenshot
     And I should see the phrase "Ask the court to Set Aside a Final Order and make a different decision"
@@ -262,9 +246,6 @@ Scenario: Rows #99 and 102 Parent doesn't want set aside a final order after 15 
       | final_order_period | True | |
       | guess_final_order_date | more than 15 days |  | 
       | parents_agree | False |  |
-      | why_change['set aside clerical error'] | True |  |
-      | why_change['set aside mistake of fact'] | True |  |
-      | why_change['modify other change'] | True  |  |
       | set_aside | False |  |
       | modify_after_15 |foreign order |  |
     And I take a screenshot
@@ -287,8 +268,6 @@ Scenario: Rows #98 Parent wants info about modifyine a final order after 15 days
       | middle_of_case | no |  |    
       | final_order_date | today - 20 |  | 
       | parents_agree | False |  |
-      | why_change['modify parent to jail'] | True  |  |
-      | why_change['modify domestic violence'] | True  |  |
       | modify_after_15 | AK order |  |
     And I take a screenshot
     And I should see the phrase "Ask the court to change your Alaska custody and Parenting Plan or Child Support order"
@@ -307,9 +286,7 @@ Scenario: Rows #101 & 98  and Parent wants judge to set aside a final order or  
       | middle_of_case | no |  |    
       | final_order_date | today - 45 |  | 
       | parents_agree | False |  |
-      | why_change['set aside new evidence'] | True |  |
       | set_aside | True |  |
-      | why_change['modify domestic violence'] | True  |  |
       | modify_after_15 | AK order |  |
     And I take a screenshot
     And I should see the phrase "Decide the steps you want to take"
@@ -333,13 +310,8 @@ Scenario: Row #100 Parent does not want info about modifying or order after 15 d
       | final_order_period | True | |
       | guess_final_order_date | more than 15 days |  |
       | parents_agree | False |  |
-      | why_change['modify circumstances changed'] | True  |  |
       | modify_after_15 | none |  |
     And I take a screenshot
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
-    And I download "changing_child_custody.pdf"    
-    
-    
-    
- 
+    And I download "changing_child_custody.pdf"

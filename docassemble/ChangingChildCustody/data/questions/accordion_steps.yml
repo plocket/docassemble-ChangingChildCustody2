@@ -16,6 +16,20 @@ buttons:
   - Start over: restart
 ---
 code: |
+  # Temporarily disable why_change
+  why_change = {
+     'set aside clerical error': True,
+     'set aside mistake of fact': True,
+     'set aside new evidence': True,
+     'set aside misconduct': True,
+     'modify circumstances changed': True,
+     'modify parent to jail': True,
+     'modify domestic violence': True,
+     'modify other change': True,
+     'appeal legal mistake': True,
+     'set aside new evidence': True,
+  }
+
   step_list = []
   
   if user_need == 'none':
