@@ -219,11 +219,11 @@ code: |
         if final_order_date_within_10_days \
           and motion_for_reconsideration:
             step_list.append((pick_a_step_step, "pick_a_step_idx"))
-     
+            
+    # deleted from line 225 after if "and why_change.any_true() \"
     if middle_of_case == 'no' \
       and parents_agree:
         if not final_order_date_within_10_days \
-          and why_change.any_true() \
           and ((defined('appeal') and appeal) \
             or (defined('set_aside') and set_aside) \
             or (defined('modify_within_15_days') and modify_within_15_days) \
@@ -282,10 +282,14 @@ code: |
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
       if why_change['appeal legal mistake'] and appeal:
         step_list.append((appeal_step, "appeal_idx"))
-      if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct') and set_aside:
+        
+      # deleted from just after if below, "why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct') and" 
+      if set_aside:
         step_list.append((set_aside_step, "set_aside_idx"))
         step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
-      if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
+      
+      # deleted from just after if below, "why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and"
+      if modify_within_15_days:
         step_list.append((modify_step, "modify_idx"))
         step_list.append((modify_forms_step, "modify_forms_idx"))
       if (defined('set_aside') and set_aside) or (defined('modify_within_15_days') and modify_within_15_days):
@@ -294,7 +298,6 @@ code: |
         step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
       if (defined('set_aside') and set_aside) or (defined('modify_within_15_days') and modify_within_15_days):
         step_list.append((file_reply_step, "file_reply_idx"))
- 
           
 
     # Rows 71 - 91
@@ -304,12 +307,13 @@ code: |
         if parents_agree:
           step_list.append((parents_agree_step, "parents_agree_idx"))
           step_list.append((tell_the_court_step, "tell_the_court_idx"))
-
-        if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
+    
+    # deleted from just after if below, "why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and 
+        if set_aside:
           step_list.append((set_aside_step, "set_aside_idx"))          
           step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
 
-        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change'):
+        # if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change'):
           if modify_after_15 == 'foreign order':
             step_list.append((foreign_order_step, "foreign_order_idx"))
             step_list.append((ak_jurisdiction_step, "ak_jurisdiction_idx"))
