@@ -314,13 +314,13 @@ code: |
           step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
 
         # if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change'):
-          if modify_after_15 == 'foreign order':
-            step_list.append((foreign_order_step, "foreign_order_idx"))
-            step_list.append((ak_jurisdiction_step, "ak_jurisdiction_idx"))
-            step_list.append((register_order_step, "register_order_idx"))
-          if modify_after_15 in('AK order','foreign order'):          
-            step_list.append((modify_step, "modify_idx"))
-            step_list.append((modify_forms_step, "modify_forms_idx"))
+        if modify_after_15 == 'foreign order':
+          step_list.append((foreign_order_step, "foreign_order_idx"))
+          step_list.append((ak_jurisdiction_step, "ak_jurisdiction_idx"))
+          step_list.append((register_order_step, "register_order_idx"))
+        if modify_after_15 in('AK order','foreign order'):          
+          step_list.append((modify_step, "modify_idx"))
+          step_list.append((modify_forms_step, "modify_forms_idx"))
 
         if (defined('set_aside') and set_aside) or (defined('modify_after_15') and modify_after_15 in('AK order','foreign order')):
           step_list.append((file_and_serve_step, "file_and_serve_idx"))
