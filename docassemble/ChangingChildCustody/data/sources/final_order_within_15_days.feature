@@ -312,7 +312,7 @@ Scenario: Row #56 date entered Parent wants to appeal a final order and ask judg
       | var | value | trigger |
       | user_need | file |  |    
       | middle_of_case | no |  |
-      | final_order_date | today - 12 |   
+      | final_order_date | today - 12 |  |
       | parents_agree | False |  |
       | appeal | True |  |
       | set_aside | True |  |
