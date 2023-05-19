@@ -236,11 +236,12 @@ code: |
       and final_order_date_within_10_days is False:
         if defined('appeal') and appeal:
           if defined('set_aside') and set_aside \
-            or defined('modify') and modify:
-              step_list.append((pick_a_step_step, "pick_a_step_idx"))
+            or ((defined('modify_within_15_days') and modify_within_15_days) \
+              or (defined('modify_after_15') and modify_after_15)):
+                step_list.append((pick_a_step_step, "pick_a_step_idx"))
         elif defined('set_aside') and set_aside \
           and ((defined('modify_within_15_days') and modify_within_15_days) \
-              or (defined('modify_after_15') and modify_after_15)):
+            or (defined('modify_after_15') and modify_after_15)):
               step_list.append((pick_a_step_step, "pick_a_step_idx"))
       #  and len(why_change.true_values()) >= 2:
       #  step_list.append((pick_a_step_step, "pick_a_step_idx"))

@@ -433,7 +433,7 @@ Scenario: Row #61 date entered Parent wants judge to change a final order within
     And I should see the phrase "You can file a reply if the other parent responds"
     And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
-    And I download "changing_child_custody.pdf    
+    And I download "changing_child_custody.pdf"    
 
 @row63
 Scenario: Row #63 Parent doesn't want appeal a final order within 15 days info or parent agreement information
