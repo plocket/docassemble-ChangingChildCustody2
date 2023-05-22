@@ -80,7 +80,7 @@ code: |
       step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
     
     # Rows 10 & 11
-    if type_of_response['set aside'] and respond_to_set_aside in('some','none'):
+    if type_of_response['appeal'] and respond_to_appeal in('some','none'):
       step_list.append((appeal_response_step, "appeal_response_idx"))
       step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
   
@@ -1127,7 +1127,7 @@ content: |
 ---
 template: appeal_response_step
 subject: |
-  Step ${ appeal_agree_response_idx }:
+  Step ${ appeal_response_idx }:
   % if respond_to_appeal == 'agree':
   Let the other parent know you agree with the Appeal and decide if you want to respond in writing
   % else:

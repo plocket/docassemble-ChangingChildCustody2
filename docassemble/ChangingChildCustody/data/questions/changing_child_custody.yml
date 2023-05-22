@@ -509,8 +509,8 @@ fields:
     input type: radio
     choices:
       - "How to respond if I agree with all proposed changes.": agree
-      - "How to respond if I agree with some of the proposed changes.": agree to some
-      - "How to respond if I agree with none of the proposed changes.": agree to none
+      - "How to respond if I agree with some of the proposed changes.": some
+      - "How to respond if I agree with none of the proposed changes.": none
 ---
 id: Motion for Reconsideration
 question: |
@@ -529,8 +529,8 @@ fields:
     input type: radio
     choices:
       - "How to respond if I agree with all proposed changes.": agree
-      - "How to respond if I agree with some of the proposed changes.": agree to some
-      - "How to respond if I agree with none of the proposed changes.": agree to none
+      - "How to respond if I agree with some of the proposed changes.": some
+      - "How to respond if I agree with none of the proposed changes.": none
 ---
 id: Add response to an appeal to your Action Plan
 question: |
@@ -542,8 +542,8 @@ fields:
     input type: radio
     choices:
       - "How to respond if I agree with all proposed changes.": agree
-      - "How to respond if I agree with some of the proposed changes.": agree to some
-      - "How to respond if I agree with none of the proposed changes.": agree to none
+      - "How to respond if I agree with some of the proposed changes.": some
+      - "How to respond if I agree with none of the proposed changes.": none
 ---
 #  id: Catch all screen for these variables
 #  question: |
