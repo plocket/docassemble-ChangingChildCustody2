@@ -2,16 +2,32 @@ id: final screen
 decoration: pen-to-square
 event: confirmation_and_download
 question: |
+  % if len(step_list) < 2:
+  Get more information or help
+  % else:
   # <i class="fa-thin fa-list"></i>Your Personal Action Plan is ready!
+  % endif
 subquestion: |
   
+  % if len(step_list) < 2:
+  For help with forms or understanding the process, call the [Family Law Self-Help Center](https://courts.alaska.gov/shc/family/selfhelp.htm)
+  (907) 264-0851 or
+  (866) 279-0851 from an Alaska-based phone outside of Anchorage.
+  
+  Many lawyers offer free or flat fee consultations without having to hire them for the whole case. [Find a Lawyer](https://courts.alaska.gov/shc/shclawyer.htm).
+  
+  Depending on your income, you may qualify for [Alaska Free Legal Answers](https://legalnav.org/resource/alaska-free-legal-answers).
+  
+  Depending on your income and circumstances, you may qualify for a free lawyer from [Alaska Legal Services](alsc-law.org/apply-for-services).
+  % else:
   Your Personal Action Plan for changing your custody or parenting plan in ${ len(step_list) } steps.
  
   % for iteration_index, step_tuple in enumerate( step_list ):
   ${ collapse_template(step_tuple[0], closed_icon="plus", open_icon="minus") }
   % endfor
   
-   ${ al_user_bundle.download_list_html() }
+   ${ al_user_bundle.download_list_html(view_label="See PDF") }
+   % endif
 buttons:
   - Start over: restart
 ---
@@ -43,26 +59,26 @@ code: |
     if type_of_response['custody'] and respond_to_custody == 'agree':
       step_list.append((respond_custody_agree_step, "respond_custody_agree_idx"))
       step_list.append((respond_custody_step, "respond_custody_idx"))
-      step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
+      # step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
       step_list.append((custody_contact_parent_step, "custody_contact_parent_idx"))    
       step_list.append((file_agreement_step, "file_agreement_idx"))
   
     # Rows 3 & 4
     if type_of_response['custody'] and respond_to_custody in('some','none'):
       step_list.append((respond_custody_step, "respond_custody_idx"))
-      step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
+      # step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
   
     # Row 5
     if type_of_response['reconsider'] and respond_to_reconsider:
       step_list.append((response_to_reconsider_step, "response_to_reconsider_idx"))
       step_list.append((file_reconsider_response_step, "file_reconsider_response_idx"))
-      step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
+      # step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
       
     # Row 6
     if type_of_response['set aside'] and respond_to_set_aside == 'agree':
       step_list.append((respond_set_aside_agree_step, "respond_set_aside_agree_idx"))
       step_list.append((respond_set_aside_step, "respond_set_aside_idx"))
-      step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
+      # step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
       step_list.append((set_aside_contact_parent_step, "set_aside_contact_parent_idx"))   
       step_list.append((file_agreement_step, "file_agreement_idx"))      
       step_list.append((expect_after_set_aside_response_step, "expect_after_set_aside_response_idx"))
@@ -70,8 +86,11 @@ code: |
     # Rows 7 & 8
     if type_of_response['set aside'] and respond_to_set_aside in('some','none'):
       step_list.append((respond_set_aside_step, "respond_set_aside_idx"))
-      step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
+      # step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
       step_list.append((expect_after_set_aside_response_step, "expect_after_set_aside_response_idx"))
+    
+    if type_of_response.any_true('custody', 'set aside'):
+      step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
     
     # Row 9
     if type_of_response['appeal'] and respond_to_appeal == 'agree':
@@ -350,7 +369,7 @@ code: |
     #  step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
     # step_list.append((file_reply_step, "file_reply_idx"))
     #  step_list.append((file_reconsider_response_step, "file_reconsider_response_idx"))
-    step_list.append((placeholder_step, "placeholder_idx"))
+    # step_list.append((placeholder_step, "placeholder_idx"))
     
     
   step_list.append((get_help, "get_help_idx"))
@@ -363,21 +382,28 @@ template: wrong_tf
 subject: |
   Step ${ wrong_tf_idx }: Try another Guided Assistant
 content: | 
-  * [Asking for Child Support](https://docassemble.akcourts.gov/start/AskingForChildSupport)
-  * [Starting A Case to End Your Marriage](https://LegalNav.org/guided_assistant/starting-a-case-to-end-your-marriage/?location=alaska)
-  * [Responding if Your Spouse Starts a Case to End Your Marriage](https://LegalNav.org/guided_assistant/responding-if-your-spouse-wants-to-or-starts-a-case-to-end-your-marriage/?location=alaska)
-  * [Starting a Custody Case](https://LegalNav.org/guided_assistant/starting-a-custody-case/?location=alaska)
-  * [Responding if Your Spouse Starts a Custody Case](https://LegalNav.org/guided_assistant/responding-if-your-spouse-wants-to-or-starts-a-custody-case/?location=Alaska)
-  * [Enforcing a Custody Order](https://LegalNav.org/guided_assistant/enforcing-a-custody-order/?location=alaska)
-  * [Changing a Custody Order](https://LegalNav.org/guided_assistant/changing-a-custody-order/?location=alaska)
+  * [Ask the Court for a Child Custody or Parenting Plan Order](https://Docassemble.AKCourts.gov/start/AskingForChildCustody)
+  * [Respond in Your Child Custody or Parenting Plan Case](https://Docassemble.AKCourts.gov/start/RespondToCustody)
+  * [Enforcing Your Child Custody or Parenting Plan Order in Alaska](https://Docassemble.AKCourts.gov/start/EnforcingChildCustody)
 --- 
 template: wrong_tf2
 subject: | 
   Step ${ wrong_tf2_idx }: Look at the court's self-help web pages
 content: | 
-  * [Forms and Information about Child Support](https://courts.alaska.gov/shc/family/support.htm)
-  * [Asking for an Order / filing a motion](https://courts.alaska.gov/shc/family/motions.htm)
-  * [Family Law Home](https://courts.alaska.gov/shc/family/index.htm)
+  
+  <ul>
+    <li><a href="https://courts.alaska.gov/shc/family">Custody When Both Parents Agree</a></li>
+    <li><a href="https://courts.alaska.gov/shc/family">Resources to Help You and the Other Parent Reach an Agreement</a></li>
+    <li><a href="https://courts.alaska.gov/shc/family">Asking for an Order in a Custody Case When the Issue Can't Wait for the Court's Final Decision (Filing a Motion)</a></li>
+    <li><a href="https://courts.alaska.gov/shc/family">Creating a Parenting Plan</a></li>
+    <li><a href="https://courts.alaska.gov/shc/family">Preparing for Custody Hearings or Trial</a></li>
+  </ul>
+  <ul>
+    <li><a href="https://courts.alaska.gov/shc/family/support.htm">Forms and Information about Child Support</a></li>
+    <li><a href="https://courts.alaska.gov/shc/family/motions.htm">Asking for an Order / filing a motion</a></li)
+    <li><a href="https://courts.alaska.gov/shc/family">"Family Law Home</a></li>
+  </ul>
+
 ---
 template: get_help
 subject: |
@@ -950,7 +976,7 @@ content: |
   % if respond_to_custody == 'agree':
   If you agree with everything the other parent wrote in the <strong>Motion to Modify</strong>, you can state that in your response.
   % else:
-  If you do not agree with what the other parent asked for in the Motion to Modify, you can respond in writing. State what you do and do not agree with. Remember, you must respond within 10 days from the day it was hand delivered to you or 13 days from the day it was mailed (you can see this date on the postmark of the envelope).
+  If you do not agree with what the other parent asked for in their **Motion to Modify**, you can respond in writing. State what you do and do not agree with. Remember, you must respond within 10 days from the day it was hand delivered to you or 13 days from the day it was mailed (you can see this date on the postmark of the envelope).
   % endif
   Fill out:
   <div class="step-subheading">Forms</div>
@@ -989,13 +1015,13 @@ subject: |
   % endif
 content: |
   % if respond_to_set_aside == 'agree':
-  If you agree with everything the other parent wrote in the Motion to Set Aside Judgment and Order, you can state that in your response Fill out:
+  If you agree with everything the other parent wrote in their **Motion to Set Aside Judgment and Order**, you can state that in your response Fill out:
   % else:
-  A Motion to Set Aside Judgment or Order asks the trial court to set aside or "undo" a judgment or final order in a case. If granted, the case will move ahead as if the judgment had not been made. If you do not agree with what the other parent asked to set aside, you can fill out and file a response. Be sure to state what you do and do not agree with. Remember, you must respond within 10 days from the day it was hand delivered to you or 13 days from the day it was mailed (you can see this date on the postmark of the envelope). Fill out:
+  A **Motion to Set Aside Judgment or Order** asks the trial court to set aside or "undo" a judgment or final order in a case. If granted, the case will move ahead as if the judgment had not been made. If you do not agree with what the other parent asked to set aside, you can fill out and file a response. Be sure to state what you do and do not agree with. Remember, you must respond within 10 days from the day it was hand delivered to you or 13 days from the day it was mailed (you can see this date on the postmark of the envelope). Fill out:
   % endif
   <ul>
-  <li><a href="https://public.courts.alaska.gov/web/forms/docs/civ-810.pdf">CIV-810</a> Response to Motion</li>
-  <li><a href="https://public.courts.alaska.gov/web/forms/docs/civ-820.pdf">CIV-820</a> Order on Motion</li>
+  <li><a href="https://public.courts.alaska.gov/web/forms/docs/civ-810.pdf">CIV-810</a> <strong>Response to Motion</strong></li>
+  <li><a href="https://public.courts.alaska.gov/web/forms/docs/civ-820.pdf">CIV-820</a> <strong>Order on Motion</strong></li>
   </ul>
 
 ---
@@ -1201,7 +1227,6 @@ content: |
   <li>You can write on the Notice that you agree with the other parent.</li>
   <li>The other person may want to file a motion to dismiss to stop the appeal from continuing. </li>
   </ul>
----
 ---
 template: placeholder_step
 subject: |
