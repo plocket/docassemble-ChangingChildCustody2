@@ -16,6 +16,20 @@ buttons:
   - Start over: restart
 ---
 code: |
+  # Temporarily disable why_change
+  why_change = {
+     'set aside clerical error': True,
+     'set aside mistake of fact': True,
+     'set aside new evidence': True,
+     'set aside misconduct': True,
+     'modify circumstances changed': True,
+     'modify parent to jail': True,
+     'modify domestic violence': True,
+     'modify other change': True,
+     'appeal legal mistake': True,
+     'set aside new evidence': True,
+  }
+
   step_list = []
   
   if user_need == 'none':
@@ -66,7 +80,7 @@ code: |
       step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
     
     # Rows 10 & 11
-    if type_of_response['set aside'] and respond_to_set_aside in('some','none'):
+    if type_of_response['appeal'] and respond_to_appeal in('some','none'):
       step_list.append((appeal_response_step, "appeal_response_idx"))
       step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
   
@@ -205,11 +219,11 @@ code: |
         if final_order_date_within_10_days \
           and motion_for_reconsideration:
             step_list.append((pick_a_step_step, "pick_a_step_idx"))
-     
+            
+    # deleted from line 225 after if "and why_change.any_true() \"
     if middle_of_case == 'no' \
       and parents_agree:
         if not final_order_date_within_10_days \
-          and why_change.any_true() \
           and ((defined('appeal') and appeal) \
             or (defined('set_aside') and set_aside) \
             or (defined('modify_within_15_days') and modify_within_15_days) \
@@ -222,11 +236,12 @@ code: |
       and final_order_date_within_10_days is False:
         if defined('appeal') and appeal:
           if defined('set_aside') and set_aside \
-            or defined('modify') and modify:
-              step_list.append((pick_a_step_step, "pick_a_step_idx"))
+            or ((defined('modify_within_15_days') and modify_within_15_days) \
+              or (defined('modify_after_15') and modify_after_15)):
+                step_list.append((pick_a_step_step, "pick_a_step_idx"))
         elif defined('set_aside') and set_aside \
           and ((defined('modify_within_15_days') and modify_within_15_days) \
-              or (defined('modify_after_15') and modify_after_15)):
+            or (defined('modify_after_15') and modify_after_15)):
               step_list.append((pick_a_step_step, "pick_a_step_idx"))
       #  and len(why_change.true_values()) >= 2:
       #  step_list.append((pick_a_step_step, "pick_a_step_idx"))
@@ -268,10 +283,14 @@ code: |
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
       if why_change['appeal legal mistake'] and appeal:
         step_list.append((appeal_step, "appeal_idx"))
-      if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct') and set_aside:
+        
+      # deleted from just after if below, "why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct') and" 
+      if set_aside:
         step_list.append((set_aside_step, "set_aside_idx"))
         step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
-      if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_within_15_days:
+      
+      # deleted from just after if below, "why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and"
+      if modify_within_15_days:
         step_list.append((modify_step, "modify_idx"))
         step_list.append((modify_forms_step, "modify_forms_idx"))
       if (defined('set_aside') and set_aside) or (defined('modify_within_15_days') and modify_within_15_days):
@@ -280,7 +299,6 @@ code: |
         step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
       if (defined('set_aside') and set_aside) or (defined('modify_within_15_days') and modify_within_15_days):
         step_list.append((file_reply_step, "file_reply_idx"))
- 
           
 
     # Rows 71 - 91
@@ -290,19 +308,20 @@ code: |
         if parents_agree:
           step_list.append((parents_agree_step, "parents_agree_idx"))
           step_list.append((tell_the_court_step, "tell_the_court_idx"))
-
-        if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
+    
+    # deleted from just after if below, "why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and 
+        if set_aside:
           step_list.append((set_aside_step, "set_aside_idx"))          
           step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
 
-        if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change'):
-          if modify_after_15 == 'foreign order':
-            step_list.append((foreign_order_step, "foreign_order_idx"))
-            step_list.append((ak_jurisdiction_step, "ak_jurisdiction_idx"))
-            step_list.append((register_order_step, "register_order_idx"))
-          if modify_after_15 in('AK order','foreign order'):          
-            step_list.append((modify_step, "modify_idx"))
-            step_list.append((modify_forms_step, "modify_forms_idx"))
+        # if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change'):
+        if modify_after_15 == 'foreign order':
+          step_list.append((foreign_order_step, "foreign_order_idx"))
+          step_list.append((ak_jurisdiction_step, "ak_jurisdiction_idx"))
+          step_list.append((register_order_step, "register_order_idx"))
+        if modify_after_15 in('AK order','foreign order'):          
+          step_list.append((modify_step, "modify_idx"))
+          step_list.append((modify_forms_step, "modify_forms_idx"))
 
         if (defined('set_aside') and set_aside) or (defined('modify_after_15') and modify_after_15 in('AK order','foreign order')):
           step_list.append((file_and_serve_step, "file_and_serve_idx"))
@@ -1108,7 +1127,7 @@ content: |
 ---
 template: appeal_response_step
 subject: |
-  Step ${ appeal_agree_response_idx }:
+  Step ${ appeal_response_idx }:
   % if respond_to_appeal == 'agree':
   Let the other parent know you agree with the Appeal and decide if you want to respond in writing
   % else:
