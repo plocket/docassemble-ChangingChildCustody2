@@ -1,6 +1,7 @@
 include:
   - docassemble.AssemblyLine:assembly_line.yml
-  - docassemble.AKA2JBranding:custom_organization.yml
+  - docassemble.AKA2JBranding:custom_organization.yml  
+  - docassemble.AKA2JBranding:aka2j_templates.yml
   - accordion_steps.yml
 ---
 metadata:
@@ -141,8 +142,8 @@ fields:
   - "What do you want to do?": user_need
     input type: radio
     choices:
-      - "I want to change a Custody Parenting Plan.": file
-      - "Respond to a motion to change a custody, parenting plan or child support order that the other parent filed.": respond
+      - "I want to change a Custody Parenting Plan.": change custody order
+      - "Respond to a motion to change a custody, parenting plan or child support order that the other parent filed.": respond to custody
       - "This is not what I am looking for. ": none
 ---
 id: Are you in the middle of your case now
@@ -715,7 +716,7 @@ progress: 100
 # ALDocument objects specify the metadata for each template
 objects:
 #  - changing_child_custody_Post_interview_instructions: ALDocument.using(title="Instructions", filename="changing_child_custody_next_steps.docx", enabled=True, has_addendum=False)
-  - changing_child_custody_attachment: ALDocument.using(title="Changing your custody or Parenting Plan order", filename="changing_child_custody", enabled=True, has_addendum=False, )
+  - changing_child_custody_attachment: ALDocument.using(title="Changing your custody or Parenting Plan order", filename="changing_child_custody", enabled=True, has_addendum=False, suffix_to_append="")
 ---
 # Bundles group the ALDocuments into separate downloads, such as for court and for the user
 objects:
@@ -738,4 +739,4 @@ attachment:
   filename: changing_child_custody
   variable name: changing_child_custody_attachment[i]
   skip undefined: True
-  docx template file: changing_child_custody_action_plan.docx
+  docx template file: changing_child_custody_action_plan-2023-05-24-review-w-js.docx

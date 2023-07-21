@@ -5,7 +5,7 @@ Scenario: Row #72 Parent wants judge to set aside a final order after 15 days an
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  | 
       | final_order_date | today - 16 |  | 
       | parents_agree | True |  |
@@ -20,7 +20,7 @@ Scenario: Row #72 Parent wants judge to set aside a final order after 15 days an
     And I should see the phrase "File and serve your motion"
     And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"    
     And I download "changing_child_custody.pdf"
     
@@ -28,7 +28,7 @@ Scenario: Row #73 Parent does not want info for judge to set aside a final order
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  | 
       | final_order_date | today - 16 |  | 
       | parents_agree | True |  |
@@ -45,7 +45,7 @@ Scenario: Row #73 Parent does not want info for judge to set aside a final order
     And I should see the phrase "Fill out your Motion to Modify forms"
     And I should see the phrase "File and serve your motion"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
     
@@ -53,7 +53,7 @@ Scenario: Rows #75 & 89 and Parent doesn't want set aside a final order after 15
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  | 
       | final_order_period | True | |
       | guess_final_order_date | more than 15 days |  | 
@@ -68,7 +68,7 @@ Scenario: Rows #75 & 89 and Parent doesn't want set aside a final order after 15
     And I should see the phrase "Fill out your Motion to Modify forms"
     And I should see the phrase "Pay the $75 fee, file and serve your Motion to Modify"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"   
     
@@ -76,7 +76,7 @@ Scenario: Rows #74 & 89 and Parent wants judge to set aside a final order modify
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  |    
       | final_order_date | today - 22 |  | 
       | parents_agree | True |  |
@@ -102,7 +102,7 @@ Scenario: Rows #76 & 86  and Parent wants judge to set aside a final order modif
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  |
       | final_order_period | True | |
       | guess_final_order_date | more than 15 days |  | 
@@ -120,7 +120,7 @@ Scenario: Rows #76 & 86  and Parent wants judge to set aside a final order modif
     And I should see the phrase "File and serve your motion"
     And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
     
@@ -129,7 +129,7 @@ Scenario: Row #81 Parent wants judge to change a final order after 15 days and g
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  |
       | final_order_date | today - 22 |  |
       | parents_agree | True |  |
@@ -146,7 +146,7 @@ Scenario: Row #81 Parent wants judge to change a final order after 15 days and g
     And I should see the phrase "Fill out your Motion to Modify forms"
     And I should see the phrase "File and serve your motion"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
 
@@ -155,7 +155,7 @@ Scenario: Rows #78 & 84 Parent wants to set aside and modify an out of state fin
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  | 
       | final_order_period | True | |   
       | guess_final_order_date | more than 15 days |  | 
@@ -176,7 +176,7 @@ Scenario: Rows #78 & 84 Parent wants to set aside and modify an out of state fin
     And I should see the phrase "File and serve your motion"
     And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
     
@@ -184,7 +184,7 @@ Scenario: Rows #79 & 90 Parent wants no info on set aside and but modify an out 
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  |   
       | final_order_period | True | | 
       | guess_final_order_date | more than 15 days|  | 
@@ -202,7 +202,7 @@ Scenario: Rows #79 & 90 Parent wants no info on set aside and but modify an out 
     And I should see the phrase "Fill out your Motion to Modify forms"
     And I should see the phrase "File and serve your motion"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"  
     
@@ -211,7 +211,7 @@ Scenario: Row #82 Parent wants no info on modify or set aside of final order aft
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  |    
       | final_order_date | today - 16 |  | 
       | parents_agree | True |  |
@@ -220,7 +220,7 @@ Scenario: Row #82 Parent wants no info on modify or set aside of final order aft
     And I take a screenshot
     And I should see the phrase "Find out if you and the other parent agree"  
     And I should see the phrase "Tell the court about your agreement"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"  
     
@@ -233,7 +233,7 @@ Scenario: Row #101 Parent only wants info to ask judge to set aside a final orde
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  | 
       | final_order_date | today - 16 |  | 
       | parents_agree | False |  |
@@ -245,7 +245,7 @@ Scenario: Row #101 Parent only wants info to ask judge to set aside a final orde
     And I should see the phrase "File and serve your motion"
     And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
     
@@ -253,7 +253,7 @@ Scenario: Rows #99 and 102 Parent doesn't want set aside a final order after 15 
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  | 
       | final_order_period | True | |
       | guess_final_order_date | more than 15 days |  | 
@@ -268,7 +268,7 @@ Scenario: Rows #99 and 102 Parent doesn't want set aside a final order after 15 
     And I should see the phrase "Fill out your Motion to Modify forms"
     And I should see the phrase "File and serve your motion"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"   
     
@@ -277,7 +277,7 @@ Scenario: Rows #98 Parent wants info about modifying a final order after 15 days
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  |    
       | final_order_date | today - 20 |  | 
       | parents_agree | False |  |
@@ -288,7 +288,7 @@ Scenario: Rows #98 Parent wants info about modifying a final order after 15 days
     And I should see the phrase "Fill out your Motion to Modify forms"
     And I should see the phrase "Pay the $75 fee, file and serve your Motion to Modify"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"    
     
@@ -296,7 +296,7 @@ Scenario: Rows #101 & 98  and Parent wants judge to set aside a final order or  
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  |    
       | final_order_date | today - 45 |  | 
       | parents_agree | False |  |
@@ -311,7 +311,7 @@ Scenario: Rows #101 & 98  and Parent wants judge to set aside a final order or  
     And I should see the phrase "File and serve your motion"
     And I should see the phrase "What to expect after you file your Motion to Set Aside Judgment or Order"
     And I should see the phrase "You can file a reply if the other parent responds"
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
     
@@ -320,7 +320,7 @@ Scenario: Row #100 Parent does not want info about set aside, modifying order af
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | file |  |    
+      | user_need | change custody order |  |    
       | middle_of_case | no |  |
       | final_order_period | True | |
       | guess_final_order_date | more than 15 days |  |
@@ -328,6 +328,6 @@ Scenario: Row #100 Parent does not want info about set aside, modifying order af
       | set_aside | False |  |
       | modify_after_15 | none |  |
     And I take a screenshot
-    And I should see the phrase "Placeholder"
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"

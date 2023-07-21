@@ -26,7 +26,7 @@ subquestion: |
   ${ collapse_template(step_tuple[0], closed_icon="plus", open_icon="minus") }
   % endfor
   
-   ${ al_user_bundle.download_list_html(view_label="See PDF") }
+   ${ download_buttons_html(al_user_bundle) }
    % endif
 buttons:
   - Start over: restart
@@ -47,13 +47,22 @@ code: |
   }
 
   step_list = []
+  images_list = []
+  distribution_certificate_list = []
+  other_party_in_case  = 'the other parent'
+  # certificate_of_service_image = ''
+  distribution_certificate_list.append({'image': distrib_cert_child_support_image, 'text': "Certificate of Distribution at the bottom of a child support order."})
+  file_motion_to_set_aside = ''
+  file_motion_to_enforce = ''
+  # expect_after_motion is in what to expect step for filing motion for interim order w complaint, or answer/response, cannot use variable in docx template, must insert condition in what to expect step.
+  expect_after_motion = ''
   
   if user_need == 'none':
     step_list.append((wrong_tf, "wrong_tf_idx"))
     step_list.append((wrong_tf2, "wrong_tf2_idx"))
  
   
-  elif user_need == 'respond':
+  elif user_need == 'respond to custody':
   
     # Row 2
     if type_of_response['custody'] and respond_to_custody == 'agree':
@@ -116,6 +125,13 @@ code: |
       and motion_decision:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        step_list.append((learn_reconsider_step, "learn_reconsider_idx"))
+        step_list.append((fill_reconsider_step, "fill_reconsider_idx"))
+        images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of Motion to Reconsider and Motion to Set Aside."})
+        step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        step_list.append((file_step, "file_idx"))
+        step_list.append((serve_step, "serve_idx"))
+        step_list.append((expect_reconsider_step, "expect_reconsider_idx")) 
         step_list.append((reconsideration_step, "reconsideration_idx")) 
         step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
         step_list.append((file_and_serve_step, "file_and_serve_idx"))
@@ -158,6 +174,13 @@ code: |
       and interim_order_date_within_10_days \
       and not parents_agree \
       and motion_decision:
+        step_list.append((learn_reconsider_step, "learn_reconsider_idx"))
+        step_list.append((fill_reconsider_step, "fill_reconsider_idx"))
+        images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of Motion to Reconsider and Motion to Set Aside."})
+        step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        step_list.append((file_step, "file_idx"))
+        step_list.append((serve_step, "serve_idx"))
+        step_list.append((expect_reconsider_step, "expect_reconsider_idx")) 
         step_list.append((reconsideration_step, "reconsideration_idx")) 
         step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
         step_list.append((file_and_serve_step, "file_and_serve_idx"))
@@ -196,6 +219,9 @@ code: |
       and motion_decision:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
+        step_list.append((learn_reconsider_step, "learn_reconsider_idx"))
+        step_list.append((fill_reconsider_step, "fill_reconsider_idx"))
+        step_list.append((expect_reconsider_step, "expect_reconsider_idx")) 
         step_list.append((reconsideration_step, "reconsideration_idx")) 
         step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
         step_list.append((file_and_serve_step, "file_and_serve_idx"))
@@ -289,10 +315,7 @@ code: |
           step_list.append((file_and_serve_step, "file_and_serve_idx"))
           step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
           step_list.append((file_reply_step, "file_reply_idx"))
-
-          
-    
-        
+       
 
     #  Rows 32  - 70 
     if middle_of_case == 'no' \
@@ -300,11 +323,18 @@ code: |
       if parents_agree:
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
-      if why_change['appeal legal mistake'] and appeal:
+       # deleted from just after if below, "why_change['appeal legal mistake'] and"
+      if appeal:
         step_list.append((appeal_step, "appeal_idx"))
         
       # deleted from just after if below, "why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct') and" 
       if set_aside:
+        step_list.append((learn_set_aside_step, "learn_set_aside_idx"))
+        step_list.append((fill_set_aside_step, "fill_set_aside_idx"))
+        images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of Motion to Reconsider and Motion to Set Aside."})
+        step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        step_list.append((file_step, "file_idx"))
+        step_list.append((serve_step, "serve_idx"))
         step_list.append((set_aside_step, "set_aside_idx"))
         step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
       
@@ -330,7 +360,9 @@ code: |
     
     # deleted from just after if below, "why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and 
         if set_aside:
-          step_list.append((set_aside_step, "set_aside_idx"))          
+          step_list.append((learn_set_aside_step, "learn_set_aside_idx"))
+          step_list.append((fill_set_aside_step, "fill_set_aside_idx"))
+          step_list.append((set_aside_step, "set_aside_idx"))
           step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
 
         # if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change'):
@@ -423,10 +455,11 @@ template: pick_a_step_step
 subject: |
   Step ${ pick_a_step_idx}: Decide the steps you want to take
 content: |
-  You have more than one way to ask the judge to change your custody or parenting plan order. 
+ You have more than one way to ask the judge to change your custody or parenting plan order. 
+ 
+  Read each of the following steps.
   
-  Read each of the following steps then decide on the steps that make the most sense in your case.
-
+  Decide on the steps that make the most sense in your case.
 ---
 template: parents_agree_step
 subject: |
@@ -555,7 +588,7 @@ subject: |
 content: |
   <div class="step-subheading">Background</div>
   <ul>
-    <li>When your case was opened, the court issued an   order, usually called a Standing Order or a Domestic Relations Procedural   Order.  The court expects both parents to   follow it.</li>
+    <li>When your case was opened, the court issued an   order, usually called a <strong>Standing Order</strong> or a <strong>Domestic Relations Procedural Order</strong>.  The court expects both parents to follow it.</li>
     <li>Sometimes a parent wants to do something not   allowed under the Standing Order.  For   example, the Standing Order says that parents cannot remove the children from   Alaska during the case.  A parent may   want to take the children to a family reunion in Washington.</li>
     <li>If you want to do something different than what is allowed under this kind of order, you can ask the other parent and try to agree.</li>
     <li>If you do not agree, you can ask the court to change one of the orders by filing a document called a &quot;motion&quot;.</li>
