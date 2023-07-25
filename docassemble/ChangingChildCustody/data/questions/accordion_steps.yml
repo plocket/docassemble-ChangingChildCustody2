@@ -451,21 +451,21 @@ content: |
   
   Depending on your income and circumstances, you may qualify for a free lawyer from [Alaska Legal Services](alsc-law.org/apply-for-services).
 ---
-template: pick_a_step_step
-subject: |
-  Step ${ pick_a_step_idx}: Decide the steps you want to take
-content: |
- You have more than one way to ask the judge to change your custody or parenting plan order. 
- 
-  Read each of the following steps.
-  
-  Decide on the steps that make the most sense in your case.
----
+#  template: pick_a_step_step
+#  subject: |
+#    Step ${ pick_a_step_idx}: Decide the steps you want to take
+#  content: |
+#   You have more than one way to ask the judge to change your custody or parenting plan order. 
+#   
+#    Read each of the following steps.
+#    
+#    Decide on the steps that make the most sense in your case.
+#  ---
 template: parents_agree_step
 subject: |
   Step ${ parents_agree_idx }: Find out if you and the other parent agree
 content: |
-  <p>If you want to change an order in your custody case, you   can ask the other parent and see if you both agree to the change or if you both   want to try to reach an agreement one of these ways:</p>
+  <p>If you want to change an order in your custody case, you can ask the other parent and see if you both agree to the change or if you both want to try to reach an agreement one of these ways:</p>
   <ul>
     <li>Talk to the other parent about reaching an agreement</li>
     <li>Mediation</li>

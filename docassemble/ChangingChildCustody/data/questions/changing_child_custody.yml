@@ -137,14 +137,14 @@ question: |
   Changing a Custody Order
 subquestion: |
   This Guided Assistant asks you questions and uses your answers to build a Personal Action Plan - a list of steps to help you with asking the court to change your Custody and Parenting Plan in Alaska. 
+  
   What do you want to do?
 fields:
-  - "What do you want to do?": user_need
+  - no label: user_need
     input type: radio
     choices:
       - "I want to change a Custody Parenting Plan.": change custody order
       - "Respond to a motion to change a custody, parenting plan or child support order that the other parent filed.": respond to custody
-      - "This is not what I am looking for. ": none
 ---
 id: Are you in the middle of your case now
 question: |
