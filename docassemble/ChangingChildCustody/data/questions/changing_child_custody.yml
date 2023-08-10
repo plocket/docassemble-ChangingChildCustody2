@@ -230,7 +230,7 @@ fields:
     input type: radio
     choices:
       - 'An order the judge issued after someone filed a "motion" that asked for something.': motion
-      - "An order that the court issued that was not connected to a motion, like the standing order issued when the case was opened.": standing order
+      - "An order that the court issued that was not connected to a motion, like the **Standing Order** issued when the case was opened.": standing order
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       A standing order (sometimes called Domestic Relations Procedural Order) is the first order automatically issued when the case is opened. 
@@ -242,9 +242,9 @@ fields:
       <li>cancel or change any insurance policy.</li>
       </ol> 
 ---
-id: Do you want information about filing a Motion for Reconsideration
+id: Do you want information about filing a Motion to Reconsider
 question: |
-  Do you want information about filing a Motion for Reconsideration?
+  Do you want information about filing a Motion to Reconsider?
 subquestion: |
   For 10 days after the court decides a motion, you can file a Motion to Reconsider and ask the same judge to change part or all of the decision. There are limited reasons a court might change a decision it just made, which are listed below. Be aware that just because you do not like the decision does not mean the judge made a mistake.
  
@@ -263,7 +263,7 @@ comment: |
   If we can give people info about filing late:
   Put this into Question
    % if ((defined('interim_order_date') and date_difference(starting=interim_order_date, ending=today()).days > 10 )) or (defined('interim_order_period') and guess_interim_order_date == 'more than 10 days'):
-  You may be able to file a **late** motion for reconsideration if you have a good reason for missing the 10 day deadline. The decision to accept your motion for reconsideration is up to the judge entirely. They may refuse to accept it.
+  You may be able to file a **late** **Motion to Reconsider** if you have a good reason for missing the 10 day deadline. The decision to accept your **Motion to Reconsider** is up to the judge entirely. They may refuse to accept it.
   
   The judge **may** agree to accept your late motion if you have a good reason like you ended up in the hospital and could not file the motion, someone in your family became gravely ill….. "
   % endif
@@ -397,7 +397,7 @@ subquestion: |
   
   If it has been less than 10 days since the court’s final decision.
   
-  Do you want your Action Plan to include information on filing a **Motion for Reconsideration**?
+  Do you want your Action Plan to include information on filing a **Motion to Reconsider**?
 yesno: motion_for_reconsideration
 under: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
@@ -494,7 +494,7 @@ fields:
     datatype: checkboxes
     choices:
       - A Motion to Modify a Custody and Parenting Plan or Child Support Order.: custody
-      - A Motion for Reconsideration.: reconsider
+      - A Motion to Reconsider.: reconsider
       - A Motion to Set Aside Judgment or Order.: set aside
       - An Appeal: appeal
     none of the above: False
@@ -503,51 +503,51 @@ id: Add response to modify to your Action Plan
 question: |
   What information would you like added to your Action Plan?
 subquestion: |
-  If there has been a change in circumstances with the Custody and Parenting Plan or Child Support Order, either parent can file a Motion to Modify. 
+  If there has been a change in circumstances with the Custody and Parenting Plan or Child Support Order, either parent can file a **Motion to Modify**. 
   
-  When you respond to the motion to modify, you should state if you agree with all, some, or none of the of the other parent’s requested changes.
+  When you respond to the **Motion to Modify**, state if you agree with all, some, or none of the of the other parent’s requested changes.
   
   What information do you need?
 fields:
   - no label: respond_to_custody
     input type: radio
     choices:
-      - "How to respond if I agree with all proposed changes.": agree
-      - "How to respond if I agree with some of the proposed changes.": some
-      - "How to respond if I agree with none of the proposed changes.": none
+      - "How to respond if I agree with **all** proposed changes.": agree
+      - "How to respond if I agree with **some** of the proposed changes.": some
+      - "How to respond if I agree with **none** of the proposed changes.": none
 ---
-id: Motion for Reconsideration
+id: Motion to Reconsider
 question: |
-  Motion for Reconsideration
+  Motion to Reconsider
 subquestion: |
-  A Motion for Reconsideration asks the trial court to reconsider all or part of a decision. Unless the court asks, do not file a response. Information about responding if the court asks has been added to your Action Plan.
+  A **Motion to Reconsider** asks the trial court to reconsider all or part of a decision. Unless the court asks, do not file a response. Information about responding if the court asks has been added to your Action Plan.
 continue button field: respond_to_reconsider
 ---
 id: Add response to set aside to your Action Plan
 question: |
   What information would you like added to your Action Plan?
 subquestion: |
-  Either parent can file a **Motion to Set Aside Judgment or Order** if something was wrong with the court process. If the court sets aside the judgment or order, it is undone, and the court has to make a new decision that fixes the problem. When you respond to the motion to set aside, you should state if you agree with all, some, or none of what the other parent wants the court to set aside.
+  Either parent can file a **Motion to Set Aside Judgment or Order** if something was wrong with the court process. If the court sets aside the judgment or order, it is undone, and the court has to make a new decision that fixes the problem. When you respond to the **Motion to Set Aside**, state if you agree with all, some, or none of what the other parent wants the court to set aside.
 fields:
   - "Respond to set aside": respond_to_set_aside
     input type: radio
     choices:
-      - "How to respond if I agree with all proposed changes.": agree
-      - "How to respond if I agree with some of the proposed changes.": some
-      - "How to respond if I agree with none of the proposed changes.": none
+      - "How to respond if I agree with **all** proposed changes.": agree
+      - "How to respond if I agree with **some** of the proposed changes.": some
+      - "How to respond if I agree with **none** of the proposed changes.": none
 ---
 id: Add response to an appeal to your Action Plan
 question: |
   What information would you like added to your Action Plan?
 subquestion: |
-  An appeal is when one side asks the Alaska Supreme Court to review the trial court judge’s final decision because the trial court judge made a legal mistake. When you respond to the appeal, you should state if you agree with all, some, or none of what the other parent wants the appellate court to review about the trial court’s decision.
+  An appeal is when one side asks the Alaska Supreme Court to review the trial court judge’s final decision because the trial court judge made a legal mistake. When you respond to the appeal, state if you agree with all, some, or none of what the other parent wants the appellate court to review about the trial court’s decision.
 fields:
   - "Respond to appeal": respond_to_appeal
     input type: radio
     choices:
-      - "How to respond if I agree with all proposed changes.": agree
-      - "How to respond if I agree with some of the proposed changes.": some
-      - "How to respond if I agree with none of the proposed changes.": none
+      - "How to respond if I agree with **all** proposed changes.": agree
+      - "How to respond if I agree with **some** of the proposed changes.": some
+      - "How to respond if I agree with **none** of the proposed changes.": none
 ---
 #  id: Catch all screen for these variables
 #  question: |
