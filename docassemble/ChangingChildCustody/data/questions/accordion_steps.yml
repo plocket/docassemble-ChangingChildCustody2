@@ -76,7 +76,10 @@ code: |
   
     # Rows 3 & 4
     if type_of_response['custody'] and respond_to_custody in('some','none'):
-      step_list.append((respond_custody_step, "respond_custody_idx"))
+      step_list.append((respond_in_writing_step, "respond_in_writing_idx"))
+      step_list.append((file_response_step, "file_response_idx"))
+      step_list.append((serve_step, "serve_idx"))
+      step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
       # step_list.append((file_and_serve_response_step, "file_and_serve_response_idx"))
   
     # Row 5
@@ -135,11 +138,11 @@ code: |
         step_list.append((file_step, "file_idx"))
         step_list.append((serve_step, "serve_idx"))
         step_list.append((expect_reconsider_step, "expect_reconsider_idx")) 
-        step_list.append((reconsideration_step, "reconsideration_idx")) 
-        step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
-        step_list.append((file_and_serve_step, "file_and_serve_idx"))
-        step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
-        step_list.append((file_reply_step, "file_reply_idx"))
+        # step_list.append((reconsideration_step, "reconsideration_idx")) 
+        # step_list.append((reconsideration_forms_step, "reconsideration_forms_idx"))
+        # step_list.append((file_and_serve_step, "file_and_serve_idx"))
+        # step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
+        # step_list.append((file_reply_step, "file_reply_idx"))
     
     # Row 13
     if middle_of_case == 'yes' \

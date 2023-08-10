@@ -1,8 +1,11 @@
 include:
   - docassemble.AssemblyLine:assembly_line.yml
   - docassemble.AKA2JBranding:custom_organization.yml  
-  - docassemble.AKA2JBranding:aka2j_templates.yml
-  - accordion_steps.yml
+  - docassemble.AKA2JBranding:aka2j_templates.yml    
+  # - docassemble.AKA2JBranding:aka2j_motion_response_templates.yml 
+  - aka2j_motion_response_templates.yml
+  - new_accordion_usingak_templates.yml
+  # - accordion_steps.yml
 ---
 metadata:
   title: |
