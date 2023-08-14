@@ -413,7 +413,7 @@ id: Do you want information about filing an appeal
 question: |
   Do you want information about filing an appeal?
 subquestion: |
-  An appeal is when you ask the Alaska Supreme Court to review the trial court judge’s final decision. 
+  An appeal is the way to ask the Alaska Supreme Court to review the trial judge’s decision in your case. 
   
   You have to convince the Supreme Court that the judge made a legal mistake. 
   
@@ -491,13 +491,12 @@ question: |
   What did the other parent file with the court?
 fields:
   - no label: type_of_response
-    datatype: checkboxes
+    input type: radio
     choices:
       - A Motion to Modify a Custody and Parenting Plan or Child Support Order.: custody
       - A Motion to Reconsider.: reconsider
       - A Motion to Set Aside Judgment or Order.: set aside
       - An Appeal: appeal
-    none of the above: False
 ---
 id: Add response to modify to your Action Plan
 question: |
@@ -540,7 +539,9 @@ id: Add response to an appeal to your Action Plan
 question: |
   What information would you like added to your Action Plan?
 subquestion: |
-  An appeal is when one side asks the Alaska Supreme Court to review the trial court judge’s final decision because the trial court judge made a legal mistake. When you respond to the appeal, state if you agree with all, some, or none of what the other parent wants the appellate court to review about the trial court’s decision.
+  An appeal is the way to ask the Alaska Supreme Court to review the trial judge’s decision in your case. 
+  
+  When you respond to the appeal, state if you agree with all, some, or none of what the other parent wants the appellate court to review about the trial court’s decision.
 fields:
   - "Respond to appeal": respond_to_appeal
     input type: radio
@@ -742,4 +743,4 @@ attachment:
   filename: changing_child_custody
   variable name: changing_child_custody_attachment[i]
   skip undefined: True
-  docx template file: changing_child_custody_action_plan-2023-05-24-review-w-js.docx
+  docx template file: changing_child_custody_action_plan.docx
