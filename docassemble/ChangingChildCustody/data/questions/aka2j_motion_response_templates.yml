@@ -2,9 +2,8 @@ template: respond_to_reconsider_step
 subject: |
   Step ${ respond_to_reconsider_idx }: If the court asks, respond in writing to the Motion to Reconsider
 content: |
-  
+  A <strong>Motion to Reconsider</strong> asks a judge to change a decision or order they made in the last 10 days.
   <ul>
-  <li>A <strong>Motion to Reconsider</strong> asks a judge to change a decision or order that made in the last 10 days. </li>
   <li>Do not respond to a <strong>Motion to reconsider</strong> unless the court asks you for a response, usually in a written order or notice. The court usually sets a deadline for a response. If no deadline is set, the response is due 10 days from the date the court distributed it to you. You can find this date by looking at the end of the written order or decision to see when the clerk emailed or mailed it to the parents.</li>
   <li>There will not be a hearing.</li>
   <li>The court may write a decision, but if the court does not issue a decision 30 days after the motion or response was filed, <strong>whichever is later</strong>, the <strong>Motion to reconsider</strong> is denied, which means the original decision is not changed.</li>
@@ -149,14 +148,14 @@ subject: |
   Step ${ file_response_idx }: File and serve your response within 10 or 13 days
 content: |
   If ${other_party_in_case } mailed a copy of the motion to you, you have 13 days to file and serve your response. Use the date of the postmark on the envelope.
-  If they served you another way, you have 10 days to file and serve your response.
+  If they served you another way, you have 10 days to file and serve your response:
   <ol>    
   <li>Make 2 copies of your response and any other documents you include with it.</li>
   <li>File the original version of your response and documents with the court where the motion was filed. You can:
   <ul>
   <li>Deliver the documents to the court yourself.</li>
   <li>Mail the documents by first-class mail.</li>
-  <li>Use the Court's <a href="https://courts.alaska.gov/efile/">TrueFile  eFiling system</a> to send the documents to the court electronically.</li>
+  <li>Use the court's <a href="https://courts.alaska.gov/efile/">TrueFile  eFiling system</a> to send the documents to the court electronically.</li>
   </ul>
   </li>
   
@@ -172,7 +171,7 @@ content: |
   <ul>
   <li>Make 2 copies of the forms you filled out stating your agreement -<br>
   1 copy for each of you.</li>
-  <li>File the originals with the court where the motion was filed. File by the deadline - 10 or 13 days. If the deadline is a weekend or holiday, your reply is due the next day the court is open.  For example, if the deadline is a Saturday, and the court is open Monday, your reply is due Monday.</li>
+  <li>File the originals with the court where the motion was filed. File by the deadline - 10 or 13 days. If the deadline is a weekend or holiday, your agreement is due the next day the court is open.  For example, if the deadline is a Saturday, and the court is open Monday, your agreement is due Monday.</li>
   </ul>
 ---
 comment: |
