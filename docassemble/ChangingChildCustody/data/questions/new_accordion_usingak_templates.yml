@@ -354,8 +354,7 @@ code: |
         step_list.append((cert_of_service_step, "cert_of_service_idx"))
         step_list.append((file_step, "file_idx"))
         step_list.append((serve_step, "serve_idx"))
-        step_list.append((set_aside_step, "set_aside_idx"))
-        step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
+        step_list.append((expect_set_aside_step, "expect_set_aside_idx"))
       
       # deleted from just after if below, "why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and"
       if modify_within_15_days:
@@ -365,7 +364,7 @@ code: |
       if (defined('set_aside') and set_aside) or (defined('modify_within_15_days') and modify_within_15_days):
         step_list.append((file_and_serve_step, "file_and_serve_idx"))
       if (defined('set_aside') and set_aside):
-        step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
+        step_list.append((expect_set_aside_step, "expect_set_aside_idx"))
       if (defined('set_aside') and set_aside) or (defined('modify_within_15_days') and modify_within_15_days):
         step_list.append((file_reply_step, "file_reply_idx"))
           
@@ -382,8 +381,7 @@ code: |
         if set_aside:
           step_list.append((learn_set_aside_step, "learn_set_aside_idx"))
           step_list.append((fill_set_aside_step, "fill_set_aside_idx"))
-          step_list.append((set_aside_step, "set_aside_idx"))
-          step_list.append((set_aside_forms_step, "set_aside_forms_idx"))
+          step_list.append((expect_set_aside_step, "expect_set_aside_idx"))
 
         # if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change'):
         if modify_after_15 == 'foreign order':
@@ -397,7 +395,7 @@ code: |
         if (defined('set_aside') and set_aside) or (defined('modify_after_15') and modify_after_15 in('AK order','foreign order')):
           step_list.append((file_and_serve_step, "file_and_serve_idx"))
           if (defined('set_aside') and set_aside):
-            step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
+            step_list.append((expect_set_aside_step, "expect_set_aside_idx"))
         if (defined('set_aside') and set_aside) or (defined('modify_after_15') and modify_after_15 in('AK order','foreign order')):
           step_list.append((file_reply_step, "file_reply_idx"))
    #  Rows 72  - 75 
@@ -418,7 +416,7 @@ code: |
     #  step_list.append((modify_forms_step, "modify_forms_idx"))
     #  step_list.append((file_and_serve_step, "file_and_serve_idx"))
     #  step_list.append((expect_after_reconsideration_step, "expect_after_reconsideration_idx"))
-    #  step_list.append((expect_after_set_aside_step, "expect_after_set_aside_idx"))
+    #  step_list.append((expect_set_aside_step, "expect_set_aside_idx"))
     # step_list.append((file_reply_step, "file_reply_idx"))
     #  step_list.append((file_reconsider_response_step, "file_reconsider_response_idx"))
     # step_list.append((placeholder_step, "placeholder_idx"))
