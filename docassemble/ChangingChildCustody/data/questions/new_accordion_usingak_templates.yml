@@ -25,7 +25,7 @@ subquestion: |
   Depending on your income and circumstances, you may qualify for a free lawyer from [Alaska Legal Services](https://alsc-law.org/apply-for-services).
   % else:
   
-  % if user_need == 'change custody order':
+  % if user_need in('change custody order','change foreign custody order'):
   #### Your Personal Action Plan for changing your custody or parenting plan in ${ len(step_list) } steps
   % elif user_need ==  'respond to custody':
   % if type_of_response == 'appeal':
@@ -45,7 +45,7 @@ buttons:
 ---
 code: |
   # Temporarily disable why_change
-  why_change = {
+  old_why_change = {
      'set aside clerical error': True,
      'set aside mistake of fact': True,
      'set aside new evidence': True,
@@ -138,8 +138,14 @@ code: |
     step_list.append((calculate_child_support_step, "calculate_child_support_idx"))
     step_list.append((dont_wait_modify_custody_divorce_step, "dont_wait_modify_custody_divorce_idx"))
     images_list.append({'image': service_cert_modify_image, 'text': "Certificate of Service at the bottom of a Motion to Modify."})
-  
-  else:
+    step_list.append((cert_of_service_step, "cert_of_service_idx"))
+    file_step_heading = 'File your Motion to Modify'
+    step_list.append((file_step, "file_idx"))
+    step_list.append((serve_step, "serve_idx"))
+    motion_type = 'Motion to Modify'
+    step_list.append((expect_step, "expect_idx"))
+    
+  else:    
        ##################### middle of case
   
     # Row 12
@@ -148,6 +154,7 @@ code: |
       and interim_order_date_within_10_days \
       and parents_agree \
       and motion_decision:
+        step_list.append((pick_a_step_step, "pick_a_step_idx"))
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
         step_list.append((learn_reconsider_step, "learn_reconsider_idx"))
@@ -173,6 +180,7 @@ code: |
       and type_of_interim_order == 'standing order' \
       and parents_agree \
       and standing_order:
+        step_list.append((pick_a_step_step, "pick_a_step_idx"))
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
         step_list.append((standing_order_step, "standing_order_idx")) 
@@ -256,9 +264,9 @@ code: |
     #  and not interim_order_date_within_10_days \
     #  and not parents_agree \
     #  and not motion_decision:
-    
-    
-    ##################### after final order
+  
+
+       ##################### after final order
     
     if middle_of_case == 'no' \
       and why_change in('review', 'schedule'):
@@ -273,15 +281,13 @@ code: |
             step_list.append((dont_wait_modify_custody_divorce_step, "dont_wait_modify_custody_divorce_idx"))
             images_list.append({'image': service_cert_modify_image, 'text': "Certificate of Service at the bottom of a Motion to Modify."})
             step_list.append((cert_of_service_step, "cert_of_service_idx"))
-            file_step_heading = 'Motion to Modify'
+            file_step_heading = 'File your Motion to Modify'
             file_modify_filing_fee = '<li>Pay the $75 fee to file your Motion to Modify</li><ul><li>Call the <a href="https://courts.alaska.gov/shc/family">Family Law Self-HelpCenter</a><br>(907)264-0851, or<br>(866)279-0851,<br>or</li><li>Use <strong>Exemption From the Payment of Fees, TF-920</strong>[<a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">Fill-In PDF</a>]</li></ul>'
             step_list.append((file_step, "file_idx"))
             step_list.append((serve_step, "serve_idx"))
             step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
-        elif not parents_agree \
+        if not parents_agree \
           and motion_to_modify:
-            step_list.append((parents_agree_step, "parents_agree_idx"))
-            step_list.append((tell_the_court_step, "tell_the_court_idx"))
             step_list.append((modify_step, "modify_idx"))
             step_list.append((fill_modify_step, "fill_modify_idx"))
             step_list.append((calculate_child_support_step, "calculate_child_support_idx"))
@@ -293,6 +299,8 @@ code: |
             step_list.append((file_step, "file_idx"))
             step_list.append((serve_step, "serve_idx"))
             step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+        
+    
     
     if middle_of_case == 'no'\
       and why_change == 'problem':
@@ -402,6 +410,7 @@ code: |
 
     # Rows 71 - 91
     if middle_of_case == 'no' \
+      and why_change == 'problem' \
       and not final_order_date_within_10_days \
       and not final_order_date_within_15_days:
         if parents_agree:
@@ -447,7 +456,9 @@ code: |
     #    if why_change.any_true('set aside clerical error','set aside mistake of fact','set aside new evidence','set aside misconduct' ) and set_aside:
     #      step_list.append((set_aside_step, "set_aside_idx"))
     #    if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_after_15s:
-    #      step_list.append((modify_step, "modify_idx"))
+    #      step_list.append((modify_step, "modify_idx"))        
+  
+  
     
   step_list.append((get_help, "get_help_idx"))
     
@@ -487,12 +498,12 @@ template: foreign_order_step
 subject: |
   Step ${ foreign_order_idx }: Ask the court to change your custody and Parenting Plan or child support order from another state
 content: |
-  <div class="step-subheading">Process</div>
+  
   <p>There are 3 steps to ask an Alaska court to change a custody and parenting plan or child support order from another state:</p>
   <ol>
-  <li>Make sure the Alaska court has jurisdiction (authority) to change the order - Step ${ ak_jurisdiction_idx } </li>
-  <li>Register the out-of-state order in Alaska - Step ${ register_order_idx }</li>
-  <li>Ask the Alaska court to change the order by filing a Motion to Modify - - Step ${ modify_idx }</li>
+  <li>Make sure the Alaska court has jurisdiction (authority) to change the order. See Step ${ ak_jurisdiction_idx }.</li>
+  <li>Register the out-of-state order in Alaska. See Step ${ register_order_idx }.</li>
+  <li>Ask the Alaska court to change the order by filing a Motion to Modify. See Step ${ modify_idx }.</li>
   </ol>
 ---
 template: ak_jurisdiction_step
@@ -586,7 +597,7 @@ content: |
 template: modify_step
 subject: |
   Step ${ modify_idx }:
-    % if user_need == 'change custody':
+    % if user_need in('change custody order', 'change foreign custody order'):
     Learn about motions to modify
     % elif user_need == 'change divorce':
     Learn about a Motion to Modify your Parenting Plan

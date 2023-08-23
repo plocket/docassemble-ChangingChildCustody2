@@ -154,7 +154,7 @@ id: Are you in the middle of your case now
 question: |
   Are you in the middle of your case now?
 fields:
-  - "middle of case": middle_of_case
+  - no label: middle_of_case
     input type: radio
     choices:
       - "Yes. The court issued a temporary or “interim” child support order and I want to change it   ": yes
@@ -330,8 +330,9 @@ code: |
     final_order_date_within_10_days = False
     final_order_date_within_15_days = False
 ---
+id: Why do you want to change your custody parenting plan order
 question: |
-  Describe your car.
+  Why do you want to change your custody or parenting plan order?
 fields:
   - no label: why_change
     input type: radio
@@ -478,14 +479,19 @@ subquestion: |
   
   It is unusual for a court to grant a motion to modify within 15 days after the decision, unless something unexpected has changed.
 
-yesno: modify_within_15_days
+yesno: motion_to_modify
 under: |
   #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
   Some examples of a change in circumstances to modify:
   <ol>
   <li>the parent whom the children were living with 4 days a week went to jail so the existing schedule is impossible.</li>.
   <li>an act of domestic violence between the parents when returning the children.</li>
-  </ol>
+  <li> or a change that impacts the parenting plan like:
+      <ol>
+      <li>exchanging the child at 10 am no longer works because he is starting kindergarten; or</li>
+      <li>one parent is moving out of state so the existing schedule of week on / week off is impossible.</li>
+      </ol></li>
+   </ol>
 ---
 id: Do you want information about modifying one of the following types of orders
 question: |
@@ -765,4 +771,4 @@ attachment:
   filename: changing_child_custody
   variable name: changing_child_custody_attachment[i]
   skip undefined: True
-  docx template file: changing_child_custody_action_plan.docx
+  docx template file: changing_child_custody_action_plan_minus_final_order_date_for_modify.docx
