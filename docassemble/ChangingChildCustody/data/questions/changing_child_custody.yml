@@ -330,25 +330,26 @@ code: |
     final_order_date_within_10_days = False
     final_order_date_within_15_days = False
 ---
-id: Why do you want to change your custody parenting plan order
 question: |
-  Why do you want to change your custody or parenting plan order?
+  Describe your car.
 fields:
-  no label: why_change
-  choices: 
-    - Our lives have changed, so I think our parenting plan and child support orders need to change: review
+  - no label: why_change
+    input type: radio
+    choices:
+      - "Our lives have changed, so I think our parenting plan and child support orders need to change": review
         help: |
           It’s been a while and things have changed significantly so I want to ask the judge to re-visit our parenting plan and change it.  
-    - We changed our schedule: schedule
+      - "We changed our schedule": schedule
         help: |
           We have a new schedule and I want to tell the judge so we can get a new order that shows the new schedule and recalculates child support.  
-    - There is a problem with the order: problem
+      - "There is a problem with the order": problem
         help: |
            **Some examples of problems with an order:**
            
              *	The judge made a mistake.
              *	The judge’s decision was based on a fact you just found out is not true.
              *	You found new evidence you could **not** have found before the judge decided.
+
 ---
 id: Old Why do you want to change your custody parenting plan order
 question: |
