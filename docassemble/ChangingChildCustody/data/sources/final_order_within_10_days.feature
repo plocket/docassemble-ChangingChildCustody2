@@ -14,19 +14,21 @@ Scenario: Row #32
       | parents_agree | True |  |
       | motion_for_reconsideration | True |  |
     And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 8 steps"
+    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 10 steps"
     And I should see the phrase "Decide the steps you want to take"
-    And I should see the phrase "Find out if you and the other parent agree"  
+    And I should see the phrase "Find out if you and the other parent agree"
     And I should see the phrase "Tell the court about your agreement"
-    And I should see the phrase "Ask the court to change a decision it made in the last 10 days"
-    And I should see the phrase "Fill out your Motion for Reconsideration forms"  
-    And I should see the phrase "File and serve your Motion for Reconsideration"
-    And I should see the phrase "What to expect after you file your Motion for Reconsideration"
+    And I should see the phrase "Learn about Motions to Reconsider"
+    And I should see the phrase "Fill out the Motion to Reconsider forms"
+    And I should see the phrase "Fill out the Certificate of Service"
+    And I should see the phrase "File your Motion to Reconsider"
+    And I should see the phrase "Serve the other parent"
+    And I should see the phrase "What to expect after you file a Motion to Reconsider"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
     
 @row32b
-Scenario: Row #33b 
+Scenario: Row #32b 
 # Parent wants judge to reconsider final order within 10 days and get parent agreement information
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
@@ -39,15 +41,17 @@ Scenario: Row #33b
       | parents_agree | True |  |
       | motion_for_reconsideration | True |  |
     And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 8 steps"
+    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 10 steps"
     And I should see the phrase "Decide the steps you want to take"
-    And I should see the phrase "Find out if you and the other parent agree"  
+    And I should see the phrase "Find out if you and the other parent agree"
     And I should see the phrase "Tell the court about your agreement"
-    And I should see the phrase "Ask the court to change a decision it made in the last 10 days"
-    And I should see the phrase "Fill out your Motion for Reconsideration forms"  
-    And I should see the phrase "File and serve your Motion for Reconsideration"
-    And I should see the phrase "What to expect after you file your Motion for Reconsideration"
-    And I should see the phrase "Get more information or help"
+    And I should see the phrase "Learn about Motions to Reconsider"
+    And I should see the phrase "Fill out the Motion to Reconsider forms"
+    And I should see the phrase "Fill out the Certificate of Service"
+    And I should see the phrase "File your Motion to Reconsider"
+    And I should see the phrase "Serve the other parent"
+    And I should see the phrase "What to expect after you file a Motion to Reconsider"
+    And I should see the phrase "Get more information or help""
     And I download "changing_child_custody.pdf
 
 @row33
@@ -102,11 +106,13 @@ Scenario: Row #34
       | parents_agree | False |  |
       | motion_for_reconsideration | True |  |
     And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 58 steps"
-    And I should see the phrase "Ask the court to change a decision it made in the last 10 days"
-    And I should see the phrase "Fill out your Motion for Reconsideration forms"  
-    And I should see the phrase "File and serve your Motion for Reconsideration"
-    And I should see the phrase "What to expect after you file your Motion for Reconsideration"
+    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 7 steps"
+    And I should see the phrase "Learn about Motions to Reconsider"
+    And I should see the phrase "Fill out the Motion to Reconsider forms"
+    And I should see the phrase "Fill out the Certificate of Service"
+    And I should see the phrase "File your Motion to Reconsider"
+    And I should see the phrase "Serve the other parent"
+    And I should see the phrase "What to expect after you file a Motion to Reconsider"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
     
@@ -124,11 +130,13 @@ Scenario: Row #34b
       | parents_agree | False |  |
       | motion_for_reconsideration | True |  |
     And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 5 steps"
-    And I should see the phrase "Ask the court to change a decision it made in the last 10 days"
-    And I should see the phrase "Fill out your Motion for Reconsideration forms"  
-    And I should see the phrase "File and serve your Motion for Reconsideration"
-    And I should see the phrase "What to expect after you file your Motion for Reconsideration"
+    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 7 steps"
+    And I should see the phrase "Learn about Motions to Reconsider"
+    And I should see the phrase "Fill out the Motion to Reconsider forms"
+    And I should see the phrase "Fill out the Certificate of Service"
+    And I should see the phrase "File your Motion to Reconsider"
+    And I should see the phrase "Serve the other parent"
+    And I should see the phrase "What to expect after you file a Motion to Reconsider"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
 
@@ -161,5 +169,6 @@ Scenario: Row #35b Parent wants judge to reconsider final order within 10 days, 
       | parents_agree | False |  |
       | motion_for_reconsideration | False |  |
     And I take a screenshot
+    # And I should see the phrase "Placeholder"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"

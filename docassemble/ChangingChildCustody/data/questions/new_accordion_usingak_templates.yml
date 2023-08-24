@@ -405,6 +405,7 @@ code: |
         step_list.append((cert_of_service_step, "cert_of_service_idx"))
         step_list.append((file_step, "file_idx"))
         step_list.append((serve_step, "serve_idx"))
+        motion_type = 'Motion to Set Aside'
         step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
           
 
