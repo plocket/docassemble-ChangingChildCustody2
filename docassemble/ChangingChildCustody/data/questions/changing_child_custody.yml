@@ -2,8 +2,7 @@ include:
   - docassemble.AssemblyLine:assembly_line.yml
   - docassemble.AKA2JBranding:custom_organization.yml  
   - docassemble.AKA2JBranding:aka2j_templates.yml    
-  # - docassemble.AKA2JBranding:aka2j_motion_response_templates.yml 
-  - aka2j_motion_response_templates.yml
+  - docassemble.AKA2JBranding:aka2j_motion_response_templates.yml
   - new_accordion_usingak_templates.yml
   # - accordion_steps.yml
 ---
@@ -143,12 +142,12 @@ subquestion: |
   
   What do you want to do?
 fields:
-  - no label: user_need
+  - I want to: user_need
     input type: radio
     choices:
-      - "I want to change an Alaskan Custody Parenting Plan.": change custody order
-      - "I want to change a Custody or Parenting Plan order from another state or tribal court": change foreign custody order
-      - "Respond to a motion to change a custody, parenting plan or child support order that the other parent filed.": respond to custody
+      - "change an Alaskan Custody or Parenting Plan order.": change custody order
+      - "change a Custody or Parenting Plan order from another state or tribal court": change foreign custody order
+      - "respond to a motion to change a custody, parenting plan or child support order that the other parent filed.": respond to custody
 ---
 id: Are you in the middle of your case now
 question: |
