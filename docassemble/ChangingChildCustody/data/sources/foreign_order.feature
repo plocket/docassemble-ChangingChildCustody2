@@ -8,7 +8,7 @@ Scenario: Row #46
     | var | value | trigger |
     | user_need | change foreign custody order |  |
   And I take a screenshot
-  And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 10 steps" 
+  And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 12 steps" 
   And I should see the phrase "Ask the court to change your custody and Parenting Plan or child support order from another state"
   And I should see the phrase "Make sure that the Alaska court has the authority to change the order"
   And I should see the phrase "Register the out-of-state order"
