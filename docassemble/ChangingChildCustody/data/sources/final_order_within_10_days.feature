@@ -52,7 +52,7 @@ Scenario: Row #32b
     And I should see the phrase "Serve the other parent"
     And I should see the phrase "What to expect after you file a Motion to Reconsider"
     And I should see the phrase "Get more information or help""
-    And I download "changing_child_custody.pdf
+    And I download "changing_child_custody.pdf"
 
 #@row33
 #Scenario: Row #33 

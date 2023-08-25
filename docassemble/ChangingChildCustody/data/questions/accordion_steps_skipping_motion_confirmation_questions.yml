@@ -143,7 +143,7 @@ code: |
     step_list.append((file_step, "file_idx"))
     step_list.append((serve_step, "serve_idx"))
     motion_type = 'Motion to Modify'
-    step_list.append((expect_step, "expect_idx"))
+    step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
     
   else:    
        ##################### middle of case

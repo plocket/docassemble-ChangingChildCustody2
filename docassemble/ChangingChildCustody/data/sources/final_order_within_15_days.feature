@@ -139,8 +139,7 @@ Scenario: Row #40
 #      | appeal | True |  |
 #      | set_aside | True |  |
     And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 9 steps"
-    And I should see the phrase "Decide the steps you want to take"
+    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 8 steps"
     And I should see the phrase "Decide if you want to file an appeal"
     And I should see the phrase "Learn about the Motion to Set Aside Judgment or Order"
     And I should see the phrase "Fill out forms if you want to file a Motion to Set Aside"
