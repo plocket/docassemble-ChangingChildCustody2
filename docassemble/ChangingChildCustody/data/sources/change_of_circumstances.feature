@@ -23,7 +23,7 @@ Scenario: Row #24
     And I should see the phrase "Fill out the Certificate of Service" 
     And I should see the phrase "File your Motion to Modify" 
     And I should see the phrase "Serve the other parent" 
-    And I should see the phrase "What to expect after you file a motion"
+    And I should see the phrase "What to expect after you file a Motion to Modify"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
     
@@ -46,7 +46,7 @@ Scenario: Row #25
     And I should see the phrase "Fill out the Certificate of Service" 
     And I should see the phrase "File your Motion to Modify" 
     And I should see the phrase "Serve the other parent" 
-    And I should see the phrase "What to expect after you file a motion"
+    And I should see the phrase "What to expect after you file a Motion to Modify"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"    
 
@@ -105,7 +105,7 @@ Scenario: Row #28
     And I should see the phrase "Fill out the Certificate of Service" 
     And I should see the phrase "File your Motion to Modify" 
     And I should see the phrase "Serve the other parent" 
-    And I should see the phrase "What to expect after you file a motion"
+    And I should see the phrase "What to expect after you file a Motion to Modify"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
     
@@ -128,7 +128,7 @@ Scenario: Row #29
     And I should see the phrase "Fill out the Certificate of Service" 
     And I should see the phrase "File your Motion to Modify" 
     And I should see the phrase "Serve the other parent" 
-    And I should see the phrase "What to expect after you file a motion"
+    And I should see the phrase "What to expect after you file a Motion to Modify"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"       
         

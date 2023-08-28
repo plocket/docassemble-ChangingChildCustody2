@@ -291,7 +291,9 @@ id: What is the date on your order
 question: |
   What is the date on your order?
 subquestion: |
-  Look at the last page of the order. The date is in the box at the bottom of the page.
+  Look at the last page of the order. The date is at the end of the order.
+  
+  [FILE docassemble.AKA2JBranding:CertOfDistrib_divorce_custody.PNG, 100%, This is a screenshot of the bottom of the order with the date the court sent your order.]
 fields:
   - "The date of your order.": final_order_date
     datatype: date
