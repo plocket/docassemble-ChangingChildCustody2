@@ -158,7 +158,7 @@ code: |
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
         step_list.append((learn_reconsider_step, "learn_reconsider_idx"))
         step_list.append((fill_reconsider_step, "fill_reconsider_idx"))
-        images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of Motion to Reconsider and Motion to Set Aside."})
+        images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Reconsider"})
         step_list.append((cert_of_service_step, "cert_of_service_idx"))
         file_step_heading = 'File your Motion to Reconsider'
         step_list.append((file_step, "file_idx"))
@@ -253,9 +253,10 @@ code: |
         images_list.append({'image': service_cert_modify_image, 'text': "Certificate of Service at the bottom of a Motion to Modify."})
         step_list.append((cert_of_service_step, "cert_of_service_idx"))
         file_step_heading = 'File your Motion to Modify'
-        file_modify_filing_fee = '<li>Pay the $75 fee to file your Motion to Modify</li><ul><li>Call the <a href="https://courts.alaska.gov/shc/family">Family Law Self-HelpCenter</a><br>(907)264-0851, or<br>(866)279-0851,<br>or</li><li>Use <strong>Exemption From the Payment of Fees, TF-920</strong>[<a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">Fill-In PDF</a>]</li></ul>'
+        file_modify_filing_fee = ''
         step_list.append((file_step, "file_idx"))
         step_list.append((serve_step, "serve_idx"))
+        motion_type = 'Motion to Modify'
         step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
     
     # Row 21 (don't need this, it automatically goes to final page)
@@ -302,6 +303,7 @@ code: |
         file_modify_filing_fee = '<li>Pay the $75 fee to file your Motion to Modify</li><ul><li>Call the <a href="https://courts.alaska.gov/shc/family">Family Law Self-HelpCenter</a><br>(907)264-0851, or<br>(866)279-0851,<br>or</li><li>Use <strong>Exemption From the Payment of Fees, TF-920</strong>[<a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">Fill-In PDF</a>]</li></ul>'
         step_list.append((file_step, "file_idx"))
         step_list.append((serve_step, "serve_idx"))
+        motion_type = 'Motion to Modify'
         step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
         # if not parents_agree \
         #   and motion_to_modify:
@@ -337,19 +339,19 @@ code: |
     #         or (defined('modify_after_15') and modify_after_15 in('AK order', 'foreign order'))):
     #           step_list.append((pick_a_step_step, "pick_a_step_idx"))
     
-    if middle_of_case == 'no' \
-      and why_change == 'problem' \
-      and final_order_date_within_10_days is False \
-      and parents_agree is False:
-        if defined('appeal') and appeal:
-          if defined('set_aside') and set_aside \
-            or ((defined('modify_within_15_days') and modify_within_15_days) \
-            or (defined('modify_after_15') and modify_after_15)):
-              step_list.append((pick_a_step_step, "pick_a_step_idx"))
-        elif defined('set_aside') and set_aside \
-          and ((defined('modify_within_15_days') and modify_within_15_days) \
-          or (defined('modify_after_15') and modify_after_15)):
-            step_list.append((pick_a_step_step, "pick_a_step_idx"))
+    #  if middle_of_case == 'no' \
+    #    and why_change == 'problem' \
+    #    and final_order_date_within_10_days is False \
+    #    and parents_agree is False:
+    #      if defined('appeal') and appeal:
+    #        if defined('set_aside') and set_aside \
+    #          or ((defined('modify_within_15_days') and modify_within_15_days) \
+    #          or (defined('modify_after_15') and modify_after_15)):
+    #            step_list.append((pick_a_step_step, "pick_a_step_idx"))
+    #      elif defined('set_aside') and set_aside \
+    #        and ((defined('modify_within_15_days') and modify_within_15_days) \
+    #        or (defined('modify_after_15') and modify_after_15)):
+    #          step_list.append((pick_a_step_step, "pick_a_step_idx"))
       #  and len(why_change.true_values()) >= 2:
       #  step_list.append((pick_a_step_step, "pick_a_step_idx"))
     
