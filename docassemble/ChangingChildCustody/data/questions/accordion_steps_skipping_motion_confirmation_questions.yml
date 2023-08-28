@@ -66,7 +66,7 @@ code: |
   other_party_in_case  = 'the other parent'
   case_type = 'custody'
   # certificate_of_service_image = ''
-  distribution_certificate_list.append({'image': distrib_cert_child_support_image, 'text': "Certificate of Distribution shows the date the court sent your order to you."})
+  distribution_certificate_list.append({'image': distrib_cert_custody_divorce_image, 'text': "Certificate of Distribution shows the date the court sent your order to you."})
   file_motion_to_set_aside = ''
   file_motion_to_enforce = ''
   file_modify_filing_fee = ''
