@@ -3,9 +3,7 @@ include:
   - docassemble.AKA2JBranding:custom_organization.yml  
   - docassemble.AKA2JBranding:aka2j_templates.yml    
   - docassemble.AKA2JBranding:aka2j_motion_response_templates.yml
-  # - new_accordion_usingak_templates.yml
-  - accordion_steps_skipping_motion_confirmation_questions.yml
-  # - accordion_steps.yml
+  - accordion_steps.yml
 ---
 metadata:
   title: |
@@ -314,6 +312,7 @@ fields:
       - "It was in the last 10 days.": within 10 days
       - "It was more than 10 days ago, but within the last 15 days.": within 15 days
       - "It was more than 15 days ago": more than 15 days
+      - I do not know: unknown
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       Do we want to put anything in here?
@@ -331,6 +330,30 @@ code: |
   if ((defined('final_order_date') and date_difference(starting=final_order_date, ending=today()).days > 15 )) or (defined('final_order_period') and guess_final_order_date == 'more than 15 days'):
     final_order_date_within_10_days = False
     final_order_date_within_15_days = False
+  if (defined('final_order_period') and guess_final_order_date == 'unknown'):
+    final_order_date_within_10_days = False
+    final_order_date_within_15_days = False
+---
+id: get information about choices if user does not know final order date
+question: |
+  What do you want to get information about?
+subquestion: |
+  For the first 10 days after {the court sent your child support order to you}, you can file a **Motion to Reconsider**.  It asks the trial judge to fix something they overlooked or misunderstood.
+
+  For the first 30 days {after the court sent your child support order to you}, you can file an **Appeal**.  An appeal asks the Alaska Supreme Court to change a mistake made by the trial judge.
+
+  You can always file a **Motion to Set Aside**.  A  **Motion to Set Aside** asks the judge to change the order because of certain kinds of mistakes.  For some mistakes, you must file the motion in the first year.
+
+  Check all that apply.
+
+fields:
+  - I want to get information about: unknown_final_date
+    datatype: checkboxes
+    choices:
+      - "Motions to Reconsider.": reconsider
+      - "Appeals.": appeal
+      - "Motions to Set Aside.": set aside
+    none of the above: False
 ---
 id: Why do you want to change your custody parenting plan order
 question: |
@@ -773,4 +796,4 @@ attachment:
   filename: changing_child_custody
   variable name: changing_child_custody_attachment[i]
   skip undefined: True
-  docx template file: changing_child_custody_action_plan_simplified_after_no_confirmatin_questions.docx
+  docx template file: changing_child_custody_action_plan.docx
