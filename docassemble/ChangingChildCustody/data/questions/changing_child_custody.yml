@@ -192,7 +192,7 @@ fields:
         Your Action Plan will not include information about options that do not apply in your case.
 terms:
   the court sent your custody or Parenting Plan order: |
-      You can find the date the court sent you your custody or Parenting Plan order in the box at the bottom of the order.
+      You can find the date the court sent you your custody or Parenting Plan order on the last page,  at the bottom of the order.
       
 continue button field: interim_order_date_question  
 ---
@@ -336,24 +336,27 @@ code: |
 ---
 id: get information about choices if user does not know final order date
 question: |
-  What do you want to get information about?
+  What do you want information about?
 subquestion: |
-  For the first 10 days after {the court sent your child support order to you}, you can file a **Motion to Reconsider**.  It asks the trial judge to fix something they overlooked or misunderstood.
+  For the first 10 days after {the court sent your custody or parenting plan order to you}, you can file a **Motion to Reconsider**.  It asks the trial judge to fix something they overlooked or misunderstood.
 
-  For the first 30 days {after the court sent your child support order to you}, you can file an **Appeal**.  An appeal asks the Alaska Supreme Court to change a mistake made by the trial judge.
+  For the first 15 days after {the court sent your custody or parenting plan order to you}, you can file an **Appeal**.  An appeal asks the Alaska Supreme Court to change a mistake made by the trial judge.
 
   You can always file a **Motion to Set Aside**.  A  **Motion to Set Aside** asks the judge to change the order because of certain kinds of mistakes.  For some mistakes, you must file the motion in the first year.
 
   Check all that apply.
 
 fields:
-  - I want to get information about: unknown_final_date
+  - I want information about: unknown_final_date
     datatype: checkboxes
     choices:
       - "Motions to Reconsider.": reconsider
       - "Appeals.": appeal
       - "Motions to Set Aside.": set aside
     none of the above: False
+terms:
+  the court sent your custody or Parenting Plan order to you: |
+      You can find the date the court sent you your custody or Parenting Plan order on the last page,  at the bottom of the order.
 ---
 id: Why do you want to change your custody parenting plan order
 question: |
