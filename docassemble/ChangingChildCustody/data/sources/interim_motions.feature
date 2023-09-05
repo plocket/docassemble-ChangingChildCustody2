@@ -386,7 +386,7 @@ Scenario: Row #23
       | type_of_interim_order | motion |  |
       | interim_order_date | today - 12 |  | 
       | parents_agree | False |  | 
-      | motion_decision | True |  |
+#      | motion_decision | True |  |
     And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 9 steps"
     And I should see the phrase "Learn about motions to modify" 

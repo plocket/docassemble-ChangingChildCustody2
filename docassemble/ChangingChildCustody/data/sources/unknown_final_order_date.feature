@@ -303,7 +303,7 @@ Scenario: Row #56
 
 
 @row58
-Scenario: Row #34 appeal and set aside
+Scenario: Row #58 appeal and set aside
   Given I start the interview at "changing_child_custody.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |

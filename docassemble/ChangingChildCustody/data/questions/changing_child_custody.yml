@@ -2,7 +2,8 @@ include:
   - docassemble.AssemblyLine:assembly_line.yml
   - docassemble.AKA2JBranding:custom_organization.yml  
   - docassemble.AKA2JBranding:aka2j_templates.yml    
-  - docassemble.AKA2JBranding:aka2j_motion_response_templates.yml
+  - docassemble.AKA2JBranding:aka2j_motion_response_templates.yml    
+  - docassemble.AKA2JBranding:aka2j_mod_cust_div_templates.yml
   - accordion_steps.yml
 ---
 metadata:
@@ -162,7 +163,10 @@ id: interim order date question
 question: |
   What is the date the court sent your interim or temporary custody or parenting plan order?
 subquestion: |
-  You can find the date the court sent you your interim or temporary order at the bottom of your custody or Parenting Plan order.
+  You can find the date the court sent you your interim order at the bottom of your custody or Parenting Plan order.
+  
+  [FILE docassemble.AKA2JBranding:CertOfDistrib_divorce_custody.PNG, 100%, This is a screenshot of the bottom of the order with the date the court sent your order.]
+  
 fields:
   - "date": interim_order_date
     datatype: date  
@@ -558,9 +562,9 @@ id: Add response to modify to your Action Plan
 question: |
   What information would you like added to your Action Plan?
 subquestion: |
-  If there has been a change in circumstances with the Custody and Parenting Plan or Child Support Order, either parent can file a **Motion to Modify**. 
+  If a parent files a **Motion to Modify Custody**, the judge first decides if there has been a change in circumstances.  If there is a change, the judge will order a new Parenting Plan in the children's best interest. 
   
-  When you respond to the **Motion to Modify**, state if you agree with all, some, or none of the of the other parent’s requested changes.
+  When you respond to the **Motion to Modify**, state if you agree with all, some, or none of the other parent’s requested changes.
   
   What information do you need?
 fields:
