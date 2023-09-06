@@ -80,8 +80,8 @@ Scenario: Row #49
   And I should see the phrase "Get more information or help"
   And I download "changing_child_custody.pdf"
 
-  @row50
-  Scenario: Row #50 appeal and reconsider
+@row50
+Scenario: Row #50 appeal and reconsider
   Given I start the interview at "changing_child_custody.yml"
   And I get to the question id "final screen" with this data:
     | var | value | trigger |
@@ -141,7 +141,7 @@ Scenario: Row #51 appeal and set aside
 
 
 
-@52
+@row52
 Scenario: Row #52 reconsider and set aside
   Given I start the interview at "changing_child_custody.yml"
   And I get to the question id "final screen" with this data:

@@ -79,7 +79,7 @@ Scenario: Row #9
     And I should see the phrase "Your Personal Action Plan for responding to the appeal in 4 steps"
     And I should see the phrase "Let the other parent know you agree with the Appeal and decide if you want to respond in writing"
     And I should see the phrase "Contact the other parent"
-    And I should see the phrase "Tell the Supreme Court"
+    And I should see the phrase "Tell the Alaska Supreme Court"
     And I should see the phrase "Get more information or help"
     And I download "changing_child_custody.pdf"
     
