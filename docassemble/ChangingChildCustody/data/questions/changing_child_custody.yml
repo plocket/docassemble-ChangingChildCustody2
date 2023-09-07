@@ -1,6 +1,9 @@
 include:
   - docassemble.AssemblyLine:assembly_line.yml
-  - docassemble.AKA2JBranding:custom_organization.yml
+  - docassemble.AKA2JBranding:custom_organization.yml  
+  - docassemble.AKA2JBranding:aka2j_templates.yml    
+  - docassemble.AKA2JBranding:aka2j_motion_response_templates.yml    
+  - docassemble.AKA2JBranding:aka2j_mod_cust_div_templates.yml
   - accordion_steps.yml
 ---
 metadata:
@@ -136,20 +139,21 @@ question: |
   Changing a Custody Order
 subquestion: |
   This Guided Assistant asks you questions and uses your answers to build a Personal Action Plan - a list of steps to help you with asking the court to change your Custody and Parenting Plan in Alaska. 
+  
   What do you want to do?
 fields:
-  - "What do you want to do?": user_need
+  - I want to: user_need
     input type: radio
     choices:
-      - "I want to change a Custody Parenting Plan.": file
-      - "Respond to a motion to change a custody, parenting plan or child support order that the other parent filed.": respond
-      - "This is not what I am looking for. ": none
+      - "change an Alaskan Custody or Parenting Plan order.": change custody order
+      - "change a Custody or Parenting Plan order from another state or tribal court": change foreign custody order
+      - "respond to a motion to change a custody, parenting plan or child support order that the other parent filed.": respond to custody
 ---
 id: Are you in the middle of your case now
 question: |
   Are you in the middle of your case now?
 fields:
-  - "middle of case": middle_of_case
+  - no label: middle_of_case
     input type: radio
     choices:
       - "Yes. The court issued a temporary or “interim” child support order and I want to change it   ": yes
@@ -159,7 +163,10 @@ id: interim order date question
 question: |
   What is the date the court sent your interim or temporary custody or parenting plan order?
 subquestion: |
-  You can find the date the court sent you your interim or temporary order at the bottom of your custody or Parenting Plan order.
+  You can find the date the court sent you your interim order at the bottom of your custody or Parenting Plan order.
+  
+  [FILE docassemble.AKA2JBranding:CertOfDistrib_divorce_custody.PNG, 100%, This is a screenshot of the bottom of the order with the date the court sent your order.]
+  
 fields:
   - "date": interim_order_date
     datatype: date  
@@ -189,7 +196,7 @@ fields:
         Your Action Plan will not include information about options that do not apply in your case.
 terms:
   the court sent your custody or Parenting Plan order: |
-      You can find the date the court sent you your custody or Parenting Plan order in the box at the bottom of the order.
+      You can find the date the court sent you your custody or Parenting Plan order on the last page,  at the bottom of the order.
       
 continue button field: interim_order_date_question  
 ---
@@ -226,7 +233,7 @@ fields:
     input type: radio
     choices:
       - 'An order the judge issued after someone filed a "motion" that asked for something.': motion
-      - "An order that the court issued that was not connected to a motion, like the standing order issued when the case was opened.": standing order
+      - "An order that the court issued that was not connected to a motion, like the **Standing Order** issued when the case was opened.": standing order
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       A standing order (sometimes called Domestic Relations Procedural Order) is the first order automatically issued when the case is opened. 
@@ -238,9 +245,9 @@ fields:
       <li>cancel or change any insurance policy.</li>
       </ol> 
 ---
-id: Do you want information about filing a Motion for Reconsideration
+id: Do you want information about filing a Motion to Reconsider
 question: |
-  Do you want information about filing a Motion for Reconsideration?
+  Do you want information about filing a Motion to Reconsider?
 subquestion: |
   For 10 days after the court decides a motion, you can file a Motion to Reconsider and ask the same judge to change part or all of the decision. There are limited reasons a court might change a decision it just made, which are listed below. Be aware that just because you do not like the decision does not mean the judge made a mistake.
  
@@ -259,7 +266,7 @@ comment: |
   If we can give people info about filing late:
   Put this into Question
    % if ((defined('interim_order_date') and date_difference(starting=interim_order_date, ending=today()).days > 10 )) or (defined('interim_order_period') and guess_interim_order_date == 'more than 10 days'):
-  You may be able to file a **late** motion for reconsideration if you have a good reason for missing the 10 day deadline. The decision to accept your motion for reconsideration is up to the judge entirely. They may refuse to accept it.
+  You may be able to file a **late** **Motion to Reconsider** if you have a good reason for missing the 10 day deadline. The decision to accept your **Motion to Reconsider** is up to the judge entirely. They may refuse to accept it.
   
   The judge **may** agree to accept your late motion if you have a good reason like you ended up in the hospital and could not file the motion, someone in your family became gravely ill….. "
   % endif
@@ -286,7 +293,9 @@ id: What is the date on your order
 question: |
   What is the date on your order?
 subquestion: |
-  Look at the last page of the order. The date is in the box at the bottom of the page.
+  Look at the last page of the order. The date is at the end of the order.
+  
+  [FILE docassemble.AKA2JBranding:CertOfDistrib_divorce_custody.PNG, 100%, This is a screenshot of the bottom of the order with the date the court sent your order.]
 fields:
   - "The date of your order.": final_order_date
     datatype: date
@@ -307,6 +316,7 @@ fields:
       - "It was in the last 10 days.": within 10 days
       - "It was more than 10 days ago, but within the last 15 days.": within 15 days
       - "It was more than 15 days ago": more than 15 days
+      - I do not know: unknown
   - note: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       Do we want to put anything in here?
@@ -324,8 +334,57 @@ code: |
   if ((defined('final_order_date') and date_difference(starting=final_order_date, ending=today()).days > 15 )) or (defined('final_order_period') and guess_final_order_date == 'more than 15 days'):
     final_order_date_within_10_days = False
     final_order_date_within_15_days = False
+  if (defined('final_order_period') and guess_final_order_date == 'unknown'):
+    final_order_date_within_10_days = False
+    final_order_date_within_15_days = False
+---
+id: get information about choices if user does not know final order date
+question: |
+  What do you want information about?
+subquestion: |
+  For the first 10 days after {the court sent your custody or parenting plan order to you}, you can file a **Motion to Reconsider**.  It asks the trial judge to fix something they overlooked or misunderstood.
+
+  For the first 15 days after {the court sent your custody or parenting plan order to you}, you can file an **Appeal**.  An appeal asks the Alaska Supreme Court to change a mistake made by the trial judge.
+
+  You can always file a **Motion to Set Aside**.  A  **Motion to Set Aside** asks the judge to change the order because of certain kinds of mistakes.  For some mistakes, you must file the motion in the first year.
+
+  Check all that apply.
+
+fields:
+  - I want information about: unknown_final_date
+    datatype: checkboxes
+    choices:
+      - "Motions to Reconsider.": reconsider
+      - "Appeals.": appeal
+      - "Motions to Set Aside.": set aside
+    none of the above: False
+terms:
+  the court sent your custody or Parenting Plan order to you: |
+      You can find the date the court sent you your custody or Parenting Plan order on the last page,  at the bottom of the order.
 ---
 id: Why do you want to change your custody parenting plan order
+question: |
+  Why do you want to change your custody or parenting plan order?
+fields:
+  - no label: why_change
+    input type: radio
+    choices:
+      - "Our lives have changed, so I think our parenting plan and child support orders need to change": review
+        help: |
+          It’s been a while and things have changed significantly so I want to ask the judge to re-visit our parenting plan and change it.  
+      - "We changed our schedule": schedule
+        help: |
+          We have a new schedule and I want to tell the judge so we can get a new order that shows the new schedule and recalculates child support.  
+      - "There is a problem with the order": problem
+        help: |
+           **Some examples of problems with an order:**
+           
+             *	The judge made a mistake.
+             *	The judge’s decision was based on a fact you just found out is not true.
+             *	You found new evidence you could **not** have found before the judge decided.
+
+---
+id: Old Why do you want to change your custody parenting plan order
 question: |
   Why do you want to change your custody or parenting plan order?
 subquestion: |
@@ -340,7 +399,7 @@ subquestion: |
   If more than 15 days have passed since the court’s final written decision, you have different options to try to change the decision. What you file depends on your situation. The next questions discuss each option to help you narrow down the most appropriate thing to file.
   % endif
 fields:
-  - "What is your situation?": why_change
+  - "What is your situation?": old_why_change
     datatype: checkboxes
     code: |
       options
@@ -393,7 +452,7 @@ subquestion: |
   
   If it has been less than 10 days since the court’s final decision.
   
-  Do you want your Action Plan to include information on filing a **Motion for Reconsideration**?
+  Do you want your Action Plan to include information on filing a **Motion to Reconsider**?
 yesno: motion_for_reconsideration
 under: |
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
@@ -409,7 +468,7 @@ id: Do you want information about filing an appeal
 question: |
   Do you want information about filing an appeal?
 subquestion: |
-  An appeal is when you ask the Alaska Supreme Court to review the trial court judge’s final decision. 
+  An appeal is the way to ask the Alaska Supreme Court to review the trial judge’s decision in your case. 
   
   You have to convince the Supreme Court that the judge made a legal mistake. 
   
@@ -452,14 +511,19 @@ subquestion: |
   
   It is unusual for a court to grant a motion to modify within 15 days after the decision, unless something unexpected has changed.
 
-yesno: modify_within_15_days
+yesno: motion_to_modify
 under: |
   #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
   Some examples of a change in circumstances to modify:
   <ol>
   <li>the parent whom the children were living with 4 days a week went to jail so the existing schedule is impossible.</li>.
   <li>an act of domestic violence between the parents when returning the children.</li>
-  </ol>
+  <li> or a change that impacts the parenting plan like:
+      <ol>
+      <li>exchanging the child at 10 am no longer works because he is starting kindergarten; or</li>
+      <li>one parent is moving out of state so the existing schedule of week on / week off is impossible.</li>
+      </ol></li>
+   </ol>
 ---
 id: Do you want information about modifying one of the following types of orders
 question: |
@@ -487,63 +551,64 @@ question: |
   What did the other parent file with the court?
 fields:
   - no label: type_of_response
-    datatype: checkboxes
+    input type: radio
     choices:
       - A Motion to Modify a Custody and Parenting Plan or Child Support Order.: custody
-      - A Motion for Reconsideration.: reconsider
+      - A Motion to Reconsider.: reconsider
       - A Motion to Set Aside Judgment or Order.: set aside
       - An Appeal: appeal
-    none of the above: False
 ---
 id: Add response to modify to your Action Plan
 question: |
   What information would you like added to your Action Plan?
 subquestion: |
-  If there has been a change in circumstances with the Custody and Parenting Plan or Child Support Order, either parent can file a Motion to Modify. 
+  If a parent files a **Motion to Modify Custody**, the judge first decides if there has been a change in circumstances.  If there is a change, the judge will order a new Parenting Plan in the children's best interest. 
   
-  When you respond to the motion to modify, you should state if you agree with all, some, or none of the of the other parent’s requested changes.
+  When you respond to the **Motion to Modify**, state if you agree with all, some, or none of the other parent’s requested changes.
   
   What information do you need?
 fields:
   - no label: respond_to_custody
     input type: radio
     choices:
-      - "How to respond if I agree with all proposed changes.": agree
-      - "How to respond if I agree with some of the proposed changes.": some
-      - "How to respond if I agree with none of the proposed changes.": none
+      - "How to respond if I agree with **all** proposed changes.": agree
+      - "How to respond if I agree with **some** of the proposed changes.": some
+      - "How to respond if I agree with **none** of the proposed changes.": none
 ---
-id: Motion for Reconsideration
+id: Motion to Reconsider
 question: |
-  Motion for Reconsideration
+  Motion to Reconsider
 subquestion: |
-  A Motion for Reconsideration asks the trial court to reconsider all or part of a decision. Unless the court asks, do not file a response. Information about responding if the court asks has been added to your Action Plan.
+  A **Motion to Reconsider** asks the trial court to reconsider all or part of a decision. Unless the court asks, do not file a response. Information about responding if the court asks has been added to your Action Plan.
 continue button field: respond_to_reconsider
 ---
 id: Add response to set aside to your Action Plan
 question: |
   What information would you like added to your Action Plan?
 subquestion: |
-  Either parent can file a **Motion to Set Aside Judgment or Order** if something was wrong with the court process. If the court sets aside the judgment or order, it is undone, and the court has to make a new decision that fixes the problem. When you respond to the motion to set aside, you should state if you agree with all, some, or none of what the other parent wants the court to set aside.
+  Either parent can file a **Motion to Set Aside Judgment or Order** if something was wrong with the court process. If the court sets aside the judgment or order, it is undone, and the court has to make a new decision that fixes the problem. When you respond to the **Motion to Set Aside**, state if you agree with all, some, or none of what the other parent wants the court to set aside.
 fields:
   - "Respond to set aside": respond_to_set_aside
     input type: radio
     choices:
-      - "How to respond if I agree with all proposed changes.": agree
-      - "How to respond if I agree with some of the proposed changes.": some
-      - "How to respond if I agree with none of the proposed changes.": none
+      - "How to respond if I agree with **all** proposed changes.": agree
+      - "How to respond if I agree with **some** of the proposed changes.": some
+      - "How to respond if I agree with **none** of the proposed changes.": none
 ---
 id: Add response to an appeal to your Action Plan
 question: |
   What information would you like added to your Action Plan?
 subquestion: |
-  An appeal is when one side asks the Alaska Supreme Court to review the trial court judge’s final decision because the trial court judge made a legal mistake. When you respond to the appeal, you should state if you agree with all, some, or none of what the other parent wants the appellate court to review about the trial court’s decision.
+  An appeal is the way to ask the Alaska Supreme Court to review the trial judge’s decision in your case. 
+  
+  When you respond to the appeal, state if you agree with all, some, or none of what the other parent wants the appellate court to review about the trial court’s decision.
 fields:
   - "Respond to appeal": respond_to_appeal
     input type: radio
     choices:
-      - "How to respond if I agree with all proposed changes.": agree
-      - "How to respond if I agree with some of the proposed changes.": some
-      - "How to respond if I agree with none of the proposed changes.": none
+      - "How to respond if I agree with **all** proposed changes.": agree
+      - "How to respond if I agree with **some** of the proposed changes.": some
+      - "How to respond if I agree with **none** of the proposed changes.": none
 ---
 #  id: Catch all screen for these variables
 #  question: |
@@ -715,7 +780,7 @@ progress: 100
 # ALDocument objects specify the metadata for each template
 objects:
 #  - changing_child_custody_Post_interview_instructions: ALDocument.using(title="Instructions", filename="changing_child_custody_next_steps.docx", enabled=True, has_addendum=False)
-  - changing_child_custody_attachment: ALDocument.using(title="Changing your custody or Parenting Plan order", filename="changing_child_custody", enabled=True, has_addendum=False, )
+  - changing_child_custody_attachment: ALDocument.using(title="Changing your custody or Parenting Plan order", filename="changing_child_custody", enabled=True, has_addendum=False, suffix_to_append="")
 ---
 # Bundles group the ALDocuments into separate downloads, such as for court and for the user
 objects:
