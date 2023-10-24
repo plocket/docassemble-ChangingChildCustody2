@@ -448,9 +448,9 @@ code: |
         # if set_aside:
       
         if (defined('final_order_period') \
-          and not guess_final_order_date == 'unknown') \
-          or (defined('final_order_date') \
-          and date_difference(starting=final_order_date, ending=today()).days > 15):
+          and not guess_final_order_date == 'unknown'):
+        #  or (defined('final_order_date') \
+        #  and date_difference(starting=final_order_date, ending=today()).days > 15):
                 step_list.append((learn_set_aside_step, "learn_set_aside_idx"))
                 step_list.append((fill_set_aside_step, "fill_set_aside_idx"))
                 images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Set Aside."})
