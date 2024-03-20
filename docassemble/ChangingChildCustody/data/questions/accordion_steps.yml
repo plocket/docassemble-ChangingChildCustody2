@@ -25,8 +25,10 @@ subquestion: |
   Depending on your income and circumstances, you may qualify for a free lawyer from [Alaska Legal Services](https://alsc-law.org/apply-for-services).
   % else:
   
-  % if user_need in('change custody order','change foreign custody order'):
-  #### Your Personal Action Plan for changing your custody or parenting plan in ${ len(step_list) } steps
+  % if user_need == 'change custody order':
+  #### Your Personal Action Plan for changing your custody or Parenting Plan order in ${ len(step_list) } steps
+  % elif user_need =='change foreign custody order':
+  #### Your Personal Action Plan for changing your custody or Parenting Plan order from another state in ${ len(step_list) } steps
   % elif user_need ==  'respond to custody':
   % if type_of_response == 'appeal':
   #### Your Personal Action Plan for responding to the appeal the other parent filed, in ${ len(step_list) } steps
