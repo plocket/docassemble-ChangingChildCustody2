@@ -145,9 +145,9 @@ fields:
   - I want to: user_need
     input type: radio
     choices:
-      - "change an Alaskan Custody or Parenting Plan order.": change custody order
-      - "change a Custody or Parenting Plan order from another state or tribal court": change foreign custody order
-      - "respond to a motion to change a custody, parenting plan or child support order that the other parent filed.": respond to custody
+      - "change an Alaskan custody or Parenting Plan order.": change custody order
+      - "change a custody or Parenting Plan order from another state or tribal court": change foreign custody order
+      - "respond to a motion to change a custody, Parenting Plan or child support order that the other parent filed.": respond to custody
 ---
 id: Are you in the middle of your case now
 question: |
@@ -557,7 +557,7 @@ fields:
       - A Motion to Modify a Custody and Parenting Plan or Child Support Order.: custody
       - A Motion to Reconsider.: reconsider
       - A Motion to Set Aside Judgment or Order.: set aside
-      - An Appeal: appeal
+      - An Appeal.: appeal
 ---
 id: Add response to modify to your Action Plan
 question: |

@@ -14,7 +14,7 @@ Scenario: Row #32
       | parents_agree | True |  |
 #      | motion_for_reconsideration | True |  |
     And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 10 steps"
+    And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 10 steps"
     And I should see the phrase "Decide the steps you want to take"
     And I should see the phrase "Find out if you and the other parent agree"
     And I should see the phrase "Tell the court about your agreement"
@@ -41,7 +41,7 @@ Scenario: Row #32b
       | parents_agree | True |  |
 #      | motion_for_reconsideration | True |  |
     And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 10 steps"
+    And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 10 steps"
     And I should see the phrase "Decide the steps you want to take"
     And I should see the phrase "Find out if you and the other parent agree"
     And I should see the phrase "Tell the court about your agreement"
@@ -67,7 +67,7 @@ Scenario: Row #32b
 #      | parents_agree | True |  |
 #      | motion_for_reconsideration | False |  |
 #    And I take a screenshot
-#    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 3 steps"
+#    And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 3 steps"
 #    And I should see the phrase "Find out if you and the other parent agree"  
 #    And I should see the phrase "Tell the court about your agreement"
 #    And I should see the phrase "Get more information or help"
@@ -87,7 +87,7 @@ Scenario: Row #32b
 #      | parents_agree | True |  |
 #      | motion_for_reconsideration | False |  |
 #    And I take a screenshot
-#    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 3 steps"
+#    And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 3 steps"
 #    And I should see the phrase "Find out if you and the other parent agree"  
 #    And I should see the phrase "Tell the court about your agreement"
 #    And I should see the phrase "Get more information or help"
@@ -106,7 +106,7 @@ Scenario: Row #34
       | parents_agree | False |  |
 #      | motion_for_reconsideration | True |  |
     And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 7 steps"
     And I should see the phrase "Learn about Motions to Reconsider"
     And I should see the phrase "Fill out the Motion to Reconsider forms"
     And I should see the phrase "Fill out the Certificate of Service"
@@ -130,7 +130,7 @@ Scenario: Row #34b
       | parents_agree | False |  |
 #      | motion_for_reconsideration | True |  |
     And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for changing your custody or parenting plan in 7 steps"
+    And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 7 steps"
     And I should see the phrase "Learn about Motions to Reconsider"
     And I should see the phrase "Fill out the Motion to Reconsider forms"
     And I should see the phrase "Fill out the Certificate of Service"

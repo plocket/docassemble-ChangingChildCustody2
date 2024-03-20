@@ -29,9 +29,9 @@ subquestion: |
   #### Your Personal Action Plan for changing your custody or parenting plan in ${ len(step_list) } steps
   % elif user_need ==  'respond to custody':
   % if type_of_response == 'appeal':
-  #### Your Personal Action Plan for responding to the appeal in ${ len(step_list) } steps
+  #### Your Personal Action Plan for responding to the appeal the other parent filed, in ${ len(step_list) } steps
   % else:
-  #### Your Personal Action Plan for responding to the motion in ${ len(step_list) } steps
+  #### Your Personal Action Plan for responding to a motion the other parent filed, in ${ len(step_list) } steps
   % endif 
   % endif
   % for iteration_index, step_tuple in enumerate( step_list ):
@@ -62,16 +62,18 @@ code: |
   if len(step_list) >= 2:
     pdf_pap_multistep_subtitle = True
   images_list = []
-  distribution_certificate_list = []
+  distribution_certificate_list = []  
+  reply_certificate_list = []
   other_party_in_case  = 'the other parent'
   case_type = 'custody'
-  # certificate_of_service_image = ''
   distribution_certificate_list.append({'image': distrib_cert_custody_divorce_image, 'text': "Certificate of Distribution shows the date the court sent your order to you."})
   file_motion_to_set_aside = ''
   file_motion_to_enforce = ''
   file_modify_filing_fee = ''
   # expect_after_motion is in what to expect step for filing motion for interim order w complaint, or answer/response, cannot use variable in docx template, must insert condition in what to expect step.
   expect_after_motion = ''
+  reply_certificate_list.append({'image': service_cert_reply_image, 'text': "Certificate of Service at the bottom of the Reply form."})
+  # motion_type used in expect_after_motion_step "What to expect after you file a ${ motion_type }"
   motion_type = 'motion'
   
   
@@ -536,215 +538,58 @@ code: |
     define(step_tuple[ 1 ], iter_idx + 1)
   get_steps = True
 ---
-#  template: standing_order_step
-#  subject: |
-#    Step ${ standing_order_idx }: Ask the court to change the Standing Order or a similar decision<br>
-#  content: |
-#    <div class="step-subheading">Background</div>
-#    <ul>
-#      <li>When your case was opened, the court issued an   order, usually called a <strong>Standing Order</strong> or a <strong>Domestic Relations Procedural Order</strong>.  The court expects both parents to follow it.</li>
-#      <li>Sometimes a parent wants to do something not allowed under the Standing Order.  For   example, the Standing Order says that parents cannot remove the children from Alaska during the case.  A parent may   want to take the children to a family reunion in Washington.</li>
-#      <li>If you want to do something different than what is allowed under this kind of order, you can ask the other parent and try to agree.</li>
-#      <li>If you do not agree, you can ask the court to change one of the orders by filing a document called a &quot;motion&quot;.</li>
-#    </ul>
-#  ---
-#  template: motion_forms_step
-#  subject: |
-#     Step ${ motion_forms_idx }: Fill out your motion forms
-#  content: |
-#    <p>A motion is how a parent in a custody case asks the court to order something.</p>
-#    <div class = "step-subheading">Fill out these forms</div>
-#    <p><strong>Motion, SHC-1300</strong> <br>
-#    as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1300.doc">Word file</a><br>
-#    as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1300n.pdf">PDF</a></p>
-#    <p><strong>Affidavit &amp; Memorandum, SHC-1301</strong><br>
-#    as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1301.doc">Word file</a><br>
-#    as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1301n.pdf">PDF</a></p>
-#    <p><strong>Order on Motion, SHC-1302</strong><br>
-#    as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1302.doc">Word file</a><br>
-#    as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1302n.pdf">PDF</a></p>
-#  ---
-#  template: foreign_order_step
-#  subject: |
-#    Step ${ foreign_order_idx }: Ask the court to change your custody and Parenting Plan or child support order from another state
-#  content: |
-#    
-#    <p>There are 3 steps to ask an Alaska court to change a custody and parenting plan or child support order from another state:</p>
-#    <ol>
-#    <li>Make sure the Alaska court has jurisdiction (authority) to change the order. See Step ${ ak_jurisdiction_idx }.</li>
-#    <li>Register the out-of-state order in Alaska. See Step ${ register_order_idx }.</li>
-#    <li>Ask the Alaska court to change the order by filing a Motion to Modify. See Step ${ modify_idx }.</li>
-#    </ol>
-#  ---
-#  template: ak_jurisdiction_step
-#  subject: |
-#    Step ${ ak_jurisdiction_idx }: Make sure that the Alaska court has the authority to change the order
-#  content: |
-#    <ul>
-#    <li>A court must have the authority called jurisdiction to issue an order about a custody or parenting plan or a child support order.</li>
-#    <li>Generally, only the court in the state where the child has lived for the last 6 months can make decisions, enter a parenting plan, or order child support. This is called the child's &quot;home state.&quot;</li>
-#    <li>Jurisdiction can be very complicated. For example, if a baby is less than 6 months old and has moved between states, there may not be a "home state." This is one example of an exception when the Alaska court may be able to decide issues about a child that hasn't lived here for 6 months. <a href="https://courts.alaska.gov/shc/shclawyer.htm">Talking to a lawyer</a> can help you decide which is the best state for your case.</li>
-#    </ul>
-#  ---
-#  template: register_order_step
-#  subject: |
-#   Step ${ register_order_idx }: Register the out-of-state order
-#  content: |
-#    <div class="step-subheading">Submit the following packet to the Alaska court</div>
-#    1. One certified copy of the original order.
-#    2. One photocopy of the certified original order.
-#    <div class="step-subheading">3. For Custody</div>
-#    <ul>
-#    <li><strong>Request to </strong><strong>Register Child Custody Order of Another State or Country, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-482.pdf">DR-482</a><strong> </strong>[Fill-In PDF]</li>
-#    <li><strong>Notice of Registration of Child Custody Order of Another State or Country, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-483.pdf">DR-483</a> [Fill-In PDF] <br>
-#    (Completed except for the date and clerk's signature)</li>
-#    <li><strong>Affidavit for Child </strong><strong>Custody Registration, SHC-1510 <br>
-#    </strong>as a<strong> </strong><a href="http://courts.alaska.gov/shc/family/docs/shc-1510.doc">Word file</a><br>
-#    as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1510n.pdf">PDF</a></li>
-#    <li><strong>Child Custody Jurisdiction Affidavit, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf">DR-150</a> [Fill-In PDF]</li>
-#    <li><strong>Request for Hearing on Registered Child Custody Order, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-484.pdf">DR-484</a> [Fill-In PDF]<br>
-#    (Only fill in the Petitioner's and Respondent's names in the caption at the top left and leave the rest blank)<strong></strong></li>
-#    <li><strong>Confirmation of Registered</strong> <strong>Child Custody Order</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/dr-485.pdf">DR-485</a> [Fill-In PDF]<br>
-#    (Only fill in the Petitioner's and Respondent's names in the caption at the top left and leave the rest blank)</li>
-#    </ul>
-#    <div class="step-subheading">3. For Child Support</div>
-#    <ul>
-#    <li><strong>Instructions - Registration of Support Order Issued by Another State, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-341.pdf">DR-341</a> [Fill-In PDF]</li>
-#    <li><strong>Petition to Register a Support Order from Another State, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-342.pdf">DR-342</a> [Fill-In PDF]</li>
-#    <li><strong>Confidential Information Sheet - Support Order from Another State, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-343.pdf">DR-343</a> [Fill-In PDF]</li>
-#    <li><strong>Notice of Registration of Another State's Support Order, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-344.pdf">DR-344</a> [Fill-In PDF]<br>
-#    (Completed except for the date and clerk's signature)</li>
-#    <li><strong>Request for Hearing About Registered Child Support Order, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-345.pdf">DR-345</a> [Fill-In PDF]<br>
-#    (Only fill in the Petitioner's and Respondent's names in the caption at the top left and leave the rest blank)</li>
-#    <li><strong>Confirmation of Registered Support Order</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/dr-347.pdf">DR-347</a> [Fill-In PDF]</li>
-#    </ul>
-#    <div class="step-subheading">4. You need to tell the court how you want it to deliver the documents to the other parent.</div>
-#    The options are:
-#    <ul>
-#    <li><strong>1st class US mail</strong> (which is free): <br>
-#    Give the clerk at the court:
-#    <ul>
-#    <li>the packet of forms to register a foreign order</li>
-#    <li>envelope(s) addressed to the opposing party</li>
-#    <li>a copy of all documents you are filling <strong>plus</strong> a <strong>Request for Hearing</strong> form for the opposing party</li>
-#    </ul></li>
-#    <li><strong>Certified mail</strong> (which you have to pay for): 
-#    <ul>
-#    <li>Before coming to court,
-#    <ul>
-#    <li>go to the Post Office and get the forms for &quot;certified mail&quot;, &quot;restricted delivery&quot;, &quot;return receipt requested.&quot;</li>
-#    <li>Figure out how much it will cost to mail the forms by this method, and </li>
-#    <li>Put the stamps on the envelope. <br>
-#    If you do not provide the correct stamped envelope, your paperwork may be rejected. </li>
-#    </ul></li>
-#    <li>Give the clerk at the court:
-#    <ul>
-#    <li>the packet of forms to register a foreign order</li>
-#    <li>envelope(s) addressed to the opposing party</li>
-#    <li>a copy of all documents you are filling PLUS a Request for Hearing form for the opposing party</li>
-#    <li>the filled-out mailing forms for certified mail, restricted delivery, return receipt requested from the Post Office for each of the people listed in the certificate of distribution on the Notice of Registration Order. <br>
-#    On the green card, fill out your return address so you get the green card back later.</li>
-#    <li>enough postage for the court to serve by certified mail, restricted delivery, return receipt requested.</li>
-#    </ul></li>
-#    </ul></li>
-#    <li><strong>Process server</strong> (which you have to arrange and pay for):
-#    Give the clerk:
-#    <ul>
-#    <li>the packet of forms to register a foreign order</li>
-#    <li>service instructions for the specific process server you want the court to use. Read the instructions about &quot;Personal Service By Process Server&quot; in CIV-106.</li>
-#    </ul></li>
-#    </ul>
-#  
-#    <div class="step-subheading">5. The filing fee of $250 </div>
-#    If you are registering <strong>both</strong> a foreign child custody order and a foreign support order together, or <strong>only</strong> a child custody order.
-#  
-#    If you cannot afford $250, you can file a <strong>Request for Exemption for Payment of Fees</strong>, <a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">TF-920</a>.
-#  
-#    If you are registering <strong>only</strong> a foreign support order, it is <strong>free</strong>.
-#  
-#    <div class="step-subheading">6. Case description form, <a href="https://public.courts.alaska.gov/web/forms/docs/civ-125s.pdf">CIV-125S</a></div>
-#  ---
-#  template: modify_step
-#  subject: |
-#    Step ${ modify_idx }:
-#      % if user_need in('change custody order', 'change foreign custody order'):
-#      Learn about motions to modify
-#      % elif user_need == 'change divorce':
-#      Learn about a Motion to Modify your Parenting Plan
-#      % endif
-#  content: |
-#    Changing your parenting plan or child support order is called "modifying" it. To ask the judge to change your order, file a **Motion to Modify**.
-#    The courts want children to have a regular schedule without a lot of changes. The courts will generally only change a parenting plan if there is a "substantial change of circumstances". A "substantial change in circumstances" means something has happened so that the old custody or parenting plan is no longer in the children's best interest.
-#  
-#    <div class="step-subheading">Some examples</div>
-#    <ul>
-#    <li>The current parenting plan order started when your child was an infant. They move between parents at noon Mondays, Wednesdays, and Fridays. Your child is starting kindergarten so the current schedule will not work.</li>
-#    <li>Under the current parenting plan order, your children spend one week with you and the next week with the other parent.  You are going to move out of state so the current schedule is impossible.</li>
-#    <li>Your children spend overnights with you and the other parent.  The other parent just went to jail for 2 years so the existing schedule is impossible.</li>
-#    <li>There was a new act of domestic violence between you and the other parent when you were exchanging the children.</li>
-#    </ul>
-#    The court charges $75 to file this motion. If you cannot afford the fee, you may be able to get the court to waive it. See tep ${ modify_idx }, ${ file_step }.
-#  Comment: |
-#    % if (final_order_date_within_10_days or final_order_date_within_15_days) and modify_within_15_days:
-#    <div class="step-subheading">Timing</div>
-#    <p>A court will rarely grant a <strong>Motion to Modify </strong>made within 15 days of when the court made its final custody order unless something unexpected happened. Examples of why a court may grant a <strong>Motion to Modify</strong> are listed below.
-#    % endif
----
-# template: modify_forms_step
-# subject: |
-#   Step ${ modify_forms_idx }:
-#   % if user_need == 'change custody'
-#     Fill out your Motion to Modify forms
-#     % elif user_need == 'change divorce':
-#     Fill out the Motion to Modify Custody forms
-#     % endif 
-# content: |
-#   State specifically what you want changed and why
-#   <ul>
-#   <li><strong>Motion &amp; Affidavit to Modify Custody, Visitation and/or Child Support, SHC-1500</strong><br>
-#   as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1500.doc">Word file</a><br>
-#   as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1500n.pdf">PDF</a></li>
-#   <li><strong>Notice of Motion, SHC-1630</strong><br>
-#   as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1630.doc">Word file</a><br>
-#   as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1630n.pdf">PDF</a></li>
-#   <li><strong>Child Support Guidelines Affidavit,</strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-305.pdf">DR-305</a> [Fill-In PDF]</li>
-#   <li><strong>Child Custody Jurisdiction Affidavit,</strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-150.pdf">DR-150</a> [Fill-In PDF]</li>
-#   <li>Choose 1 custody order If you are asking to modify the parenting plan.<br>
-#   Do <strong>not</strong> sign the line at the bottom for the judge to sign:</li>
-#   <ul>
-#   <li><strong>Post-Judgment Order for Modification of Custody and Visitation, SHC-1124</strong><br>
-#   as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1124.doc">Word file</a><br>
-#   as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1124n.pdf">PDF</a><br>
-#   <strong>or</strong></li>
-#   <li><strong>Custody Order</strong> (one page), <strong>SHC-1103</strong><br>
-#   as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1103.doc">Word file</a><br>
-#   as a <a href="http://courts.alaska.gov/shc/family/docs/shc-1103n.pdf">PDF</a></li>
-#   </ul>
-#   <li><strong>Order for Modification of Child Support,</strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-301.pdf">DR-301</a>[Fill-In PDF]<br>
-#   If you are asking to modify child support or if you are asking to modify the parenting plan in a way that changes child support. </li>
-#   </ul>
-#   <div class="step-subheading">Optional forms depending on your situation</div>
-#   <p>Choose 1 form below based on the parenting schedule if it is not a primary custody calculation (where children are with 1 parent for at least 256 overnights/year<u>)</u></p>
-#   <ul>
-#   <li><strong>Shared Custody Support Calculation,</strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-306.pdf">DR-306</a><strong> </strong>[Fill-In PDF]</li>
-#   <li><strong>Divided Custody Support Calculation,</strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-307.pdf">DR-307</a><strong> </strong>[Fill-In PDF]</li>
-#   <li><strong>Hybrid Custody Child Support Calculation, </strong><a href="https://public.courts.alaska.gov/web/forms/docs/dr-308.pdf">DR-308</a> [Fill-In PDF]</li>
-#   </ul>
----
-# template: get_help
-# subject: |
-#   Step ${ get_help_idx }: Get more information or help
-# content: |
-#   For help with forms or understanding the process:
-#   <ul><li>Call the Family Law Self-Help Center
-#   <br>
-#   (907) 264-0851 or<br>  
-#   (866) 279-0851.</li>
-  # <li>See the court’s <a href="https://courts.alaska.gov/shc/family">Family Law Self-Help Center web pages</a>.</li>
-#   </ul>
-  # <p>Many lawyers offer free or flat fee consultations without having to hire them for the whole case. <a href="https://courts.alaska.gov/shc/shclawyer.htm">Find a Lawyer</a>.</p>
-#   
-  # <p>Depending on your income, you may qualify for <a href="https://alaska.freelegalanswers.org">Alaska Free Legal Answers</a>.</p>
-#   
-  # <p>Depending on your income and circumstances, you may qualify for a free lawyer from <a href="https://alsc-law.org/apply-for-services">Alaska Legal Services</a>.</p>
+template: expect_after_motion_step
+subject: |
+  Step ${ expect_after_motion_idx }: What to expect after you file a ${ motion_type }
+content: |
+  <div class="step-subheading">${ capitalize(other_party_in_case) } may file a response or "opposition"</div>
+  <p>If you serve ${ other_party_in_case }: 
+  <ul>
+  <li>by hand-delivery, email, or TrueFile, they have 10 days to respond to the court in writing,</li> 
+  <li>by mail, they have 13 days.</li>
+  </ul></p>
+  <p>The documents ${ other_party_in_case } files after you serve them is their "response" or "opposition."</p>
+  ${ expect_after_motion }
+  <div class="step-subheading">You can reply to their response</div>
+  <p>If ${ other_party_in_case } files a response you can file a reply.</p>
+  <p>If they serve you:
+  <ul>
+  <li>By hand delivery, email or TrueFile, you have 5 days to file,</li> 
+  <li>By mail, you have 8 days.</li>
+  </ul>
+  If the due date is a weekend or holiday, your reply is due the next day the court is open.  For example, if it is due on a Saturday, and the court is open Monday, your reply is due Monday.</p>
+  <ul>
+  <li>Watch 2 videos:
+  <ul>
+  <li><a href="https://youtube.com/watch?v=egoBeRFB_Uw">Motions Part 3: Preparing a Reply</a>, and</li>
+  <li><a href="https://www.youtube.com/watch?v=YQvG7GEGeoo">Motions Part 4: Mailings and Deadlines</a>.</li>
+  </ul>
+  <li>Read <a href="https://courts.alaska.gov/shc/family/motions.htm#reply">How do I reply to an opposition?</a> on the court’s website.</li>
+
+  <li>Use: <strong>Reply to Opposition to Motion, SHC-1305</strong> [<a href="https://courts.alaska.gov/shc/family/docs/shc-1305n.pdf">Fill in PDF</a>].</li>
+  <ul>
+  <li>Remember to fill out the section that tells the court how and when you deliver your reply to ${ other_party_in_case }.</li>
+  </ul>
+  </ul>
+  % for image_data in reply_certificate_list:
+  ${ image_data['text'] }
+  ${ image_data['image'].show(width='100%') }
+  % endfor
+  <div class="step-subheading">The judge will issue an order</div>
+  <ul>
+  <li>The judge may set a date for a hearing, but they may decide your motion without a hearing.</li>
+  % if not user_need == 'child support':  
+  % if user_need =='change foreign custody order' or (user_need in('change custody order', 'change divorce order') and middle_of_case == 'no'):
+  <li>The judge may grant your <strong>${motion_type}</strong>. Keep following your court order unless the judge grants your motion and issues a new order.</li>
+  % else:  
+  <li>The judge may grant your <strong>${motion_type}</strong>.</li>
+  % endif
+  % else:
+  <li>The judge may grant your <strong>${motion_type}</strong>.</li>
+  % endif
+  <li>The judge may deny your motion.</li>
+  </ul>
+  % if user_need =='change foreign custody order' or (user_need in('change custody order', 'change divorce order') and  middle_of_case == 'no'):
+  Either one of you can decide to appeal the decision about the <strong>${motion_type}</strong> if you believe the judge made a legal mistake. Learn more about filing an appeal on <a href="https://courts.alaska.gov/shc/appeals">the court's website</a>.
+  % endif
 ---
