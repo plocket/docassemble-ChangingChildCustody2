@@ -29,7 +29,7 @@ subquestion: |
   #### Your Personal Action Plan for changing your custody or Parenting Plan order in ${ len(step_list) } steps
   % elif user_need =='change foreign custody order':
   #### Your Personal Action Plan for changing your custody or Parenting Plan order from another state in ${ len(step_list) } steps
-  % elif user_need ==  'respond to custody':
+  % elif user_need ==  'respond to motion in custody':
   % if type_of_response == 'appeal':
   #### Your Personal Action Plan for responding to the appeal the other parent filed, in ${ len(step_list) } steps
   % else:
@@ -83,7 +83,7 @@ code: |
     step_list.append((wrong_tf, "wrong_tf_idx"))
     step_list.append((wrong_tf2, "wrong_tf2_idx"))
   
-  elif user_need == 'respond to custody':
+  elif user_need == 'respond to motion in custody':
   
     # Row 2
     if type_of_response == 'custody':

@@ -6,7 +6,7 @@ Scenario: Row #2
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | respond to custody |  |    
+      | user_need | respond to motion in custody |  |    
       | type_of_response | custody |  |
       | respond_to_custody | agree |  |
     And I take a screenshot
@@ -25,7 +25,7 @@ Scenario: Row #3
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | respond to custody |  |    
+      | user_need | respond to motion in custody |  |    
       | type_of_response | custody |  |
       | respond_to_custody | some |  |
     And I take a screenshot
@@ -42,7 +42,7 @@ Scenario: Row #5
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | respond to custody |  |    
+      | user_need | respond to motion in custody |  |    
       | type_of_response | reconsider |  |
     And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for responding to a motion the other parent filed, in 3 steps"
@@ -56,7 +56,7 @@ Scenario: Row #8
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | respond to custody |  |    
+      | user_need | respond to motion in custody |  |    
       | type_of_response | set aside |  |
       | respond_to_set_aside | none |  |
     And I take a screenshot
@@ -72,7 +72,7 @@ Scenario: Row #9
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | respond to custody |  |    
+      | user_need | respond to motion in custody |  |    
       | type_of_response | appeal |  |
       | respond_to_appeal | agree |  |
     And I take a screenshot
@@ -88,7 +88,7 @@ Scenario: Row #11
     Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
       | var | value | trigger |
-      | user_need | respond to custody |  |    
+      | user_need | respond to motion in custody |  |    
       | type_of_response | appeal |  |
       | respond_to_appeal | none |  |
     And I take a screenshot
