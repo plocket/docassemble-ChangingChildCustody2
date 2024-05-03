@@ -144,8 +144,8 @@ code: |
     step_list.append((cert_of_service_step, "cert_of_service_idx"))
     file_step_heading = 'File your Motion to Modify'
     file_modify_filing_fee = '<li>Pay the $75 fee to file your Motion to Modify</li><ul><li>Call the <a href="https://courts.alaska.gov/shc/family">Family Law Self-HelpCenter</a><br>(907)264-0851, or<br>(866)279-0851,<br>or</li><li>Use <strong>Exemption From the Payment of Fees, TF-920</strong>[<a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">Fill-In PDF</a>]</li></ul>'
-    step_list.append((file_step, "file_idx"))
-    step_list.append((serve_step, "serve_idx"))
+    step_list.append((file_motion_step, "file_motion_idx"))
+    step_list.append((serve_motion_step, "serve_motion_idx"))
     motion_type = 'Motion to Modify'
     step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
     
@@ -165,8 +165,8 @@ code: |
         images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Reconsider"})
         step_list.append((cert_of_service_step, "cert_of_service_idx"))
         file_step_heading = 'File your Motion to Reconsider'
-        step_list.append((file_step, "file_idx"))
-        step_list.append((serve_step, "serve_idx"))
+        step_list.append((file_motion_step, "file_motion_idx"))
+        step_list.append((serve_motion_step, "serve_motion_idx"))
         step_list.append((expect_reconsider_step, "expect_reconsider_idx"))
     
     # Row 13
@@ -189,8 +189,8 @@ code: |
         step_list.append((motion_forms_step, "motion_forms_idx"))
         images_list.append({'image': service_cert_motion_shc_1300_image, 'text': "Certificate of Service at the bottom of a motion."})
         step_list.append((cert_of_service_step, "cert_of_service_idx")) 
-        step_list.append((file_step, "file_idx"))
-        step_list.append((serve_step, "serve_idx"))
+        step_list.append((file_motion_step, "file_motion_idx"))
+        step_list.append((serve_motion_step, "serve_motion_idx"))
         step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
     
     # Row 15
@@ -212,8 +212,8 @@ code: |
         images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of Motion to Reconsider and Motion to Set Aside."})
         step_list.append((cert_of_service_step, "cert_of_service_idx"))
         file_step_heading = 'File your Motion to Reconsider'
-        step_list.append((file_step, "file_idx"))
-        step_list.append((serve_step, "serve_idx"))
+        step_list.append((file_motion_step, "file_motion_idx"))
+        step_list.append((serve_motion_step, "serve_motion_idx"))
         step_list.append((expect_reconsider_step, "expect_reconsider_idx"))
     
     # Row 17 only get other parts of custody case = placeholder and get help and info 
@@ -232,8 +232,8 @@ code: |
         step_list.append((motion_forms_step, "motion_forms_idx"))
         images_list.append({'image': service_cert_motion_shc_1300_image, 'text': "Certificate of Service at the bottom of a motion."})
         step_list.append((cert_of_service_step, "cert_of_service_idx")) 
-        step_list.append((file_step, "file_idx"))
-        step_list.append((serve_step, "serve_idx"))
+        step_list.append((file_motion_step, "file_motion_idx"))
+        step_list.append((serve_motion_step, "serve_motion_idx"))
         step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
     
     # Row 19 only get other parts of custody case = placeholder and get help and info 
@@ -258,8 +258,8 @@ code: |
         step_list.append((cert_of_service_step, "cert_of_service_idx"))
         file_step_heading = 'File your Motion to Modify'
         file_modify_filing_fee = ''
-        step_list.append((file_step, "file_idx"))
-        step_list.append((serve_step, "serve_idx"))
+        step_list.append((file_motion_step, "file_motion_idx"))
+        step_list.append((serve_motion_step, "serve_motion_idx"))
         motion_type = 'Motion to Modify'
         step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
     
@@ -305,8 +305,8 @@ code: |
         step_list.append((cert_of_service_step, "cert_of_service_idx"))
         file_step_heading = 'File your Motion to Modify'
         file_modify_filing_fee = '<li>Pay the $75 fee to file your Motion to Modify</li><ul><li>Call the <a href="https://courts.alaska.gov/shc/family">Family Law Self-HelpCenter</a><br>(907)264-0851, or<br>(866)279-0851,<br>or</li><li>Use <strong>Exemption From the Payment of Fees, TF-920</strong>[<a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">Fill-In PDF</a>]</li></ul>'
-        step_list.append((file_step, "file_idx"))
-        step_list.append((serve_step, "serve_idx"))
+        step_list.append((file_motion_step, "file_motion_idx"))
+        step_list.append((serve_motion_step, "serve_motion_idx"))
         motion_type = 'Motion to Modify'
         step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
         # if not parents_agree \
@@ -372,8 +372,8 @@ code: |
         images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of Motion to Reconsider and Motion to Set Aside."})
         step_list.append((cert_of_service_step, "cert_of_service_idx"))
         file_step_heading = 'File your Motion to Reconsider'
-        step_list.append((file_step, "file_idx"))
-        step_list.append((serve_step, "serve_idx"))
+        step_list.append((file_motion_step, "file_motion_idx"))
+        step_list.append((serve_motion_step, "serve_motion_idx"))
         step_list.append((expect_reconsider_step, "expect_reconsider_idx"))
 
     
@@ -427,8 +427,8 @@ code: |
       #    images_list.append({'image': service_cert_modify_image, 'text': "Certificate of Service at the bottom of a Motion to Modify."})
       step_list.append((cert_of_service_step, "cert_of_service_idx"))
       file_step_heading = 'File your Motion to Set Aside'
-      step_list.append((file_step, "file_idx"))
-      step_list.append((serve_step, "serve_idx"))
+      step_list.append((file_motion_step, "file_motion_idx"))
+      step_list.append((serve_motion_step, "serve_motion_idx"))
       motion_type = 'Motion to Set Aside'
       step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
           
@@ -460,8 +460,8 @@ code: |
           images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Set Aside."})
           step_list.append((cert_of_service_step, "cert_of_service_idx"))
           file_step_heading = 'File your Motion to Set Aside'
-          step_list.append((file_step, "file_idx"))
-          step_list.append((serve_step, "serve_idx"))
+          step_list.append((file_motion_step, "file_motion_idx"))
+          step_list.append((serve_motion_step, "serve_motion_idx"))
           motion_type = 'Motion to Set Aside'
           step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
   
@@ -483,8 +483,8 @@ code: |
                 file_step_heading = 'File your Motion to Reconsider'
               elif not unknown_final_date['reconsider']:
                 file_step_heading = 'File your Motion to Set Aside'
-              step_list.append((file_step, "file_idx"))
-              step_list.append((serve_step, "serve_idx"))
+              step_list.append((file_motion_step, "file_motion_idx"))
+              step_list.append((serve_motion_step, "serve_motion_idx"))
               if unknown_final_date['reconsider']:
                 step_list.append((expect_reconsider_step, "expect_reconsider_idx"))
               if unknown_final_date['set aside']:
