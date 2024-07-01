@@ -156,8 +156,8 @@ fields:
   - no label: middle_of_case
     input type: radio
     choices:
-      - "Yes. The court issued a temporary or “interim” custody or Parenting Plan order and I want to change it   ": yes
-      - "No.  The case is finished. The judge issued a final order and I want to change it. ": no
+      - "Yes. The court issued a temporary or “interim” custody or Parenting Plan order and I want to change it.": yes
+      - "No.  The case is finished. The judge issued a final order and I want to change it.": no
 ---
 id: interim order date question
 question: |
