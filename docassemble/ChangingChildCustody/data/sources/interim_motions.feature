@@ -109,7 +109,7 @@ Scenario:  Row #14
   And I should see the phrase "Decide the steps you want to take"
   And I should see the phrase "Find out if you and the other parent agree"  
   And I should see the phrase "Tell the court about your agreement"
-  And I should see the phrase "Ask the court to change the Standing Order or a similar decision"
+  And I should see the phrase "Ask the court to change the Standing Order or a similar order"
   And I should see the phrase "Fill out your motion forms" 
   And I should see the phrase "Fill out the Certificate of Service" 
   And I should see the phrase "File your motion" 
@@ -229,7 +229,7 @@ Scenario: Row #18
     | standing_order | True |  |
   And I take a screenshot
   And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 7 steps"
-  And I should see the phrase "Ask the court to change the Standing Order or a similar decision"
+  And I should see the phrase "Ask the court to change the Standing Order or a similar order"
   And I should see the phrase "Fill out your motion forms" 
   And I should see the phrase "Fill out the Certificate of Service" 
   And I should see the phrase "File your motion" 
