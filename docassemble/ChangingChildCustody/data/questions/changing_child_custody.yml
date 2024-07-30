@@ -562,31 +562,37 @@ fields:
     datatype: radio
     code: |
       type_of_response_choices
-  - They filed: type_of_modification
-    datatype: checkboxes
-    none of the above: False
-    code: |
-      [
-        {'custody': "A motion to change the custody and parenting plan order."},
-        {'child support': "A motion to change the child support order."},   
-        {'other': "A motion to change something else."}
-      ]
-    js show if: 
-      val('type_of_response') === 'modify'
+#  - They filed: type_of_modification
+#    datatype: checkboxes
+#    none of the above: False
+#    code: |
+#      [
+#        {'custody': "A motion to change the custody and parenting plan order."},
+#        {'child support': "A motion to change the child support order."},   
+#        {'other': "A motion to change something else."}
+#      ]
+#    js show if: 
+#      val('type_of_response') === 'modify'
 ---
 code: |
   if middle_of_case == 'yes':
     type_of_response_choices = [
-      {'modify': "A motion to change an order."},
+      {'modify': "A motion to change a custody or child support order."},
       {'reconsider': "a Motion to Reconsider."}
       ]
   else:
     type_of_response_choices = [
-      {'modify': "A motion to change an order."},
+      {'modify': "A motion to change a custody or child support order."},
       {'reconsider': "a Motion to Reconsider."},
       {'set aside': "a Motion to Set Aside Judgment or Order."},
       {'appeal': "an Appeal."}
       ]
+
+---
+if: type_of_response == 'modify'
+objects:
+      - type_of_modification: |
+             DADict.using(auto_gather=False, gathered=True, elements={'custody': True, 'child support': True, 'spousal support': False, 'property or debt': False, 'other': False})
 ---
 id: Add response to modify to your Action Plan
 question: |

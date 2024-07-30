@@ -1,56 +1,56 @@
 @responding
 Feature: User paths
 
-@row2    
-Scenario: Row #2  
-  Given I start the interview at "changing_child_custody.yml"
-    And I get to the question id "final screen" with this data:
-    | var                                   | value                        | trigger | 
-    | user_need                             | respond to motion in custody |         | 
-    | middle_of_case                        | yes                          |         | 
-    | type_of_response                      | modify                       |         | 
-    | type_of_modification['child support'] | True                         |         | 
-    | respond_to_modify                     | agree                        |         | 
-    And I take a screenshot
-    And I should see the phrase "Your Personal Action Plan for responding to a motion the other parent filed, in 10 steps"
-    And I should see the phrase "Learn about motions to modify a child support order"
-    And I should see the phrase "Let the other parent and the court know you agree with the proposed changes"
-    And I should see the phrase "Fill out a response that states you agree"
-    And I should see the phrase "Fill out the Certificate of Service"
-    And I should see the phrase "File your response within 10 or 13 days"
-    And I should see the phrase "Serve the other parent"
-    And I should see the phrase "What to expect after you respond to the Motion to Modify"
-    And I should see the phrase "Contact the other parent, and write out your agreement"
-    And I should see the phrase "File your agreement with the court within 10 or 13 days"
-    And I should see the phrase "Get more information or help"
-    And I take a screenshot
-    And I download "changing_child_custody.pdf"
-    And I download "changing_child_custody.docx"
-
-@row2a    
-Scenario: Row #2a  
-  Given I start the interview at "changing_child_custody.yml"
-    And I get to the question id "final screen" with this data:
-    | var                             | value                        | trigger | 
-    | user_need                       | respond to motion in custody |         | 
-    | middle_of_case                  | no                           |         | 
-    | type_of_response                | modify                       |         | 
-    | type_of_modification['custody'] | True                         |         | 
-    | respond_to_modify               | agree                        |         | 
-    And I should see the phrase "Your Personal Action Plan for responding to a motion the other parent filed, in 10 steps"
-    And I should see the phrase "Learn about motions to modify custody or a Parenting Plan order"
-    And I should see the phrase "Let the other parent and the court know you agree with the proposed changes"
-    And I should see the phrase "Fill out a response that states you agree"
-    And I should see the phrase "Fill out the Certificate of Service"
-    And I should see the phrase "File your response within 10 or 13 days"
-    And I should see the phrase "Serve the other parent"
-    And I should see the phrase "What to expect after you respond to the Motion to Modify"
-    And I should see the phrase "Contact the other parent, and write out your agreement"
-    And I should see the phrase "File your agreement with the court within 10 or 13 days"
-    And I should see the phrase "Get more information or help"
-    And I take a screenshot
-    And I download "changing_child_custody.pdf"
-    And I download "changing_child_custody.docx"
+# @row2    
+# Scenario: Row #2  
+#   Given I start the interview at "changing_child_custody.yml"
+#     And I get to the question id "final screen" with this data:
+#     | var                                   | value                        | trigger | 
+#     | user_need                             | respond to motion in custody |         | 
+#     | middle_of_case                        | yes                          |         | 
+#     | type_of_response                      | modify                       |         | 
+#     | type_of_modification['child support'] | True                         |         | 
+#     | respond_to_modify                     | agree                        |         | 
+#     And I take a screenshot
+#     And I should see the phrase "Your Personal Action Plan for responding to a motion the other parent filed, in 10 steps"
+#     And I should see the phrase "Learn about motions to modify a child support order"
+#     And I should see the phrase "Let the other parent and the court know you agree with the proposed changes"
+#     And I should see the phrase "Fill out a response that states you agree"
+#     And I should see the phrase "Fill out the Certificate of Service"
+#     And I should see the phrase "File your response within 10 or 13 days"
+#     And I should see the phrase "Serve the other parent"
+#     And I should see the phrase "What to expect after you respond to the Motion to Modify"
+#     And I should see the phrase "Contact the other parent, and write out your agreement"
+#     And I should see the phrase "File your agreement with the court within 10 or 13 days"
+#     And I should see the phrase "Get more information or help"
+#     And I take a screenshot
+#     And I download "changing_child_custody.pdf"
+#     And I download "changing_child_custody.docx"
+# 
+# @row2a    
+# Scenario: Row #2a  
+#   Given I start the interview at "changing_child_custody.yml"
+#     And I get to the question id "final screen" with this data:
+#     | var                             | value                        | trigger | 
+#     | user_need                       | respond to motion in custody |         | 
+#     | middle_of_case                  | no                           |         | 
+#     | type_of_response                | modify                       |         | 
+#     | type_of_modification['custody'] | True                         |         | 
+#     | respond_to_modify               | agree                        |         | 
+#     And I should see the phrase "Your Personal Action Plan for responding to a motion the other parent filed, in 10 steps"
+#     And I should see the phrase "Learn about motions to modify custody or a Parenting Plan order"
+#     And I should see the phrase "Let the other parent and the court know you agree with the proposed changes"
+#     And I should see the phrase "Fill out a response that states you agree"
+#     And I should see the phrase "Fill out the Certificate of Service"
+#     And I should see the phrase "File your response within 10 or 13 days"
+#     And I should see the phrase "Serve the other parent"
+#     And I should see the phrase "What to expect after you respond to the Motion to Modify"
+#     And I should see the phrase "Contact the other parent, and write out your agreement"
+#     And I should see the phrase "File your agreement with the court within 10 or 13 days"
+#     And I should see the phrase "Get more information or help"
+#     And I take a screenshot
+#     And I download "changing_child_custody.pdf"
+#     And I download "changing_child_custody.docx"
 
 @row2b    
 Scenario: Row #2a  
@@ -60,8 +60,8 @@ Scenario: Row #2a
     | user_need                             | respond to motion in custody |         | 
     | middle_of_case                        | yes                          |         | 
     | type_of_response                      | modify                       |         | 
-    | type_of_modification['custody']       | True                         |         | 
-    | type_of_modification['child support'] | True                         |         | 
+#    | type_of_modification['custody']       | True                         |         | 
+#    | type_of_modification['child support'] | True                         |         | 
     | respond_to_modify                     | agree                        |         | 
     And I should see the phrase "Your Personal Action Plan for responding to a motion the other parent filed, in 10 steps"
     And I should see the phrase "Learn about motions to modify custody or a Parenting Plan order"
@@ -78,49 +78,49 @@ Scenario: Row #2a
     And I download "changing_child_custody.pdf"
     And I download "changing_child_custody.docx"
 
-@row3a   
-Scenario: Row #3a
-  Given I start the interview at "changing_child_custody.yml"
-    And I get to the question id "final screen" with this data:
-    | var                             | value                        | trigger | 
-    | user_need                       | respond to motion in custody |         | 
-    | middle_of_case                  | no                           |         | 
-    | type_of_response                | modify                       |         | 
-    | type_of_modification['custody'] | True                         |         | 
-    | respond_to_modify               | some                         |         | 
-    And I should see the phrase "Your Personal Action Plan for responding to a motion the other parent filed, in 7 steps"
-    And I should see the phrase "Learn about motions to modify custody or a Parenting Plan order"
-    And I should see the phrase "Fill out a response that states you do not agree with the proposed changes"
-    And I should see the phrase "Fill out the Certificate of Service"
-    And I should see the phrase "File your response within 10 or 13 days"
-    And I should see the phrase "Serve the other parent"
-    And I should see the phrase "What to expect after you respond to the Motion to Modify"
-    And I should see the phrase "Get more information or help"
-    And I take a screenshot
-    And I download "changing_child_custody.pdf"
-    And I download "changing_child_custody.docx"
-
-@row3b
-Scenario: Row #3b 
-  Given I start the interview at "changing_child_custody.yml"
-    And I get to the question id "final screen" with this data:
-    | var                                   | value                        | trigger | 
-    | user_need                             | respond to motion in custody |         | 
-    | middle_of_case                        | no                           |         | 
-    | type_of_response                      | modify                       |         | 
-    | type_of_modification['child support'] | True                         |         | 
-    | respond_to_modify                     | none                         |         | 
-    And I should see the phrase "Your Personal Action Plan for responding to a motion the other parent filed, in 7 steps"
-    And I should see the phrase "Learn about motions to modify a child support order"
-    And I should see the phrase "Fill out a response that states you do not agree with the proposed changes"
-    And I should see the phrase "Fill out the Certificate of Service"
-    And I should see the phrase "File your response within 10 or 13 days"
-    And I should see the phrase "Serve the other parent"
-    And I should see the phrase "What to expect after you respond to the Motion to Modify"
-    And I should see the phrase "Get more information or help"
-    And I take a screenshot
-    And I download "changing_child_custody.pdf"
-    And I download "changing_child_custody.docx"
+# @row3a   
+# Scenario: Row #3a
+#   Given I start the interview at "changing_child_custody.yml"
+#     And I get to the question id "final screen" with this data:
+#     | var                             | value                        | trigger | 
+#     | user_need                       | respond to motion in custody |         | 
+#     | middle_of_case                  | no                           |         | 
+#     | type_of_response                | modify                       |         | 
+#     | type_of_modification['custody'] | True                         |         | 
+#     | respond_to_modify               | some                         |         | 
+#     And I should see the phrase "Your Personal Action Plan for responding to a motion the other parent filed, in 7 steps"
+#     And I should see the phrase "Learn about motions to modify custody or a Parenting Plan order"
+#     And I should see the phrase "Fill out a response that states you do not agree with the proposed changes"
+#     And I should see the phrase "Fill out the Certificate of Service"
+#     And I should see the phrase "File your response within 10 or 13 days"
+#     And I should see the phrase "Serve the other parent"
+#     And I should see the phrase "What to expect after you respond to the Motion to Modify"
+#     And I should see the phrase "Get more information or help"
+#     And I take a screenshot
+#     And I download "changing_child_custody.pdf"
+#     And I download "changing_child_custody.docx"
+# 
+# @row3b
+# Scenario: Row #3b 
+#   Given I start the interview at "changing_child_custody.yml"
+#     And I get to the question id "final screen" with this data:
+#     | var                                   | value                        | trigger | 
+#     | user_need                             | respond to motion in custody |         | 
+#     | middle_of_case                        | no                           |         | 
+#     | type_of_response                      | modify                       |         | 
+#     | type_of_modification['child support'] | True                         |         | 
+#     | respond_to_modify                     | none                         |         | 
+#     And I should see the phrase "Your Personal Action Plan for responding to a motion the other parent filed, in 7 steps"
+#     And I should see the phrase "Learn about motions to modify a child support order"
+#     And I should see the phrase "Fill out a response that states you do not agree with the proposed changes"
+#     And I should see the phrase "Fill out the Certificate of Service"
+#     And I should see the phrase "File your response within 10 or 13 days"
+#     And I should see the phrase "Serve the other parent"
+#     And I should see the phrase "What to expect after you respond to the Motion to Modify"
+#     And I should see the phrase "Get more information or help"
+#     And I take a screenshot
+#     And I download "changing_child_custody.pdf"
+#     And I download "changing_child_custody.docx"
 
 @row3c
 Scenario: Row #3c 
@@ -130,8 +130,8 @@ Scenario: Row #3c
     | user_need                             | respond to motion in custody |         | 
     | middle_of_case                        | no                           |         | 
     | type_of_response                      | modify                       |         | 
-    | type_of_modification['child support'] | True                         |         | 
-    | type_of_modification['custody']       | True                         |         | 
+#    | type_of_modification['child support'] | True                         |         | 
+#    | type_of_modification['custody']       | True                         |         | 
     | respond_to_modify                     | some                         |         | 
     And I should see the phrase "Your Personal Action Plan for responding to a motion the other parent filed, in 7 steps"
     And I should see the phrase "Learn about motions to modify custody or a Parenting Plan order"
