@@ -4,16 +4,15 @@ Feature: User paths
 @row32
 Scenario: Row #32
 # Parent wants judge to reconsider final order within 10 days and get parent agreement information
-    Given I start the interview at "changing_child_custody.yml"
+  Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
-      | var | value | trigger |
-      | user_need | change custody order |  |
-      | middle_of_case | no |  |
-      | why_change | problem |  |
-      | final_order_date | today - 5 |  |
-      | parents_agree | True |  |
+    | var              | value                | trigger | 
+    | user_need        | change custody order |         | 
+    | middle_of_case   | no                   |         | 
+    | why_change       | problem              |         | 
+    | final_order_date | today - 5            |         | 
+    | parents_agree    | True                 |         | 
 #      | motion_for_reconsideration | True |  |
-    And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 10 steps"
     And I should see the phrase "Decide the steps you want to take"
     And I should see the phrase "Find out if you and the other parent agree"
@@ -25,22 +24,23 @@ Scenario: Row #32
     And I should see the phrase "Serve the other parent"
     And I should see the phrase "What to expect after you file a Motion to Reconsider"
     And I should see the phrase "Get more information or help"
+    And I take a screenshot
     And I download "changing_child_custody.pdf"
-    
+    And I download "changing_child_custody.docx"
+
 @row32b
 Scenario: Row #32b 
 # Parent wants judge to reconsider final order within 10 days and get parent agreement information
-    Given I start the interview at "changing_child_custody.yml"
+  Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
-      | var | value | trigger |
-      | user_need | change custody order |  |    
-      | middle_of_case | no |  |
-      | why_change | problem |  |
-      | final_order_period | True | |
-      | guess_final_order_date | within 10 days |  | 
-      | parents_agree | True |  |
+    | var                    | value                | trigger | 
+    | user_need              | change custody order |         | 
+    | middle_of_case         | no                   |         | 
+    | why_change             | problem              |         | 
+    | final_order_period     | True                 |         | 
+    | guess_final_order_date | within 10 days       |         | 
+    | parents_agree          | True                 |         | 
 #      | motion_for_reconsideration | True |  |
-    And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 10 steps"
     And I should see the phrase "Decide the steps you want to take"
     And I should see the phrase "Find out if you and the other parent agree"
@@ -52,7 +52,9 @@ Scenario: Row #32b
     And I should see the phrase "Serve the other parent"
     And I should see the phrase "What to expect after you file a Motion to Reconsider"
     And I should see the phrase "Get more information or help""
+    And I take a screenshot
     And I download "changing_child_custody.pdf"
+    And I download "changing_child_custody.docx"
 
 #@row33
 #Scenario: Row #33 
@@ -92,20 +94,19 @@ Scenario: Row #32b
 #    And I should see the phrase "Tell the court about your agreement"
 #    And I should see the phrase "Get more information or help"
 #    And I download "changing_child_custody.pdf"
-    
+
 @row34
 Scenario: Row #34
 # Parent wants judge to reconsider final order within 10 days and but not get parent agreement information
-    Given I start the interview at "changing_child_custody.yml"
+  Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
-      | var | value | trigger |
-      | user_need | change custody order |  |    
-      | middle_of_case | no |  |
-      | why_change | problem |  |
-      | final_order_date | today - 7 |  | 
-      | parents_agree | False |  |
+    | var              | value                | trigger | 
+    | user_need        | change custody order |         | 
+    | middle_of_case   | no                   |         | 
+    | why_change       | problem              |         | 
+    | final_order_date | today - 7            |         | 
+    | parents_agree    | False                |         | 
 #      | motion_for_reconsideration | True |  |
-    And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 7 steps"
     And I should see the phrase "Learn about Motions to Reconsider"
     And I should see the phrase "Fill out the Motion to Reconsider forms"
@@ -114,22 +115,23 @@ Scenario: Row #34
     And I should see the phrase "Serve the other parent"
     And I should see the phrase "What to expect after you file a Motion to Reconsider"
     And I should see the phrase "Get more information or help"
+    And I take a screenshot
     And I download "changing_child_custody.pdf"
-    
+    And I download "changing_child_custody.docx"
+
 @row34b
 Scenario: Row #34b
 # Parent wants judge to reconsider final order within 10 days and but get parent agreement information
-    Given I start the interview at "changing_child_custody.yml"
+  Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
-      | var | value | trigger |
-      | user_need | change custody order |  |    
-      | middle_of_case | no |  |
-      | why_change | problem |  |
-      | final_order_period | True | |
-      | guess_final_order_date | within 10 days |  | 
-      | parents_agree | False |  |
+    | var                    | value                | trigger | 
+    | user_need              | change custody order |         | 
+    | middle_of_case         | no                   |         | 
+    | why_change             | problem              |         | 
+    | final_order_period     | True                 |         | 
+    | guess_final_order_date | within 10 days       |         | 
+    | parents_agree          | False                |         | 
 #      | motion_for_reconsideration | True |  |
-    And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 7 steps"
     And I should see the phrase "Learn about Motions to Reconsider"
     And I should see the phrase "Fill out the Motion to Reconsider forms"
@@ -138,7 +140,9 @@ Scenario: Row #34b
     And I should see the phrase "Serve the other parent"
     And I should see the phrase "What to expect after you file a Motion to Reconsider"
     And I should see the phrase "Get more information or help"
+    And I take a screenshot
     And I download "changing_child_custody.pdf"
+    And I download "changing_child_custody.docx"
 
 #@row35
 # Scenario: Row #35

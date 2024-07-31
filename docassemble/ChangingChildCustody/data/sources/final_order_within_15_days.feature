@@ -3,17 +3,16 @@ Feature: User paths
 
 @row36    
 Scenario: Row #36  
-    Given I start the interview at "changing_child_custody.yml"
+  Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
-      | var | value | trigger |
-      | user_need | change custody order |  |
-      | middle_of_case | no |  |
-      | why_change | problem |  |
-      | final_order_date | today - 12 |  |
-      | parents_agree | True |  |
+    | var              | value                | trigger | 
+    | user_need        | change custody order |         | 
+    | middle_of_case   | no                   |         | 
+    | why_change       | problem              |         | 
+    | final_order_date | today - 12           |         | 
+    | parents_agree    | True                 |         | 
 #      | appeal | True |  |
 #      | set_aside | True |  |
-    And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 11 steps"
     And I should see the phrase "Decide the steps you want to take"
     And I should see the phrase "Find out if you and the other parent agree"  
@@ -26,22 +25,23 @@ Scenario: Row #36
     And I should see the phrase "Serve the other parent" 
     And I should see the phrase "What to expect after you file a Motion to Set Aside"
     And I should see the phrase "Get more information or help"
+    And I take a screenshot
     And I download "changing_child_custody.pdf"
+    And I download "changing_child_custody.docx"
 
 @row36b
 Scenario: Row #36b
-    Given I start the interview at "changing_child_custody.yml"
+  Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
-      | var | value | trigger |
-      | user_need | change custody order |  |
-      | middle_of_case | no |  |
-      | why_change | problem |  |
-      | final_order_period | True | |
-      | guess_final_order_date | within 15 days |  |
-      | parents_agree | True |  |
+    | var                    | value                | trigger | 
+    | user_need              | change custody order |         | 
+    | middle_of_case         | no                   |         | 
+    | why_change             | problem              |         | 
+    | final_order_period     | True                 |         | 
+    | guess_final_order_date | within 15 days       |         | 
+    | parents_agree          | True                 |         | 
 #      | appeal | True |  |
 #      | set_aside | True |  |
-    And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 11 steps"
     And I should see the phrase "Decide the steps you want to take"
     And I should see the phrase "Find out if you and the other parent agree"  
@@ -54,7 +54,9 @@ Scenario: Row #36b
     And I should see the phrase "Serve the other parent" 
     And I should see the phrase "What to expect after you file a Motion to Set Aside"
     And I should see the phrase "Get more information or help"
+    And I take a screenshot
     And I download "changing_child_custody.pdf"
+    And I download "changing_child_custody.docx"
 
 #@row37
 #Scenario: Row #37
@@ -104,7 +106,6 @@ Scenario: Row #36b
 #    And I should see the phrase "Get more information or help"
 #    And I download "changing_child_custody.pdf"
 
-
 #@row39
 #Scenario: Row #39
 #    Given I start the interview at "changing_child_custody.yml"
@@ -124,21 +125,19 @@ Scenario: Row #36b
 #    And I should see the phrase "Get more information or help"
 #    And I download "changing_child_custody.pdf"
 
-
 @row40    
 Scenario: Row #40  
-    Given I start the interview at "changing_child_custody.yml"
+  Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
-      | var | value | trigger |
-      | user_need | change custody order |  |
-      | middle_of_case | no |  |
-      | why_change | problem |  |
-      | final_order_period | True | |
-      | guess_final_order_date | within 15 days |  |
-      | parents_agree | False |  |
+    | var                    | value                | trigger | 
+    | user_need              | change custody order |         | 
+    | middle_of_case         | no                   |         | 
+    | why_change             | problem              |         | 
+    | final_order_period     | True                 |         | 
+    | guess_final_order_date | within 15 days       |         | 
+    | parents_agree          | False                |         | 
 #      | appeal | True |  |
 #      | set_aside | True |  |
-    And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 9 steps"
     And I should see the phrase "Decide if you want to file an appeal"
     And I should see the phrase "Learn about the Motion to Set Aside Judgment or Order"
@@ -148,7 +147,9 @@ Scenario: Row #40
     And I should see the phrase "Serve the other parent" 
     And I should see the phrase "What to expect after you file a Motion to Set Aside"
     And I should see the phrase "Get more information or help"
+    And I take a screenshot
     And I download "changing_child_custody.pdf"
+    And I download "changing_child_custody.docx"
 
 #@row41
 #Scenario: Row #41
@@ -170,7 +171,6 @@ Scenario: Row #40
 #    And I should see the phrase "Decide if you want to file an appeal"
 #    And I should see the phrase "Get more information or help"
 #    And I download "changing_child_custody.pdf"
-
 
 #@row42
 #Scenario: Row #42
@@ -196,7 +196,6 @@ Scenario: Row #40
 #    And I should see the phrase "What to expect after you file a Motion to Set Aside"
 #    And I should see the phrase "Get more information or help"
 #    And I download "changing_child_custody.pdf"
-    
 
 #@row43
 #Scenario: Row #63 Parent doesn't want appeal a final order within 15 days info or parent agreement information
