@@ -5,6 +5,9 @@ include:
   - docassemble.AKA2JBranding:aka2j_motion_response_templates.yml    
   - docassemble.AKA2JBranding:aka2j_mod_cust_div_templates.yml
   - accordion_steps.yml
+  # - accordion_steps_w_divorce_logic.yml
+  # - accordion_steps_steplist_append_only.yml
+  # - accordion_steps_w_step_append_mod_for_custody.yml
 ---
 metadata:
   title: |
@@ -190,9 +193,9 @@ fields:
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       You have different ways to ask the court to change your child support order when your situation changes.  It can depend on when the court sent you the order.
   
-      For the first 10 days after {the court sent your custody or Parenting Plan order}, you can file a “Motion to Reconsider."  It asks the trial judge to fix something they overlooked or misunderstood.
+      For the first 10 days after {the court sent your custody or Parenting Plan order}, you can file a **Motion to Reconsider**. It asks the trial judge to fix something they overlooked or misunderstood.
        
-        After 10 days, you can file a “Motion to Modify.”
+        After 10 days, you can file a **Motion to Modify**.
        
         Your Action Plan will not include information about options that do not apply in your case.
 terms:
@@ -839,11 +842,13 @@ attachment:
   filename: changing_child_custody
   variable name: changing_child_custody_attachment[i]
   skip undefined: True
+  update references: True
   docx template file: changing_child_custody_action_plan.docx
 ---
 attachment:
   name: changing child custody
   filename: changing_child_custody
   variable name: docx_changing_child_custody_attachment
-  skip undefined: True
+  skip undefined: True  
+  update references: True
   docx template file: changing_child_custody_action_plan.docx

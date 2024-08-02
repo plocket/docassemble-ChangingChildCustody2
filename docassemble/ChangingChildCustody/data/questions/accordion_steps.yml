@@ -19,7 +19,7 @@ subject: |
   % endif 
   % endif
 content: |
-  Thank you for using Alaska Court System Access to Justice Easy Forms
+  Thank you for using the Alaska Court System's Guided Assistant Interview.
 
   Your Action Plan is attached.
 ---
@@ -139,7 +139,7 @@ code: |
   
     # Rows 3 & 4
     if type_of_response == 'modify' and type_of_modification.any_true('child support', 'custody'):
-      add_unique_step((modify_step, "modify_idx"), step_list)
+      step_list.append((modify_step, "modify_idx"), step_list)
   
     # Row 5
     if type_of_response == 'reconsider' and respond_to_reconsider:
@@ -155,33 +155,33 @@ code: |
     
     
     if (type_of_response == 'modify' and respond_to_modify == 'agree') or ( middle_of_case == 'no' and type_of_response =='set aside' and respond_to_set_aside == 'agree'):
-      add_unique_step((let_court_party_know_you_agree_step, "let_court_party_know_you_agree_idx"), step_list)
+      step_list.append((let_court_party_know_you_agree_step, "let_court_party_know_you_agree_idx"), step_list)
     
     if type_of_response == 'modify' or (middle_of_case == 'no' and type_of_response == 'set aside'):
-      add_unique_step((respond_in_writing_step, "respond_in_writing_idx"), step_list)
+      step_list.append((respond_in_writing_step, "respond_in_writing_idx"), step_list)
       
     if type_of_response in('modify', 'reconsider') or (middle_of_case == 'no' and type_of_response == 'set aside'):
-      add_unique_step((cert_of_service_step, "cert_of_service_idx"), step_list)
-      add_unique_step((file_response_step, "file_response_idx"), step_list)
-      add_unique_step((serve_motion_response_step, "serve_motion_response_idx"), step_list)
+      step_list.append((cert_of_service_step, "cert_of_service_idx"), step_list)
+      step_list.append((file_response_step, "file_response_idx"), step_list)
+      step_list.append((serve_motion_response_step, "serve_motion_response_idx"), step_list)
       
     
     if type_of_response == 'modify' or (middle_of_case == 'no' and type_of_response == 'set aside'):
-      add_unique_step((expect_after_response_step, "expect_after_response_idx"), step_list)
+      step_list.append((expect_after_response_step, "expect_after_response_idx"), step_list)
       
     if (type_of_response == 'modify' and respond_to_modify == 'agree') or (middle_of_case == 'no' and type_of_response == 'set aside' and respond_to_set_aside == 'agree'):
-      add_unique_step((contact_other_party_step, "contact_other_party_idx"), step_list)    
-      add_unique_step((file_agreement_step, "file_agreement_idx"), step_list)
+      step_list.append((contact_other_party_step, "contact_other_party_idx"), step_list)    
+      step_list.append((file_agreement_step, "file_agreement_idx"), step_list)
     
     # Row 9
     if middle_of_case == 'no' and  type_of_response == 'appeal' and respond_to_appeal == 'agree':
-      add_unique_step((appeal_response_step, "appeal_response_idx"), step_list)
-      add_unique_step((appeal_contact_parent_step, "appeal_contact_parent_idx"), step_list)
-      add_unique_step((tell_supreme_court_step, "tell_supreme_court_idx"), step_list)
+      step_list.append((appeal_response_step, "appeal_response_idx"), step_list)
+      step_list.append((appeal_contact_parent_step, "appeal_contact_parent_idx"), step_list)
+      step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"), step_list)
     
     # Rows 10 & 11
     if middle_of_case == 'no' and type_of_response == 'appeal' and respond_to_appeal in('some','none'):
-      add_unique_step((appeal_response_step, "appeal_response_idx"), step_list)
+      step_list.append((appeal_response_step, "appeal_response_idx"), step_list)
 
   else:    
        ##################### middle of case
@@ -574,52 +574,7 @@ code: |
     define(step_tuple[ 1 ], iter_idx + 1)
   get_steps = True
 ---
----
-code: |
-  # Alternatives to make sure we don't get duplicate steps
 
-  #### Alternative 1:
-  # Define them all at the top
-  add_cert_of_service = False
-  
-  # Set which steps to add (interview order)
-  if foo:
-    add_cert_of_service = True
-  if bar:
-    add_cert_of_service = True
-  make_steps
-  
-  ## Didn't like this part (like "alternative 1")
-  ## If there are any special cases that are hard to keep track of
-  ## and need to be in a specific visual order
-  #add_file_step = False
-  #if some_condition_that_adds_modify_step:
-  #  add_file_step = True
-  ## At the very end
-  #if add_file_step:
-  #  add_unique_step("")
-    
-  # Other code block or something. Maybe.
-  # Gives better control over what order to add steps in the list
-  step_list = []
-  if add_cert_of_service:
-    add_unique_step((cert_of_service_step, "cert_of_service_idx"), step_list)
-  if add_other:
-    add_unique_step("blah")
-  make_steps = True
----
-code: |
-  #### Alternative 2:
-  def add_unique_step(step, step_list):
-    is_unique = True
-    for chair in step_list:
-      if chair[1] == step[1]:
-        is_unique = False
-    if is_unique:
-      step_list.append(step)
-      
-  #if foo:
-  #  add_unique_step((file_step, "file_idx"), step_list)
 ---
 code: |
   def add_unique_image(new_image, image_list):

@@ -53,7 +53,7 @@ Feature: User paths
 #     And I download "changing_child_custody.docx"
 
 @row2b    
-Scenario: Row #2a  
+Scenario: Row #2b 
   Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
     | var                                   | value                        | trigger | 
