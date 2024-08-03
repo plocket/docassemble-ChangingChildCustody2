@@ -190,9 +190,9 @@ fields:
       #### <i class="fa-regular fa-lightbulb"></i> Learn more ####
       You have different ways to ask the court to change your child support order when your situation changes.  It can depend on when the court sent you the order.
   
-      For the first 10 days after {the court sent your custody or Parenting Plan order}, you can file a “Motion to Reconsider."  It asks the trial judge to fix something they overlooked or misunderstood.
+      For the first 10 days after {the court sent your custody or Parenting Plan order}, you can file a **Motion to Reconsider**. It asks the trial judge to fix something they overlooked or misunderstood.
        
-        After 10 days, you can file a “Motion to Modify.”
+        After 10 days, you can file a **Motion to Modify**.
        
         Your Action Plan will not include information about options that do not apply in your case.
 terms:
@@ -547,17 +547,52 @@ fields:
       <li>one parent is moving out of state so the existing schedule of week on / week off is impossible.</li>
       </ol>
 ---
-id: What did the other parent file with the court
+comment: |
+  if middle_of_case motions other party could have filed are:
+  all options if final order except appeal and set aside
+id: What did the other party file with the court
 question: |
-  What did the other parent file with the court?
+  % if middle_of_case == 'yes':
+  What did your spouse file with the court?
+  % else:
+  What did your ex file with the court?
+  % endif
 fields:
-  - no label: type_of_response
-    input type: radio
-    choices:
-      - A Motion to Modify a Custody and Parenting Plan or Child Support Order.: custody
-      - A Motion to Reconsider.: reconsider
-      - A Motion to Set Aside Judgment or Order.: set aside
-      - An Appeal.: appeal
+  - They filed: type_of_response
+    datatype: radio
+    code: |
+      type_of_response_choices
+#  - They filed: type_of_modification
+#    datatype: checkboxes
+#    none of the above: False
+#    code: |
+#      [
+#        {'custody': "A motion to change the custody and parenting plan order."},
+#        {'child support': "A motion to change the child support order."},   
+#        {'other': "A motion to change something else."}
+#      ]
+#    js show if: 
+#      val('type_of_response') === 'modify'
+---
+code: |
+  if middle_of_case == 'yes':
+    type_of_response_choices = [
+      {'modify': "A motion to change a custody or child support order."},
+      {'reconsider': "a Motion to Reconsider."}
+      ]
+  else:
+    type_of_response_choices = [
+      {'modify': "A motion to change a custody or child support order."},
+      {'reconsider': "a Motion to Reconsider."},
+      {'set aside': "a Motion to Set Aside Judgment or Order."},
+      {'appeal': "an Appeal."}
+      ]
+
+---
+if: type_of_response == 'modify'
+objects:
+      - type_of_modification: |
+             DADict.using(auto_gather=False, gathered=True, elements={'custody': True, 'child support': True, 'spousal support': False, 'property or debt': False, 'other': False})
 ---
 id: Add response to modify to your Action Plan
 question: |
@@ -569,7 +604,7 @@ subquestion: |
   
   What information do you need?
 fields:
-  - no label: respond_to_custody
+  - no label: respond_to_modify
     input type: radio
     choices:
       - "How to respond if I agree with **all** proposed changes.": agree
@@ -787,7 +822,7 @@ objects:
 objects:
 #  - al_user_bundle: ALDocumentBundle.using(elements=[changing_child_custody_Post_interview_instructions, changing_child_custody_attachment], filename="changing_child_custody", title="All forms to download for your records", enabled=True)
   - al_user_bundle: ALDocumentBundle.using(elements=[changing_child_custody_attachment], filename="changing_child_custody", title="All forms to download for your records", enabled=True)
-  - al_recipient_bundle: ALDocumentBundle.using(elements=[changing_child_custody_attachment],  filename="changing_child_custody", title="All forms to file", enabled=True)
+#  - al_recipient_bundle: ALDocumentBundle.using(elements=[changing_child_custody_attachment],  filename="changing_child_custody", title="All forms to file", enabled=True)
 ---
 # Each attachment defines a key in an ALDocument. We use `i` as the placeholder here so the same template is 
 # used for "preview" and "final" keys, and logic in the template checks the value of 
@@ -804,4 +839,13 @@ attachment:
   filename: changing_child_custody
   variable name: changing_child_custody_attachment[i]
   skip undefined: True
+  update references: True
+  docx template file: changing_child_custody_action_plan.docx
+---
+attachment:
+  name: changing child custody
+  filename: changing_child_custody
+  variable name: docx_changing_child_custody_attachment
+  skip undefined: True  
+  update references: True
   docx template file: changing_child_custody_action_plan.docx

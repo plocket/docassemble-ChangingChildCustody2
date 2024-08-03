@@ -11,7 +11,6 @@ Scenario: Row #24
       | why_change | review |  | 
       | parents_agree | True |  | 
 #      | motion_to_modify | True |  |
-    And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 12 steps"
     And I should see the phrase "Decide the steps you want to take"
     And I should see the phrase "Find out if you and the other parent agree"  
@@ -25,7 +24,9 @@ Scenario: Row #24
     And I should see the phrase "Serve the other parent" 
     And I should see the phrase "What to expect after you file a Motion to Modify"
     And I should see the phrase "Get more information or help"
+    And I take a screenshot
     And I download "changing_child_custody.pdf"
+    And I download "changing_child_custody.docx"
     
 @row25
 Scenario: Row #25
@@ -37,7 +38,6 @@ Scenario: Row #25
       | why_change | review |  | 
       | parents_agree | False |  | 
 #      | motion_to_modify | True |  |
-    And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 9 steps"
     And I should see the phrase "Learn about motions to modify" 
     And I should see the phrase "Fill out the Motion to Modify forms"
@@ -48,8 +48,9 @@ Scenario: Row #25
     And I should see the phrase "Serve the other parent" 
     And I should see the phrase "What to expect after you file a Motion to Modify"
     And I should see the phrase "Get more information or help"
-    And I download "changing_child_custody.pdf"    
-
+    And I take a screenshot
+    And I download "changing_child_custody.pdf"
+    And I download "changing_child_custody.docx"
     
 #@row26
 #Scenario: Row #26
@@ -93,7 +94,6 @@ Scenario: Row #28
       | why_change | schedule |  | 
       | parents_agree | True |  | 
 #      | motion_to_modify | True |  |
-    And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 12 steps"
     And I should see the phrase "Decide the steps you want to take"
     And I should see the phrase "Find out if you and the other parent agree"  
@@ -107,7 +107,9 @@ Scenario: Row #28
     And I should see the phrase "Serve the other parent" 
     And I should see the phrase "What to expect after you file a Motion to Modify"
     And I should see the phrase "Get more information or help"
+    And I take a screenshot
     And I download "changing_child_custody.pdf"
+    And I download "changing_child_custody.docx"
     
 @row29
 Scenario: Row #29
@@ -119,7 +121,6 @@ Scenario: Row #29
       | why_change | schedule |  | 
       | parents_agree | False |  | 
 #      | motion_to_modify | True |  |
-    And I take a screenshot
     And I should see the phrase "Your Personal Action Plan for changing your custody or Parenting Plan order in 9 steps"
     And I should see the phrase "Learn about motions to modify" 
     And I should see the phrase "Fill out the Motion to Modify forms"
@@ -130,7 +131,9 @@ Scenario: Row #29
     And I should see the phrase "Serve the other parent" 
     And I should see the phrase "What to expect after you file a Motion to Modify"
     And I should see the phrase "Get more information or help"
-    And I download "changing_child_custody.pdf"       
+    And I take a screenshot
+    And I download "changing_child_custody.pdf"
+    And I download "changing_child_custody.docx"       
         
 #@row30
 #Scenario: Row #30  
