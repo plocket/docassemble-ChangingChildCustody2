@@ -110,7 +110,10 @@ code: |
   reply_certificate_list.append({'image': service_cert_reply_image, 'text': "Certificate of Service at the bottom of the Reply form."})
   # motion_type used in expect_after_motion_step "What to expect after you file a ${ motion_type }"
   motion_type = 'motion'
-    
+  
+  
+  ######## the more complicated 'changing divorce court order interview' (https://github.com/A2JatAKCourts/docassemble-ChangingDivorceOrder) uses the function add_unique_step() but we do not need this function in simpler interviews which already take some time to assemble document.  
+  
   if user_need == 'change foreign custody order':
     other_party_in_case  = 'the other parent'
     step_list.append((foreign_order_step, "foreign_order_idx"))
@@ -139,7 +142,7 @@ code: |
   
     # Rows 3 & 4
     if type_of_response == 'modify' and type_of_modification.any_true('child support', 'custody'):
-      step_list.append((modify_step, "modify_idx"), step_list)
+      step_list.append((modify_step, "modify_idx"))
   
     # Row 5
     if type_of_response == 'reconsider' and respond_to_reconsider:
@@ -155,33 +158,33 @@ code: |
     
     
     if (type_of_response == 'modify' and respond_to_modify == 'agree') or ( middle_of_case == 'no' and type_of_response =='set aside' and respond_to_set_aside == 'agree'):
-      step_list.append((let_court_party_know_you_agree_step, "let_court_party_know_you_agree_idx"), step_list)
+      step_list.append((let_court_party_know_you_agree_step, "let_court_party_know_you_agree_idx"))
     
     if type_of_response == 'modify' or (middle_of_case == 'no' and type_of_response == 'set aside'):
-      step_list.append((respond_in_writing_step, "respond_in_writing_idx"), step_list)
+      step_list.append((respond_in_writing_step, "respond_in_writing_idx"))
       
     if type_of_response in('modify', 'reconsider') or (middle_of_case == 'no' and type_of_response == 'set aside'):
-      step_list.append((cert_of_service_step, "cert_of_service_idx"), step_list)
-      step_list.append((file_response_step, "file_response_idx"), step_list)
-      step_list.append((serve_motion_response_step, "serve_motion_response_idx"), step_list)
+      step_list.append((cert_of_service_step, "cert_of_service_idx"))
+      step_list.append((file_response_step, "file_response_idx"))
+      step_list.append((serve_motion_response_step, "serve_motion_response_idx"))
       
     
     if type_of_response == 'modify' or (middle_of_case == 'no' and type_of_response == 'set aside'):
-      step_list.append((expect_after_response_step, "expect_after_response_idx"), step_list)
+      step_list.append((expect_after_response_step, "expect_after_response_idx"))
       
     if (type_of_response == 'modify' and respond_to_modify == 'agree') or (middle_of_case == 'no' and type_of_response == 'set aside' and respond_to_set_aside == 'agree'):
-      step_list.append((contact_other_party_step, "contact_other_party_idx"), step_list)    
-      step_list.append((file_agreement_step, "file_agreement_idx"), step_list)
+      step_list.append((contact_other_party_step, "contact_other_party_idx"))    
+      step_list.append((file_agreement_step, "file_agreement_idx"))
     
     # Row 9
     if middle_of_case == 'no' and  type_of_response == 'appeal' and respond_to_appeal == 'agree':
-      step_list.append((appeal_response_step, "appeal_response_idx"), step_list)
-      step_list.append((appeal_contact_parent_step, "appeal_contact_parent_idx"), step_list)
-      step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"), step_list)
+      step_list.append((appeal_response_step, "appeal_response_idx"))
+      step_list.append((appeal_contact_parent_step, "appeal_contact_parent_idx"))
+      step_list.append((tell_supreme_court_step, "tell_supreme_court_idx"))
     
     # Rows 10 & 11
     if middle_of_case == 'no' and type_of_response == 'appeal' and respond_to_appeal in('some','none'):
-      step_list.append((appeal_response_step, "appeal_response_idx"), step_list)
+      step_list.append((appeal_response_step, "appeal_response_idx"))
 
   else:    
        ##################### middle of case
@@ -594,12 +597,10 @@ subject: |
     Learn about motions to modify
     % elif user_need == 'change divorce order':
     Learn about a Motion to Modify your Parenting Plan
-    % elif user_need in('respond to motion in custody', 'respond to motion in divorce'):
-    % if type_of_response == 'modify' and type_of_modification['custody']:
+    % elif (user_need =='respond to motion in custody' and type_of_response == 'modify') or (user_need == 'respond to motion in divorce' and type_of_response == 'modify' and type_of_modification['custody']):
     Learn about motions to modify custody or a Parenting Plan order
-    % elif type_of_response == 'modify' and type_of_modification['child support'] and not type_of_modification['custody']:
+    % elif user_need == 'respond to motion in divorce' and type_of_response == 'modify' and type_of_modification['child support'] and not type_of_modification['custody']:
     Learn about motions to modify a child support order
-    % endif
     % endif
 content: |
   % if not user_need in('respond to motion in custody', 'respond to motion in divorce'):
