@@ -1,6 +1,9 @@
 @UnkownFinalOrder
 Feature: User paths
 
+Background:
+  Given the maximum seconds for each Step is 90
+
 @row47
 Scenario: Row #47
   Given I start the interview at "changing_child_custody.yml"

@@ -1,6 +1,10 @@
 @InterimMotions
 Feature: User paths
 
+Background:
+  Given the maximum seconds for each Step is 90
+
+
 @row12
 Scenario: Row #12 
 # Middle of case parent wants judge to reconsider interim motion within 10 days of decision and also parents agreement information 
