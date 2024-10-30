@@ -1,6 +1,10 @@
 @responding
 Feature: User paths
 
+Background:
+  Given the maximum seconds for each Step is 90
+
+
 # @row2    
 # Scenario: Row #2  
 #   Given I start the interview at "changing_child_custody.yml"

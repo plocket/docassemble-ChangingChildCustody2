@@ -1,6 +1,10 @@
 @within10
 Feature: User paths
 
+Background:
+  Given the maximum seconds for each Step is 90
+
+
 @row32
 Scenario: Row #32
 # Parent wants judge to reconsider final order within 10 days and get parent agreement information
