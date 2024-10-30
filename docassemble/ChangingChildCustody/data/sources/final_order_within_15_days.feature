@@ -1,5 +1,8 @@
 @within15
-Feature: User paths   
+Feature: User paths
+
+Background:
+  Given the maximum seconds for each Step is 90
 
 @row36    
 Scenario: Row #36  
