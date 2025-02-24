@@ -1,17 +1,11 @@
 name: ALKiln v5 tests
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       tags:
         description: 'Optional. Use a "tag expression" specify which tagged tests to run. See https://cucumber.io/docs/cucumber/api/#tag-expressions for syntax.'
         default: ''
-  # To run your tests on a schedule, delete the first "#" symbol at the beginning of each line below.
-  ## Also see https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
-  ## Also see https://crontab.guru/examples.html
-  #schedule:
-  #  - cron: '0 1 * * TUE'
 
 jobs:
 
