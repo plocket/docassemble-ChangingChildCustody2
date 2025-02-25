@@ -56,4 +56,5 @@ jobs:
           # ALKILN_VERSION: ""
 
       - name: Docker debug tmate session
+        if: ${{ always() }}
         uses: mxschmitt/action-tmate@v3
