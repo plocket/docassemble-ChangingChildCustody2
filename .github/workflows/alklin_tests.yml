@@ -35,9 +35,6 @@ jobs:
           CONFIG_CONTENTS: "${{ secrets.CONFIG_CONTENTS }}"
       - run: echo "ALKiln finished starting the isolated GitHub docassemble server"
         shell: bash
-
-      #- name: Docker debug tmate session
-      #  uses: mxschmitt/action-tmate@v3
       
       - name: "Create other env vars for our own tests from server output"
         run: |
@@ -57,3 +54,6 @@ jobs:
           # https://assemblyline.suffolklitlab.org/docs/alkiln/writing/#optional-inputs
           # ALKILN_TAG_EXPRESSION: "${{ env.ALKILN_TAG_EXPRESSION }}"
           # ALKILN_VERSION: ""
+
+      - name: Docker debug tmate session
+        uses: mxschmitt/action-tmate@v3
