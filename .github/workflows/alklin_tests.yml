@@ -38,6 +38,11 @@ jobs:
 
       #- name: Docker debug tmate session
       #  uses: mxschmitt/action-tmate@v3
+      
+      - name: "Create other env vars for our own tests from server output"
+        run: |
+          echo "USER1_EMAIL=${{ steps.github_server.outputs.DA_ADMIN_EMAIL }}" >> $GITHUB_ENV
+          echo "USER1_PASSWORD=${{ steps.github_server.outputs.DA_ADMIN_PASSWORD }}" >> $GITHUB_ENV
 
       - name: "Run ALKiln tests"
         if: ${{ success() }}
