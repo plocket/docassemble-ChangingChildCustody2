@@ -1,4 +1,4 @@
-name: ALKiln isolated GitHub server tests
+name: ALKiln 2
 
 on:
   push:
