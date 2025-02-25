@@ -7,7 +7,11 @@ Background:
 
 @row24
 Scenario: Row #24
-    Given I wait 120 seconds
+    Given I wait 20 seconds
+    Given I wait 20 seconds
+    Given I wait 20 seconds
+    Given I wait 20 seconds
+    Given I wait 20 seconds
     Given I start the interview at "changing_child_custody.yml"
     And I sign in with the email "USER1_EMAIL" and the password "USER1_PASSWORD"
     And I get to the question id "final screen" with this data:
