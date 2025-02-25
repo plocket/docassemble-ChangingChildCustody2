@@ -1,4 +1,4 @@
-name: ALKiln isolated GitHub server tests
+name: ALKiln 3
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
         required: false
         default: false
         type: boolean
-        description: 'Show the docker logs while building the GitHub server container. It will also save the docker log artifact. This might show sensitive config information.'
+        description: 'Experimental feature. Show the docker logs while building the GitHub server container. It will also save the docker log artifact. This might show sensitive config information.'
 
 jobs:
 
