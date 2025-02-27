@@ -54,7 +54,7 @@ setup(name='docassemble.ChangingChildCustody',
       url='https://courtformsonline.org',
       packages=find_packages(),
       namespace_packages=['docassemble'],
-      install_requires=['docassemble.AssemblyLine>=3.2.0', 'docassemble-AKA2JBranding @ git+https://github.com/A2JatAKCourts/docassemble-AKA2JBranding'],
+      install_requires=['docassemble.AssemblyLine>=3.2.0', 'docassemble-AKA2JBranding @ https://github.com/A2JatAKCourts/docassemble-AKA2JBranding/archive/main.zip'],
       zip_safe=False,
       package_data=find_package_data(where='docassemble/ChangingChildCustody/', package='docassemble.ChangingChildCustody'),
      )
