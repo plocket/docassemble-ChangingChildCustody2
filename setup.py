@@ -55,7 +55,7 @@ setup(name='docassemble.ChangingChildCustody',
       packages=find_packages(),
       namespace_packages=['docassemble'],
       install_requires=['docassemble.AKA2JBranding', 'docassemble.AssemblyLine>=3.2.0'],
-      dependency_links=['https://github.com/A2JatAKCourts/docassemble-AKA2JBranding/archive/main.zip'],
+      dependency_links=['git+https://github.com/A2JatAKCourts/docassemble-AKA2JBranding.git@main'],
       zip_safe=False,
       package_data=find_package_data(where='docassemble/ChangingChildCustody/', package='docassemble.ChangingChildCustody'),
      )
