@@ -54,7 +54,3 @@ jobs:
           # https://assemblyline.suffolklitlab.org/docs/alkiln/writing/#optional-inputs
           # ALKILN_TAG_EXPRESSION: "${{ env.ALKILN_TAG_EXPRESSION }}"
           # ALKILN_VERSION: ""
-
-      - name: Docker debug tmate session
-        if: ${{ always() }}
-        uses: mxschmitt/action-tmate@v3
