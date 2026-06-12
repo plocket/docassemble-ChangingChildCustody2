@@ -1,7 +1,8 @@
 @within15
 Feature: User paths
+# 2026-06-12
 
-Background:
+Background: 
   Given the maximum seconds for each Step is 90
 
 @row36    
@@ -16,18 +17,22 @@ Scenario: Row #36
     | parents_agree    | True                 |         | 
 #      | appeal | True |  |
 #      | set_aside | True |  |
-    And I should see the phrase "Your Action Plan for changing your custody or Parenting Plan order in 11 steps"
-    And I should see the phrase "Decide the steps you want to take"
-    And I should see the phrase "Find out if you and the other parent agree"  
-    And I should see the phrase "Tell the court about your agreement"
-    And I should see the phrase "Decide if you want to file an appeal"
-    And I should see the phrase "Learn about the Motion to Set Aside Judgment or Order"
-    And I should see the phrase "Fill out forms if you want to file a Motion to Set Aside"
-    And I should see the phrase "Fill out the Certificate of Service" 
-    And I should see the phrase "File your Motion to Set Aside"
-    And I should see the phrase "Serve the other parent" 
-    And I should see the phrase "What to expect after you file a Motion to Set Aside"
-    And I should see the phrase "Get more information or help"
+    | filling_manner          | electronically |  | 
+    | filing_method           | efiling        |  | 
+    | other_party_exempt      | yes            |  | 
+    | other_party_enter_email | True           |  | 
+    | ak_patience_assembling  | True           |  | 
+    And I should see the phrase "Your Action Plan for changing your custody or Parenting Plan order in 10 steps"
+    And I should see the phrase "Step 1: Decide the steps you want to take"
+    And I should see the phrase "Step 2: Find out if you and the other parent agree"
+    And I should see the phrase "Step 3: Tell the court about your agreement"
+    And I should see the phrase "Step 4: Decide if you want to file an appeal"
+    And I should see the phrase "Step 5: Learn about the Motion to Set Aside Judgment or Order"
+    And I should see the phrase "Step 6: Fill out forms if you want to file a Motion to Set Aside"
+    And I should see the phrase "Step 7: File your Motion to Set Aside"
+    And I should see the phrase "Step 8: Serve the other parent"
+    And I should see the phrase "Step 9: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 10: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
     And I download "changing_child_custody.docx"
@@ -45,18 +50,23 @@ Scenario: Row #36b
     | parents_agree          | True                 |         | 
 #      | appeal | True |  |
 #      | set_aside | True |  |
+    | filling_manner          | electronically    |  | 
+    | filing_method           | mail or in person |  | 
+    | other_party_exempt      | yes               |  | 
+    | other_party_enter_email | False             |  | 
+    | ak_patience_assembling  | True              |  | 
     And I should see the phrase "Your Action Plan for changing your custody or Parenting Plan order in 11 steps"
-    And I should see the phrase "Decide the steps you want to take"
-    And I should see the phrase "Find out if you and the other parent agree"  
-    And I should see the phrase "Tell the court about your agreement"
-    And I should see the phrase "Decide if you want to file an appeal"
-    And I should see the phrase "Learn about the Motion to Set Aside Judgment or Order"
-    And I should see the phrase "Fill out forms if you want to file a Motion to Set Aside"
-    And I should see the phrase "Fill out the Certificate of Service" 
-    And I should see the phrase "File your Motion to Set Aside"
-    And I should see the phrase "Serve the other parent" 
-    And I should see the phrase "What to expect after you file a Motion to Set Aside"
-    And I should see the phrase "Get more information or help"
+    And I should see the phrase "Step 1: Decide the steps you want to take"
+    And I should see the phrase "Step 2: Find out if you and the other parent agree"
+    And I should see the phrase "Step 3: Tell the court about your agreement"
+    And I should see the phrase "Step 4: Decide if you want to file an appeal"
+    And I should see the phrase "Step 5: Learn about the Motion to Set Aside Judgment or Order"
+    And I should see the phrase "Step 6: Fill out forms if you want to file a Motion to Set Aside"
+    And I should see the phrase "Step 7: Sign if you use paper forms or do not use TrueFiling"
+    And I should see the phrase "Step 8: File your Motion to Set Aside"
+    And I should see the phrase "Step 9: Serve the other parent"
+    And I should see the phrase "Step 10: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 11: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
     And I download "changing_child_custody.docx"
@@ -102,7 +112,7 @@ Scenario: Row #36b
 #    And I should see the phrase "Tell the court about your agreement"
 #    And I should see the phrase "Learn about the Motion to Set Aside Judgment or Order"
 #    And I should see the phrase "Fill out forms if you want to file a Motion to Set Aside"
-#    And I should see the phrase "Fill out the Certificate of Service" 
+#    And I should see the phrase "Sign if you use paper forms or do not use TrueFiling" 
 #    And I should see the phrase "File your Motion to Set Aside" 
 #    And I should see the phrase "Serve the other parent" 
 #    And I should see the phrase "What to expect after you file a Motion to Set Aside"
@@ -141,15 +151,19 @@ Scenario: Row #40
     | parents_agree          | False                |         | 
 #      | appeal | True |  |
 #      | set_aside | True |  |
-    And I should see the phrase "Your Action Plan for changing your custody or Parenting Plan order in 9 steps"
-    And I should see the phrase "Decide if you want to file an appeal"
-    And I should see the phrase "Learn about the Motion to Set Aside Judgment or Order"
-    And I should see the phrase "Fill out forms if you want to file a Motion to Set Aside"
-    And I should see the phrase "Fill out the Certificate of Service" 
-    And I should see the phrase "File your Motion to Set Aside"
-    And I should see the phrase "Serve the other parent" 
-    And I should see the phrase "What to expect after you file a Motion to Set Aside"
-    And I should see the phrase "Get more information or help"
+    | filling_manner         | paper   |  | 
+    | filing_method          | efiling |  | 
+    | other_party_exempt     | no      |  | 
+    | ak_patience_assembling | True    |  | 
+    And I should see the phrase "Your Action Plan for changing your custody or Parenting Plan order in 8 steps"
+    And I should see the phrase "Step 1: Decide if you want to file an appeal"
+    And I should see the phrase "Step 2: Learn about the Motion to Set Aside Judgment or Order"
+    And I should see the phrase "Step 3: Fill out forms if you want to file a Motion to Set Aside"
+    And I should see the phrase "Step 4: Sign if you use paper forms or do not use TrueFiling"
+    And I should see the phrase "Step 5: File your Motion to Set Aside"
+    And I should see the phrase "Step 6: Serve the other parent"
+    And I should see the phrase "Step 7: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 8: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
     And I download "changing_child_custody.docx"
@@ -193,7 +207,7 @@ Scenario: Row #40
 #    And I should see the phrase "Your Action Plan for changing your custody or Parenting Plan order in 65 steps"
 #    And I should see the phrase "Learn about the Motion to Set Aside Judgment or Order"
 #    And I should see the phrase "Fill out forms if you want to file a Motion to Set Aside"
-#    And I should see the phrase "Fill out the Certificate of Service"
+#    And I should see the phrase "Sign if you use paper forms or do not use TrueFiling"
 #    And I should see the phrase "File your Motion to Set Aside"
 #    And I should see the phrase "Serve the other parent"
 #    And I should see the phrase "What to expect after you file a Motion to Set Aside"

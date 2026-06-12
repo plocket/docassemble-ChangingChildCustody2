@@ -1,3 +1,4 @@
+# 2026-06-12
 ---
 generic object: ALDocumentBundle
 template: x.get_email_copy
@@ -128,28 +129,26 @@ code: |
     step_list.append((fill_modify_step, "fill_modify_idx"))
     step_list.append((calculate_child_support_step, "calculate_child_support_idx"))
     step_list.append((dont_wait_modify_custody_divorce_step, "dont_wait_modify_custody_divorce_idx"))
-    images_list.append({'image': service_cert_modify_image, 'text': "Certificate of Service at the bottom of a Motion to Modify."})
-    step_list.append((cert_of_service_step, "cert_of_service_idx"))
+    # images_list.append({'image': service_cert_modify_image, 'text': "Certificate of Service at the bottom of a Motion to Modify."})
+    # step_list.append((cert_of_service_step, "cert_of_service_idx"))
+
+    if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+      step_list.append((sign_step, "sign_idx"))
+    other_party_exempt
+
     file_step_heading = 'File your Motion to Modify'
-    file_modify_filing_fee = '<li>Pay the $75 fee to file your Motion to Modify</li><ul><li>Call the <a href="https://courts.alaska.gov/shc/family">Family Law Self-HelpCenter</a><br>(907)264-0851, or<br>(866)279-0851,<br>or</li><li>Use <strong>Exemption From the Payment of Fees, TF-920</strong>[<a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">Fill-In PDF</a>]</li></ul>'
-    step_list.append((file_motion_step, "file_motion_idx"))
-    step_list.append((serve_motion_step, "serve_motion_idx"))
+    file_modify_filing_fee = 'Pay the $75 fee to file your Motion to Modify.'
+    # step_list.append((file_motion_step, "file_motion_idx"))
+    step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+    # step_list.append((serve_motion_step, "serve_motion_idx"))
+    step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
+    # step_list.append((serve_motion_step, "serve_motion_idx"))
     motion_type = 'Motion to Modify'
-    step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
-    
+    # step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+    step_list.append((expect_after_motion_or_answer_step, "expect_after_motion_or_answer_idx"))
   
   elif user_need == 'respond to motion in custody':
-    middle_of_case
   
-    # Row 2
-    if type_of_response == 'modify':
-      motion_type = 'Motion to Modify'
-  
-    # Rows 3 & 4
-    if type_of_response == 'modify' and type_of_modification.any_true('child support', 'custody'):
-      step_list.append((modify_step, "modify_idx"))
-  
-    # Row 5
     if type_of_response == 'reconsider' and respond_to_reconsider:
       step_list.append((respond_to_reconsider_step, "respond_to_reconsider_idx"))
       
@@ -169,10 +168,15 @@ code: |
       step_list.append((respond_in_writing_step, "respond_in_writing_idx"))
       
     if type_of_response in('modify', 'reconsider') or (middle_of_case == 'no' and type_of_response == 'set aside'):
-      step_list.append((cert_of_service_step, "cert_of_service_idx"))
-      step_list.append((file_response_step, "file_response_idx"))
-      step_list.append((serve_motion_response_step, "serve_motion_response_idx"))
-      
+      # step_list.append((cert_of_service_step, "cert_of_service_idx"))
+      # step_list.append((file_response_step, "file_response_idx"))
+      # step_list.append((serve_motion_response_step, "serve_motion_response_idx"))
+
+      if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+        step_list.append((sign_step, "sign_idx"))
+      other_party_exempt
+      step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+      step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
     
     if type_of_response == 'modify' or (middle_of_case == 'no' and type_of_response == 'set aside'):
       step_list.append((expect_after_response_step, "expect_after_response_idx"))
@@ -204,12 +208,18 @@ code: |
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
         step_list.append((learn_reconsider_step, "learn_reconsider_idx"))
         step_list.append((fill_reconsider_step, "fill_reconsider_idx"))
-        images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Reconsider"})
-        step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        # images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Reconsider"})
+        # step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+          step_list.append((sign_step, "sign_idx"))
+        other_party_exempt
+
         file_step_heading = 'File your Motion to Reconsider'
-        step_list.append((file_motion_step, "file_motion_idx"))
-        step_list.append((serve_motion_step, "serve_motion_idx"))
-        step_list.append((expect_reconsider_step, "expect_reconsider_idx"))
+        # step_list.append((file_motion_step, "file_motion_idx"))
+        # step_list.append((serve_motion_step, "serve_motion_idx"))       
+        step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+        step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
+        step_list.append((expect_reconsider_step, "expect_reconsider_idx")) 
     
     # Row 13
     # if middle_of_case == 'yes' \
@@ -227,13 +237,19 @@ code: |
         step_list.append((pick_a_step_step, "pick_a_step_idx"))
         step_list.append((parents_agree_step, "parents_agree_idx"))
         step_list.append((tell_the_court_step, "tell_the_court_idx"))
-        step_list.append((standing_order_step, "standing_order_idx")) 
+        step_list.append((standing_order_step, "standing_order_idx"))
         step_list.append((motion_forms_step, "motion_forms_idx"))
-        images_list.append({'image': service_cert_motion_shc_1300_image, 'text': "Certificate of Service at the bottom of a motion."})
-        step_list.append((cert_of_service_step, "cert_of_service_idx")) 
-        step_list.append((file_motion_step, "file_motion_idx"))
-        step_list.append((serve_motion_step, "serve_motion_idx"))
-        step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+        # images_list.append({'image': service_cert_motion_shc_1300_image, 'text': "Certificate of Service at the bottom of a motion."})
+        # step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+          step_list.append((sign_step, "sign_idx"))
+        other_party_exempt
+          # step_list.append((file_motion_step, "file_motion_idx"))
+          # step_list.append((serve_motion_step, "serve_motion_idx"))
+          # step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+        step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+        step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
+        step_list.append((expect_after_motion_or_answer_step, "expect_after_motion_or_answer_idx"))
     
     # Row 15
     # if middle_of_case == 'yes' \
@@ -251,12 +267,18 @@ code: |
       and not parents_agree:
         step_list.append((learn_reconsider_step, "learn_reconsider_idx"))
         step_list.append((fill_reconsider_step, "fill_reconsider_idx"))
-        images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of Motion to Reconsider and Motion to Set Aside."})
-        step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        # images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of Motion to Reconsider and Motion to Set Aside."})
+        # step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+          step_list.append((sign_step, "sign_idx"))
+        other_party_exempt
         file_step_heading = 'File your Motion to Reconsider'
-        step_list.append((file_motion_step, "file_motion_idx"))
-        step_list.append((serve_motion_step, "serve_motion_idx"))
-        step_list.append((expect_reconsider_step, "expect_reconsider_idx"))
+        # step_list.append((file_motion_step, "file_motion_idx"))
+        # step_list.append((serve_motion_step, "serve_motion_idx"))
+        # step_list.append((expect_reconsider_step, "expect_reconsider_idx"))
+        step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+        step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
+        step_list.append((expect_reconsider_step, "expect_reconsider_idx")) 
     
     # Row 17 only get other parts of custody case = placeholder and get help and info 
     #  if middle_of_case == 'yes' \
@@ -272,11 +294,17 @@ code: |
       and not parents_agree:
         step_list.append((standing_order_step, "standing_order_idx")) 
         step_list.append((motion_forms_step, "motion_forms_idx"))
-        images_list.append({'image': service_cert_motion_shc_1300_image, 'text': "Certificate of Service at the bottom of a motion."})
-        step_list.append((cert_of_service_step, "cert_of_service_idx")) 
-        step_list.append((file_motion_step, "file_motion_idx"))
-        step_list.append((serve_motion_step, "serve_motion_idx"))
-        step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+        # images_list.append({'image': service_cert_motion_shc_1300_image, 'text': "Certificate of Service at the bottom of a motion."})
+        # step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+          step_list.append((sign_step, "sign_idx"))
+        other_party_exempt
+          # step_list.append((file_motion_step, "file_motion_idx"))
+          # step_list.append((serve_motion_step, "serve_motion_idx"))
+          # step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+        step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+        step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
+        step_list.append((expect_after_motion_or_answer_step, "expect_after_motion_or_answer_idx"))
     
     # Row 19 only get other parts of custody case = placeholder and get help and info 
     #  if middle_of_case == 'yes' \
@@ -296,14 +324,20 @@ code: |
         step_list.append((fill_modify_step, "fill_modify_idx"))
         step_list.append((calculate_child_support_step, "calculate_child_support_idx"))
         step_list.append((dont_wait_modify_custody_divorce_step, "dont_wait_modify_custody_divorce_idx"))
-        images_list.append({'image': service_cert_modify_image, 'text': "Certificate of Service at the bottom of a Motion to Modify."})
-        step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        # images_list.append({'image': service_cert_motion_shc_1300_image, 'text': "Certificate of Service at the bottom of a motion."})
+        # step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+          step_list.append((sign_step, "sign_idx"))
+        other_party_exempt
         file_step_heading = 'File your Motion to Modify'
         file_modify_filing_fee = ''
-        step_list.append((file_motion_step, "file_motion_idx"))
-        step_list.append((serve_motion_step, "serve_motion_idx"))
+        # step_list.append((file_motion_step, "file_motion_idx"))
+        # step_list.append((serve_motion_step, "serve_motion_idx"))
+        step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+        step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
         motion_type = 'Motion to Modify'
-        step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+        # step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+        step_list.append((expect_after_motion_or_answer_step, "expect_after_motion_or_answer_idx"))
     
     # Row 21 (don't need this, it automatically goes to final page)
     # if middle_of_case == 'yes' \
@@ -343,14 +377,20 @@ code: |
         step_list.append((fill_modify_step, "fill_modify_idx"))
         step_list.append((calculate_child_support_step, "calculate_child_support_idx"))
         step_list.append((dont_wait_modify_custody_divorce_step, "dont_wait_modify_custody_divorce_idx"))
-        images_list.append({'image': service_cert_modify_image, 'text': "Certificate of Service at the bottom of a Motion to Modify."})
-        step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        # images_list.append({'image': service_cert_modify_image, 'text': "Certificate of Service at the bottom of a Motion to Modify."})
+        # step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+          step_list.append((sign_step, "sign_idx"))
+        other_party_exempt
         file_step_heading = 'File your Motion to Modify'
-        file_modify_filing_fee = '<li>Pay the $75 fee to file your Motion to Modify</li><ul><li>Call the <a href="https://courts.alaska.gov/shc/family">Family Law Self-HelpCenter</a><br>(907)264-0851, or<br>(866)279-0851,<br>or</li><li>Use <strong>Exemption From the Payment of Fees, TF-920</strong>[<a href="https://public.courts.alaska.gov/web/forms/docs/tf-920.pdf">Fill-In PDF</a>]</li></ul>'
-        step_list.append((file_motion_step, "file_motion_idx"))
-        step_list.append((serve_motion_step, "serve_motion_idx"))
+        file_modify_filing_fee = 'Pay the $75 fee to file your Motion to Modify'
+        # step_list.append((file_motion_step, "file_motion_idx"))
+        # step_list.append((serve_motion_step, "serve_motion_idx"))
+        step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+        step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
         motion_type = 'Motion to Modify'
-        step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+      # step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+        step_list.append((expect_after_motion_or_answer_step, "expect_after_motion_or_answer_idx"))
         # if not parents_agree \
         #   and motion_to_modify:
         #     step_list.append((modify_step, "modify_idx"))
@@ -411,11 +451,16 @@ code: |
           step_list.append((tell_the_court_step, "tell_the_court_idx"))
         step_list.append((learn_reconsider_step, "learn_reconsider_idx"))
         step_list.append((fill_reconsider_step, "fill_reconsider_idx"))
-        images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of Motion to Reconsider and Motion to Set Aside."})
-        step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        #  images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of Motion to Reconsider and Motion to Set Aside."})
+        #  step_list.append((cert_of_service_step, "cert_of_service_idx"))
+        if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+          step_list.append((sign_step, "sign_idx"))
+        other_party_exempt
         file_step_heading = 'File your Motion to Reconsider'
-        step_list.append((file_motion_step, "file_motion_idx"))
-        step_list.append((serve_motion_step, "serve_motion_idx"))
+        # step_list.append((file_motion_step, "file_motion_idx"))
+        # step_list.append((serve_motion_step, "serve_motion_idx"))
+        step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+        step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
         step_list.append((expect_reconsider_step, "expect_reconsider_idx"))
 
     
@@ -452,7 +497,7 @@ code: |
       file_motion_to_set_aside = 'If you decide to file a <b>Motion to Set Aside</b>::'
       step_list.append((learn_set_aside_step, "learn_set_aside_idx"))   
       step_list.append((fill_set_aside_step, "fill_set_aside_idx"))
-      images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Set Aside."})
+      # images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Set Aside."})
         
       
       # deleted from just after if below, "why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and"
@@ -467,13 +512,19 @@ code: |
       #    images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Set Aside."})
       #  if (defined('modify_within_15_days') and modify_within_15_days):
       #    images_list.append({'image': service_cert_modify_image, 'text': "Certificate of Service at the bottom of a Motion to Modify."})
-      step_list.append((cert_of_service_step, "cert_of_service_idx"))
+      # step_list.append((cert_of_service_step, "cert_of_service_idx"))
+      
+      if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+          step_list.append((sign_step, "sign_idx"))
+      other_party_exempt
       file_step_heading = 'File your Motion to Set Aside'
-      step_list.append((file_motion_step, "file_motion_idx"))
-      step_list.append((serve_motion_step, "serve_motion_idx"))
+      # step_list.append((file_motion_step, "file_motion_idx"))
+      # step_list.append((serve_motion_step, "serve_motion_idx"))
+      step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+      step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
       motion_type = 'Motion to Set Aside'
-      step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
-          
+      # step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+      step_list.append((expect_after_motion_or_answer_step, "expect_after_motion_or_answer_idx"))
 
     # Rows 71 - 91
     if middle_of_case == 'no' \
@@ -499,13 +550,20 @@ code: |
             and date_difference(starting=final_order_date, ending=today()).days > 15):
           step_list.append((learn_set_aside_step, "learn_set_aside_idx"))
           step_list.append((fill_set_aside_step, "fill_set_aside_idx"))
-          images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Set Aside."})
-          step_list.append((cert_of_service_step, "cert_of_service_idx"))
+          # images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Set Aside."})
+          # step_list.append((cert_of_service_step, "cert_of_service_idx"))
+          
+          if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+              step_list.append((sign_step, "sign_idx"))
+          other_party_exempt
           file_step_heading = 'File your Motion to Set Aside'
-          step_list.append((file_motion_step, "file_motion_idx"))
-          step_list.append((serve_motion_step, "serve_motion_idx"))
+          # step_list.append((file_motion_step, "file_motion_idx"))
+          # step_list.append((serve_motion_step, "serve_motion_idx"))
+          step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+          step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
           motion_type = 'Motion to Set Aside'
-          step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+          # step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+          step_list.append((expect_after_motion_or_answer_step, "expect_after_motion_or_answer_idx"))
   
       
         if defined('final_order_period') \
@@ -519,19 +577,25 @@ code: |
               step_list.append((learn_set_aside_step, "learn_set_aside_idx"))
               step_list.append((fill_set_aside_step, "fill_set_aside_idx"))
             if unknown_final_date.any_true('reconsider','set aside'):
-              images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Reconsider and the Motion to Set Aside."})
-              step_list.append((cert_of_service_step, "cert_of_service_idx"))
+              # images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Reconsider and the Motion to Set Aside."})
+              # step_list.append((cert_of_service_step, "cert_of_service_idx"))
+              if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
+                  step_list.append((sign_step, "sign_idx"))
+              other_party_exempt
               if not unknown_final_date['set aside']:
                 file_step_heading = 'File your Motion to Reconsider'
               elif not unknown_final_date['reconsider']:
                 file_step_heading = 'File your Motion to Set Aside'
-              step_list.append((file_motion_step, "file_motion_idx"))
-              step_list.append((serve_motion_step, "serve_motion_idx"))
+              # step_list.append((file_motion_step, "file_motion_idx"))
+              # step_list.append((serve_motion_step, "serve_motion_idx"))
+              step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
+              step_list.append((truefiling_serve_step, "truefiling_serve_idx"))
               if unknown_final_date['reconsider']:
                 step_list.append((expect_reconsider_step, "expect_reconsider_idx"))
               if unknown_final_date['set aside']:
-                motion_type = 'Motion to Set Aside'
-                step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+                motion_type = 'Motion to Set Aside'                
+                # step_list.append((expect_after_motion_step, "expect_after_motion_idx"))
+                step_list.append((expect_after_motion_or_answer_step, "expect_after_motion_or_answer_idx"))
        
     # Rows 71 - 91
     # if middle_of_case == 'no' \
@@ -574,8 +638,7 @@ code: |
     #    if why_change.any_true('modify circumstances changed','modify parent to jail','modify domestic violence','modify other change' ) and modify_after_15s:
     #      step_list.append((modify_step, "modify_idx"))
   
-
-    
+  ak_patience_assembling
   step_list.append((get_help, "get_help_idx"))
     
   for iter_idx, step_tuple in enumerate( step_list ):
