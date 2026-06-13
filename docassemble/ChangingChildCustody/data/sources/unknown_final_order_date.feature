@@ -95,7 +95,7 @@ Scenario: Row #49
     And I should see the phrase "Step 6: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 7: File your Motion to Set Aside"
     And I should see the phrase "Step 8: Serve the other parent"
-    And I should see the phrase "Step 9: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 9: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 10: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -163,7 +163,7 @@ Scenario: Row #51 appeal and set aside
     And I should see the phrase "Step 7: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 8: File your Motion to Set Aside"
     And I should see the phrase "Step 9: Serve the other parent"
-    And I should see the phrase "Step 10: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 10: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 11: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -200,7 +200,7 @@ Scenario: Row #52 reconsider and set aside
     And I should see the phrase "Step 9: File your motion forms"
     And I should see the phrase "Step 10: Serve the other parent"
     And I should see the phrase "Step 11: What to expect after you file a Motion for Reconsideration"
-    And I should see the phrase "Step 12: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 12: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 13: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -238,7 +238,7 @@ Scenario: Row #53 reconsider appeal and set aside
     And I should see the phrase "Step 10: File your motion forms"
     And I should see the phrase "Step 11: Serve the other parent"
     And I should see the phrase "Step 12: What to expect after you file a Motion for Reconsideration"
-    And I should see the phrase "Step 13: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 13: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 14: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -323,7 +323,7 @@ Scenario: Row #56
     And I should see the phrase "Step 2: Fill out forms if you want to file a Motion to Set Aside"
     And I should see the phrase "Step 3: File your Motion to Set Aside"
     And I should see the phrase "Step 4: Serve the other parent"
-    And I should see the phrase "Step 5: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 5: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 6: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -389,7 +389,7 @@ Scenario: Row #58 appeal and set aside
     And I should see the phrase "Step 5: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 6: File your Motion to Set Aside"
     And I should see the phrase "Step 7: Serve the other parent"
-    And I should see the phrase "Step 8: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 8: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 9: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -424,7 +424,7 @@ Scenario: Row #59 reconsider and set aside
     And I should see the phrase "Step 7: File your motion forms"
     And I should see the phrase "Step 8: Serve the other parent"
     And I should see the phrase "Step 9: What to expect after you file a Motion for Reconsideration"
-    And I should see the phrase "Step 10: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 10: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 11: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -459,7 +459,7 @@ Scenario: Row #60 reconsider appeal and set aside
     And I should see the phrase "Step 8: File your motion forms"
     And I should see the phrase "Step 9: Serve the other parent"
     And I should see the phrase "Step 10: What to expect after you file a Motion for Reconsideration"
-    And I should see the phrase "Step 11: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 11: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 12: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
