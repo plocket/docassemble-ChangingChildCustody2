@@ -1,4 +1,4 @@
-# 2026-06-12
+# 2026-06-14
 ---
 generic object: ALDocumentBundle
 template: x.get_email_copy
@@ -148,7 +148,17 @@ code: |
     step_list.append((expect_after_motion_or_answer_step, "expect_after_motion_or_answer_idx"))
   
   elif user_need == 'respond to motion in custody':
+    middle_of_case
   
+    # Row 2
+    if type_of_response == 'modify':
+      motion_type = 'Motion to Modify'
+  
+    # Rows 3 & 4
+    if type_of_response == 'modify' and type_of_modification.any_true('child support', 'custody'):
+      step_list.append((modify_step, "modify_idx"))
+  
+    # Row 5  
     if type_of_response == 'reconsider' and respond_to_reconsider:
       step_list.append((respond_to_reconsider_step, "respond_to_reconsider_idx"))
       
