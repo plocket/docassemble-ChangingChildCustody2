@@ -187,12 +187,11 @@ Scenario: Row #5
     | filing_method          | dunno                        |         | 
     | other_party_exempt     | no                           |         | 
     | ak_patience_assembling | True                         |         | 
-    And I should see the phrase "Your Action Plan for responding to a motion the other parent filed, in 5 steps"
+    And I should see the phrase "Your Action Plan for responding to a motion the other parent filed, in 4 steps"
     And I should see the phrase "Step 1: If the court asks, respond in writing to the Motion for Reconsideration"
-    And I should see the phrase "Step 2: If the judge asks you to respond to the Motion for Reconsideration, fill out the Certificate of Service"
-    And I should see the phrase "Step 3: If the judge asks you to respond to the Motion for Reconsideration, file your response"
-    And I should see the phrase "Step 4: If the judge asks you to respond to the Motion for Reconsideration, serve the other parent"
-    And I should see the phrase "Step 5: Get more information or help"
+    And I should see the phrase "Step 2: If the judge asks you to respond to the Motion for Reconsideration, file your response"
+    And I should see the phrase "Step 3: If the judge asks you to respond to the Motion for Reconsideration, serve the other parent" 
+    And I should see the phrase "Step 4: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
     And I download "changing_child_custody.docx"
@@ -238,7 +237,7 @@ Scenario: Row #9
     | ak_patience_assembling  | True                         |         | 
     And I should see the phrase "Your Action Plan for responding to the appeal the other parent filed, in 4 steps"
     And I should see the phrase "Step 1: Let the other parent know you agree with the Appeal and decide if you want to respond in writing"
-    And I should see the phrase "Step 2: Or, contact the other parent"
+    And I should see the phrase "Step 2: Contact the other parent"
     And I should see the phrase "Step 3: Tell the Alaska Supreme Court"
     And I should see the phrase "Step 4: Get more information or help"
     And I take a screenshot
