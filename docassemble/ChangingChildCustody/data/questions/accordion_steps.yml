@@ -545,7 +545,7 @@ code: |
           step_list.append((pick_a_step_step, "pick_a_step_idx"))
           step_list.append((parents_agree_step, "parents_agree_idx"))
           step_list.append((tell_the_court_step, "tell_the_court_idx"))
-          if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno') and unknown_final_date.all_false('appeal', exclusive = True):
+          if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
             step_list.append((sign_step, "sign_idx"))
         else:
           if defined('final_order_period')  \
