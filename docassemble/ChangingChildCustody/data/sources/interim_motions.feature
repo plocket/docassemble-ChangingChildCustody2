@@ -1,6 +1,6 @@
 @InterimMotions
 Feature: User paths
-# 2026-06-12
+# 2026-06-15
 
 Background: 
   Given the maximum seconds for each Step is 90
@@ -133,7 +133,7 @@ Scenario:  Row #14
     And I should see the phrase "Step 6: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 7: File your motion"
     And I should see the phrase "Step 8: Serve the other parent"
-    And I should see the phrase "Step 9: What to expect after you file a motion"
+    And I should see the phrase "Step 9: What to expect after you file your motion"
     And I should see the phrase "Step 10: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -271,7 +271,7 @@ Scenario: Row #18
     And I should see the phrase "Step 2: Fill out your motion forms"
     And I should see the phrase "Step 3: File your motion"
     And I should see the phrase "Step 4: Serve the other parent"
-    And I should see the phrase "Step 5: What to expect after you file a motion"
+    And I should see the phrase "Step 5: What to expect after you file your motion"
     And I should see the phrase "Step 6: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
