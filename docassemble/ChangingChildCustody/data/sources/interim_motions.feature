@@ -1,13 +1,13 @@
 @InterimMotions
 Feature: User paths
-# 2026-06-12
+# 2026-06-15
 
 Background: 
   Given the maximum seconds for each Step is 90
 
 @row12
 Scenario: Row #12 
-# Middle of case parent wants judge to reconsider interim motion within 10 days of decision and also parents agreement information 
+# Middle of case parent wants judge for Reconsideration interim motion within 10 days of decision and also parents agreement information 
   Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
     | var                   | value                | trigger | 
@@ -26,11 +26,11 @@ Scenario: Row #12
     And I should see the phrase "Step 1: Decide the steps you want to take"
     And I should see the phrase "Step 2: Find out if you and the other parent agree"
     And I should see the phrase "Step 3: Tell the court about your agreement"
-    And I should see the phrase "Step 4: Learn about Motions to Reconsider"
-    And I should see the phrase "Step 5: Fill out the Motion to Reconsider forms"
-    And I should see the phrase "Step 6: File your Motion to Reconsider"
+    And I should see the phrase "Step 4: Learn about Motions for Reconsideration"
+    And I should see the phrase "Step 5: Fill out the Motion for Reconsideration forms"
+    And I should see the phrase "Step 6: File your Motion for Reconsideration"
     And I should see the phrase "Step 7: Serve the other parent"
-    And I should see the phrase "Step 8: What to expect after you file a Motion to Reconsider"
+    And I should see the phrase "Step 8: What to expect after you file a Motion for Reconsideration"
     And I should see the phrase "Step 9: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -38,7 +38,7 @@ Scenario: Row #12
 
 @row12b
 Scenario: Row #12b 
-# Middle of case parent wants wants judge to reconsider interim motion within 10 days of decision (cannot remember exact date) and also parents agreement information
+# Middle of case parent wants wants judge for Reconsideration interim motion within 10 days of decision (cannot remember exact date) and also parents agreement information
   Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
     | var                      | value                | trigger | 
@@ -58,12 +58,12 @@ Scenario: Row #12b
     And I should see the phrase "Step 1: Decide the steps you want to take"
     And I should see the phrase "Step 2: Find out if you and the other parent agree"
     And I should see the phrase "Step 3: Tell the court about your agreement"
-    And I should see the phrase "Step 4: Learn about Motions to Reconsider"
-    And I should see the phrase "Step 5: Fill out the Motion to Reconsider forms"
+    And I should see the phrase "Step 4: Learn about Motions for Reconsideration"
+    And I should see the phrase "Step 5: Fill out the Motion for Reconsideration forms"
     And I should see the phrase "Step 6: Sign if you use paper forms or do not use TrueFiling"
-    And I should see the phrase "Step 7: File your Motion to Reconsider"
+    And I should see the phrase "Step 7: File your Motion for Reconsideration"
     And I should see the phrase "Step 8: Serve the other parent"
-    And I should see the phrase "Step 9: What to expect after you file a Motion to Reconsider"
+    And I should see the phrase "Step 9: What to expect after you file a Motion for Reconsideration"
     And I should see the phrase "Step 10: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -133,7 +133,7 @@ Scenario:  Row #14
     And I should see the phrase "Step 6: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 7: File your motion"
     And I should see the phrase "Step 8: Serve the other parent"
-    And I should see the phrase "Step 9: What to expect after you file a motion"
+    And I should see the phrase "Step 9: What to expect after you file your motion"
     And I should see the phrase "Step 10: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -159,7 +159,7 @@ Scenario:  Row #14
 
 @row16
 Scenario: Row #16
-# Middle of case parent wants judge to reconsider interim motion within 10 days of decision but does not want parents agreement information 
+# Middle of case parent wants judge for Reconsideration interim motion within 10 days of decision but does not want parents agreement information 
   Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
     | var                   | value                | trigger | 
@@ -176,12 +176,12 @@ Scenario: Row #16
     | ak_patience_assembling  | True           |  | 
     And I take a screenshot
     And I should see the phrase "Your Action Plan for changing your custody or Parenting Plan order in 7 steps"
-    And I should see the phrase "Step 1: Learn about Motions to Reconsider"
-    And I should see the phrase "Step 2: Fill out the Motion to Reconsider forms"
+    And I should see the phrase "Step 1: Learn about Motions for Reconsideration"
+    And I should see the phrase "Step 2: Fill out the Motion for Reconsideration forms"
     And I should see the phrase "Step 3: Sign if you use paper forms or do not use TrueFiling"
-    And I should see the phrase "Step 4: File your Motion to Reconsider"
+    And I should see the phrase "Step 4: File your Motion for Reconsideration"
     And I should see the phrase "Step 5: Serve the other parent"
-    And I should see the phrase "Step 6: What to expect after you file a Motion to Reconsider"
+    And I should see the phrase "Step 6: What to expect after you file a Motion for Reconsideration"
     And I should see the phrase "Step 7: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -189,7 +189,7 @@ Scenario: Row #16
 
 @row16b
 Scenario: Row #16b 
-# Middle of case parent wants wants judge to reconsider interim motion within 10 days of decision (cannot remember exact date) but does not want parents agreement information 
+# Middle of case parent wants wants judge for Reconsideration interim motion within 10 days of decision (cannot remember exact date) but does not want parents agreement information 
   Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
     | var                      | value                | trigger | 
@@ -206,12 +206,12 @@ Scenario: Row #16b
     | ak_patience_assembling | True    |  | 
     And I take a screenshot
     And I should see the phrase "Your Action Plan for changing your custody or Parenting Plan order in 7 steps"
-    And I should see the phrase "Step 1: Learn about Motions to Reconsider"
-    And I should see the phrase "Step 2: Fill out the Motion to Reconsider forms"
+    And I should see the phrase "Step 1: Learn about Motions for Reconsideration"
+    And I should see the phrase "Step 2: Fill out the Motion for Reconsideration forms"
     And I should see the phrase "Step 3: Sign if you use paper forms or do not use TrueFiling"
-    And I should see the phrase "Step 4: File your Motion to Reconsider"
+    And I should see the phrase "Step 4: File your Motion for Reconsideration"
     And I should see the phrase "Step 5: Serve the other parent"
-    And I should see the phrase "Step 6: What to expect after you file a Motion to Reconsider"
+    And I should see the phrase "Step 6: What to expect after you file a Motion for Reconsideration"
     And I should see the phrase "Step 7: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -219,7 +219,7 @@ Scenario: Row #16b
 
 #@row17
 #Scenario: Row #17
-## Middle of case parent wants judge to reconsider interim motion within 10 days of decision but does not want parents agreement information and does not want reconsideration info.
+## Middle of case parent wants judge for Reconsideration interim motion within 10 days of decision but does not want parents agreement information and does not want reconsideration info.
 #  Given I start the interview at "changing_child_custody.yml"
 #  And I get to the question id "final screen" with this data:
 #    | var | value | trigger |
@@ -235,7 +235,7 @@ Scenario: Row #16b
 #  
 #@row17b
 #Scenario: Row #17b
-## Middle of case parent wants wants judge to reconsider interim motion within 10 days of decision (cannot remember exact date) but does not want parents agreement information and does not want reconsideration info.
+## Middle of case parent wants wants judge for Reconsideration interim motion within 10 days of decision (cannot remember exact date) but does not want parents agreement information and does not want reconsideration info.
 #  Given I start the interview at "changing_child_custody.yml"
 #  And I get to the question id "final screen" with this data:
 #    | var | value | trigger |
@@ -271,7 +271,7 @@ Scenario: Row #18
     And I should see the phrase "Step 2: Fill out your motion forms"
     And I should see the phrase "Step 3: File your motion"
     And I should see the phrase "Step 4: Serve the other parent"
-    And I should see the phrase "Step 5: What to expect after you file a motion"
+    And I should see the phrase "Step 5: What to expect after you file your motion"
     And I should see the phrase "Step 6: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -294,7 +294,7 @@ Scenario: Row #18
 
 @row20
 Scenario: Row #20
-# Middle of case parent wants judge to reconsider interim motion and also parents agreement information but missed the 10 day deadline
+# Middle of case parent wants judge for Reconsideration interim motion and also parents agreement information but missed the 10 day deadline
   Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
     | var                   | value                | trigger | 
@@ -319,7 +319,7 @@ Scenario: Row #20
     And I should see the phrase "Step 8: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 9: File your Motion to Modify"
     And I should see the phrase "Step 10: Serve the other parent"
-    And I should see the phrase "Step 11: What to expect after you file a Motion to Modify"
+    And I should see the phrase "Step 11: What to expect after you file your Motion to Modify"
     And I should see the phrase "Step 12: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -327,7 +327,7 @@ Scenario: Row #20
 
 @row20b
 Scenario: Row #20b
-# Middle of case parent wants judge to reconsider interim motion and also parents agreement information but missed the 12 day deadline
+# Middle of case parent wants judge for Reconsideration interim motion and also parents agreement information but missed the 12 day deadline
   Given I start the interview at "changing_child_custody.yml"
     And I get to the question id "final screen" with this data:
     | var                      | value                | trigger | 
@@ -354,7 +354,7 @@ Scenario: Row #20b
     And I should see the phrase "Step 8: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 9: File your Motion to Modify"
     And I should see the phrase "Step 10: Serve the other parent"
-    And I should see the phrase "Step 11: What to expect after you file a Motion to Modify"
+    And I should see the phrase "Step 11: What to expect after you file your Motion to Modify"
     And I should see the phrase "Step 12: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -424,7 +424,7 @@ Scenario: Row #22
     And I should see the phrase "Step 5: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 6: File your Motion to Modify"
     And I should see the phrase "Step 7: Serve the other parent"
-    And I should see the phrase "Step 8: What to expect after you file a Motion to Modify"
+    And I should see the phrase "Step 8: What to expect after you file your Motion to Modify"
     And I should see the phrase "Step 9: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -455,7 +455,7 @@ Scenario: Row #23
     And I should see the phrase "Step 5: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 6: File your Motion to Modify"
     And I should see the phrase "Step 7: Serve the other parent"
-    And I should see the phrase "Step 8: What to expect after you file a Motion to Modify"
+    And I should see the phrase "Step 8: What to expect after you file your Motion to Modify"
     And I should see the phrase "Step 9: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -487,7 +487,7 @@ Scenario: Row #23b
     And I should see the phrase "Step 5: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 6: File your Motion to Modify"
     And I should see the phrase "Step 7: Serve the other parent"
-    And I should see the phrase "Step 8: What to expect after you file a Motion to Modify"
+    And I should see the phrase "Step 8: What to expect after you file your Motion to Modify"
     And I should see the phrase "Step 9: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"

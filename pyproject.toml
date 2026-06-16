@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "docassemble.ChangingChildCustody"
-version = "2026.06.12"
+version = "2026.06.15"
 description = "Changing your custody or Parenting Plan order"
 readme = "README.md"
 authors = [

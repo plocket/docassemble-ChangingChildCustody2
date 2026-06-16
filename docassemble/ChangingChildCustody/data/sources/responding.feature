@@ -1,6 +1,6 @@
 @responding
 Feature: User paths
-# 2026-06-12
+# 2026-06-15
 
 Background: 
   Given the maximum seconds for each Step is 90
@@ -25,7 +25,7 @@ Background:
 #     And I should see the phrase "Learn about motions to modify a child support order"
 #     And I should see the phrase "Let the other parent and the court know you agree with the proposed changes"
 #     And I should see the phrase "Fill out a response that states you agree"
-#     And I should see the phrase "File your response within 10 or 13 days"
+#     And I should see the phrase "File and serve your response within 10 or 13 days"
 #     And I should see the phrase "Serve the other parent"
 #     And I should see the phrase "What to expect after you respond to the Motion to Modify"
 #     And I should see the phrase "Contact the other parent, and write out your agreement"
@@ -55,7 +55,7 @@ Background:
 #     And I should see the phrase "Let the other parent and the court know you agree with the proposed changes"
 #     And I should see the phrase "Fill out a response that states you agree"
 #     And I should see the phrase "Sign if you use paper forms or do not use TrueFiling"
-#     And I should see the phrase "File your response within 10 or 13 days"
+#     And I should see the phrase "File and serve your response within 10 or 13 days"
 #     And I should see the phrase "Serve the other parent"
 #     And I should see the phrase "What to expect after you respond to the Motion to Modify"
 #     And I should see the phrase "Contact the other parent, and write out your agreement"
@@ -85,7 +85,7 @@ Scenario: Row #2b
     And I should see the phrase "Step 1: Learn about motions to modify custody or a Parenting Plan order"
     And I should see the phrase "Step 2: Let the other parent and the court know you agree with the proposed changes"
     And I should see the phrase "Step 3: Fill out a response that states you agree"
-    And I should see the phrase "Step 4: File your response within 10 or 13 days"
+    And I should see the phrase "Step 4: File and serve your response within 10 or 13 days"
     And I should see the phrase "Step 5: Serve the other parent"
     And I should see the phrase "Step 6: What to expect after you respond to the Motion to Modify"
     And I should see the phrase "Step 7: Or, contact the other parent, and write out your agreement"
@@ -114,7 +114,7 @@ Scenario: Row #2b
 #     And I should see the phrase "Learn about motions to modify custody or a Parenting Plan order"
 #     And I should see the phrase "Fill out a response that states you do not agree with the proposed changes"
 #     And I should see the phrase "Sign if you use paper forms or do not use TrueFiling"
-#     And I should see the phrase "File your response within 10 or 13 days"
+#     And I should see the phrase "File and serve your response within 10 or 13 days"
 #     And I should see the phrase "Serve the other parent"
 #     And I should see the phrase "What to expect after you respond to the Motion to Modify"
 #     And I should see the phrase "Get more information or help"
@@ -140,7 +140,7 @@ Scenario: Row #2b
 #     And I should see the phrase "Learn about motions to modify a child support order"
 #     And I should see the phrase "Fill out a response that states you do not agree with the proposed changes"
 #     And I should see the phrase "Sign if you use paper forms or do not use TrueFiling"
-#     And I should see the phrase "File your response within 10 or 13 days"
+#     And I should see the phrase "File and serve your response within 10 or 13 days"
 #     And I should see the phrase "Serve the other parent"
 #     And I should see the phrase "What to expect after you respond to the Motion to Modify"
 #     And I should see the phrase "Get more information or help"
@@ -167,7 +167,7 @@ Scenario: Row #3c
     And I should see the phrase "Step 1: Learn about motions to modify custody or a Parenting Plan order"
     And I should see the phrase "Step 2: Fill out a response that states you do not agree with the proposed changes"
     And I should see the phrase "Step 3: Sign if you use paper forms or do not use TrueFiling"
-    And I should see the phrase "Step 4: File your response within 10 or 13 days"
+    And I should see the phrase "Step 4: File and serve your response within 10 or 13 days"
     And I should see the phrase "Step 5: Serve the other parent"
     And I should see the phrase "Step 6: What to expect after you respond to the Motion to Modify"
     And I should see the phrase "Step 7: Get more information or help"
@@ -188,10 +188,10 @@ Scenario: Row #5
     | other_party_exempt     | no                           |         | 
     | ak_patience_assembling | True                         |         | 
     And I should see the phrase "Your Action Plan for responding to a motion the other parent filed, in 5 steps"
-    And I should see the phrase "Step 1: If the court asks, respond in writing to the Motion to Reconsider"
-    And I should see the phrase "Step 2: If the judge asks you to respond to the Motion to Reconsider, fill out the Certificate of Service"
-    And I should see the phrase "Step 3: If the judge asks you to respond to the Motion to Reconsider, file your response"
-    And I should see the phrase "Step 4: If the judge asks you to respond to the Motion to Reconsider, serve the other parent"
+    And I should see the phrase "Step 1: If the court asks, respond in writing to the Motion for Reconsideration"
+    And I should see the phrase "Step 2: Sign if you use paper forms or do not use TrueFiling"    
+    And I should see the phrase "Step 3: If the judge asks you to respond to the Motion for Reconsideration, file your response"
+    And I should see the phrase "Step 4: If the judge asks you to respond to the Motion for Reconsideration, serve the other parent"
     And I should see the phrase "Step 5: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -214,7 +214,7 @@ Scenario: Row #8
     And I should see the phrase "Your Action Plan for responding to a motion the other parent filed, in 6 steps"
     And I should see the phrase "Step 1: Fill out a response that states you do not agree with the Motion to Set Aside Judgment or Order"
     And I should see the phrase "Step 2: Sign if you use paper forms or do not use TrueFiling"
-    And I should see the phrase "Step 3: File your response within 10 or 13 days"
+    And I should see the phrase "Step 3: File and serve your response within 10 or 13 days"
     And I should see the phrase "Step 4: Serve the other parent"
     And I should see the phrase "Step 5: What to expect after you respond to the Motion to Set Aside Judgment or Order"
     And I should see the phrase "Step 6: Get more information or help"
@@ -238,7 +238,7 @@ Scenario: Row #9
     | ak_patience_assembling  | True                         |         | 
     And I should see the phrase "Your Action Plan for responding to the appeal the other parent filed, in 4 steps"
     And I should see the phrase "Step 1: Let the other parent know you agree with the Appeal and decide if you want to respond in writing"
-    And I should see the phrase "Step 2: Or, contact the other parent"
+    And I should see the phrase "Step 2: Contact the other parent"
     And I should see the phrase "Step 3: Tell the Alaska Supreme Court"
     And I should see the phrase "Step 4: Get more information or help"
     And I take a screenshot
@@ -265,3 +265,4 @@ Scenario: Row #11
     And I take a screenshot
     And I download "changing_child_custody.pdf"
     And I download "changing_child_custody.docx"
+

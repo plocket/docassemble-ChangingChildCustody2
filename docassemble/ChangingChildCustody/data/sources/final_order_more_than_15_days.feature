@@ -30,7 +30,7 @@ Scenario: Row #44
     And I should see the phrase "Step 5: Fill out forms if you want to file a Motion to Set Aside"
     And I should see the phrase "Step 6: File your Motion to Set Aside"
     And I should see the phrase "Step 7: Serve the other parent"
-    And I should see the phrase "Step 8: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 8: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 9: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -62,7 +62,7 @@ Scenario: Row #44b
     And I should see the phrase "Step 6: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 7: File your Motion to Set Aside"
     And I should see the phrase "Step 8: Serve the other parent"
-    And I should see the phrase "Step 9: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 9: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 10: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -93,7 +93,7 @@ Scenario: Row #45
     And I should see the phrase "Step 3: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 4: File your Motion to Set Aside"
     And I should see the phrase "Step 5: Serve the other parent"
-    And I should see the phrase "Step 6: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 6: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 7: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"
@@ -122,7 +122,7 @@ Scenario: Row #45b
     And I should see the phrase "Step 3: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 4: File your Motion to Set Aside"
     And I should see the phrase "Step 5: Serve the other parent"
-    And I should see the phrase "Step 6: What to expect after you file a Motion to Set Aside"
+    And I should see the phrase "Step 6: What to expect after you file your Motion to Set Aside"
     And I should see the phrase "Step 7: Get more information or help"
     And I take a screenshot
     And I download "changing_child_custody.pdf"

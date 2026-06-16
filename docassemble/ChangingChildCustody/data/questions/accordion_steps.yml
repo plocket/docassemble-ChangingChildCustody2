@@ -1,4 +1,4 @@
-# 2026-06-12
+# 2026-06-14
 ---
 generic object: ALDocumentBundle
 template: x.get_email_copy
@@ -148,7 +148,17 @@ code: |
     step_list.append((expect_after_motion_or_answer_step, "expect_after_motion_or_answer_idx"))
   
   elif user_need == 'respond to motion in custody':
+    middle_of_case
   
+    # Row 2
+    if type_of_response == 'modify':
+      motion_type = 'Motion to Modify'
+  
+    # Rows 3 & 4
+    if type_of_response == 'modify' and type_of_modification.any_true('child support', 'custody'):
+      step_list.append((modify_step, "modify_idx"))
+  
+    # Row 5  
     if type_of_response == 'reconsider' and respond_to_reconsider:
       step_list.append((respond_to_reconsider_step, "respond_to_reconsider_idx"))
       
@@ -214,7 +224,7 @@ code: |
           step_list.append((sign_step, "sign_idx"))
         other_party_exempt
 
-        file_step_heading = 'File your Motion to Reconsider'
+        file_step_heading = 'File your Motion for Reconsideration'
         # step_list.append((file_motion_step, "file_motion_idx"))
         # step_list.append((serve_motion_step, "serve_motion_idx"))       
         step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
@@ -272,7 +282,7 @@ code: |
         if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
           step_list.append((sign_step, "sign_idx"))
         other_party_exempt
-        file_step_heading = 'File your Motion to Reconsider'
+        file_step_heading = 'File your Motion for Reconsideration'
         # step_list.append((file_motion_step, "file_motion_idx"))
         # step_list.append((serve_motion_step, "serve_motion_idx"))
         # step_list.append((expect_reconsider_step, "expect_reconsider_idx"))
@@ -456,7 +466,7 @@ code: |
         if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
           step_list.append((sign_step, "sign_idx"))
         other_party_exempt
-        file_step_heading = 'File your Motion to Reconsider'
+        file_step_heading = 'File your Motion for Reconsideration'
         # step_list.append((file_motion_step, "file_motion_idx"))
         # step_list.append((serve_motion_step, "serve_motion_idx"))
         step_list.append((truefiling_file_and_serve_step, "truefiling_file_and_serve_idx"))
@@ -474,7 +484,7 @@ code: |
     #       step_list.append((fill_reconsider_step, "fill_reconsider_idx"))
     #       images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of Motion to Reconsider and Motion to Set Aside."})
     #       step_list.append((cert_of_service_step, "cert_of_service_idx"))
-    #       file_step_heading = 'File your Motion to Reconsider'
+    #       file_step_heading = 'File your Motion for Reconsideration'
     #       step_list.append((file_step, "file_idx"))
     #       step_list.append((serve_step, "serve_idx"))
     #       step_list.append((expect_reconsider_step, "expect_reconsider_idx"))
@@ -535,6 +545,8 @@ code: |
           step_list.append((pick_a_step_step, "pick_a_step_idx"))
           step_list.append((parents_agree_step, "parents_agree_idx"))
           step_list.append((tell_the_court_step, "tell_the_court_idx"))
+          if unknown_final_date.all_true('appeal', exclusive = True) and (filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno')):
+            step_list.append((sign_step, "sign_idx"))
         else:
           if defined('final_order_period')  \
             and guess_final_order_date == 'unknown':
@@ -545,7 +557,7 @@ code: |
         # if set_aside:
       
         if (defined('final_order_period') \
-            and not guess_final_order_date == 'unknown') \
+            and guess_final_order_date != 'unknown') \
           or (final_order_date != '' \
             and date_difference(starting=final_order_date, ending=today()).days > 15):
           step_list.append((learn_set_aside_step, "learn_set_aside_idx"))
@@ -580,10 +592,11 @@ code: |
               # images_list.append({'image': service_cert_reconsider_set_aside_image, 'text': "Certificate of Service at the bottom of the Motion to Reconsider and the Motion to Set Aside."})
               # step_list.append((cert_of_service_step, "cert_of_service_idx"))
               if filling_manner in('paper', 'dunno') or filing_method in('mail or in person', 'dunno'):
-                  step_list.append((sign_step, "sign_idx"))
+                step_list.append((sign_step, "sign_idx")) 
+            if unknown_final_date.any_true('reconsider','set aside'):
               other_party_exempt
               if not unknown_final_date['set aside']:
-                file_step_heading = 'File your Motion to Reconsider'
+                file_step_heading = 'File your Motion for Reconsideration'
               elif not unknown_final_date['reconsider']:
                 file_step_heading = 'File your Motion to Set Aside'
               # step_list.append((file_motion_step, "file_motion_idx"))
