@@ -1,6 +1,6 @@
 @UnkownFinalOrder
 Feature: User paths
-# 2026-06-15
+# 2026-06-16
 
 Background: 
   Given the maximum seconds for each Step is 90
@@ -124,9 +124,9 @@ Scenario: Row #50 appeal and reconsider
     And I should see the phrase "Step 1: Decide the steps you want to take"
     And I should see the phrase "Step 2: Find out if you and the other parent agree"
     And I should see the phrase "Step 3: Tell the court about your agreement"
-    And I should see the phrase "Step 4: Decide if you want to file an appeal"
-    And I should see the phrase "Step 5: Learn about Motions for Reconsideration"
-    And I should see the phrase "Step 6: Fill out the Motion for Reconsideration forms"
+    And I should see the phrase "Step 4: Learn about Motions for Reconsideration"
+    And I should see the phrase "Step 5: Fill out the Motion for Reconsideration forms"
+    And I should see the phrase "Step 6: Decide if you want to file an appeal"
     And I should see the phrase "Step 7: Sign if you use paper forms or do not use TrueFiling"
     And I should see the phrase "Step 8: File your Motion for Reconsideration"
     And I should see the phrase "Step 9: Serve the other parent"
@@ -230,9 +230,9 @@ Scenario: Row #53 reconsider appeal and set aside
     And I should see the phrase "Step 1: Decide the steps you want to take"
     And I should see the phrase "Step 2: Find out if you and the other parent agree"
     And I should see the phrase "Step 3: Tell the court about your agreement"
-    And I should see the phrase "Step 4: Decide if you want to file an appeal"
-    And I should see the phrase "Step 5: Learn about Motions for Reconsideration"
-    And I should see the phrase "Step 6: Fill out the Motion for Reconsideration forms"
+    And I should see the phrase "Step 4: Learn about Motions for Reconsideration"
+    And I should see the phrase "Step 5: Fill out the Motion for Reconsideration forms"
+    And I should see the phrase "Step 6: Decide if you want to file an appeal"
     And I should see the phrase "Step 7: Learn about the Motion to Set Aside Judgment or Order"
     And I should see the phrase "Step 8: Fill out forms if you want to file a Motion to Set Aside"
     And I should see the phrase "Step 9: Sign if you use paper forms or do not use TrueFiling"
