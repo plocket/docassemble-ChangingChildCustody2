@@ -51,5 +51,5 @@ jobs:
           INSTALL_METHOD: "server"
           # To learn more about these optional inputs, see
           # https://assemblyline.suffolklitlab.org/docs/alkiln/writing/#optional-inputs
-          # ALKILN_TAG_EXPRESSION: "@row3"
+          # ALKILN_TAG_EXPRESSION: "@row4"
           # ALKILN_VERSION: ""
